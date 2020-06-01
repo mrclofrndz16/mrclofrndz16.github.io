@@ -1,0 +1,14 @@
+1)Primero crear un proyecto dentro de github
+2)Luego crear los archivos.
+_site.yml (Agregar en la tercera linea [utput_dir: "."])
+Se crea el primer menu llamado index.Rmd
+El segundo menu about.Rmd
+y el archico para temas, [.nojekyll]
+3) Crear un render del Markdown(UTF-8 sugerido para espanio)
+  rmarkdown::render_site(encoding = "UTF-8")
+4) Esperar que termine, y correr los siguientes comanddos en el {terminal}
+ [git add .]
+ [git add -A] #marcar los archivos nuevos
+ [git commit -m "Aqui va un comentario"] #Aplica un comentario a todos los archivos nuevos creados. Poner correo y usuario por si sea el caso.
+ [git push origin master]
+ 
