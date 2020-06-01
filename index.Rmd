@@ -3,3 +3,13 @@ title: "My Website"
 ---
 
 Hello, Website!
+
+# Grafica simple
+
+Aqui se demuestra un grafica simple para el menu index.
+
+```{r echo=FALSE,message=FALSE,warning=FALSE}
+library(tidyverse)
+ggplot(mtcars)+aes(x = mtcars$wt,y = mtcars$mpg)+geom_point()
+```
+

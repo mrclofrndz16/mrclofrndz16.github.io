@@ -3,3 +3,10 @@ title: "About This Website"
 ---
 
 More about this website.
+
+# Grafico simple para el submenu de about.
+
+```{r echo=FALSE,warning=FALSE,message=FALSE}
+plot(mtcars)
+```
+

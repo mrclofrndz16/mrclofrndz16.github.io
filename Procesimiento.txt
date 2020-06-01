@@ -10,5 +10,15 @@ y el archico para temas, [.nojekyll]
  [git add .]
  [git add -A] #marcar los archivos nuevos
  [git commit -m "Aqui va un comentario"] #Aplica un comentario a todos los archivos nuevos creados. Poner correo y usuario por si sea el caso.
- [git push origin master]
+ [git push origin master] #Sube todos los archivos a github
+5) Verificar la pagina web creada "mrclofrndz16.github.io"
+6) Para agregar un thema adiciona. hay que modificar el archivo _site.yml
+      Estos son las codigos adicionales para cambiar el aspecto, los      temas estan descritos en la pagina de html de referencia. Yo use el       tema spacelab.
+      
+      output:
+      html_document:
+        theme: spacelab
+        highlight: textmate
+7) Una vez guardado los cambios, correr el comando del paso 3. [  rmarkdown::render_site(encoding = "UTF-8")]
+8) Comentar los cambios hechos y se hace de manera diferente. Se usa el icono git+ que esta arriba, a lado de "Go to file/Functtion"
  
