@@ -11,11 +11,11 @@
 
 
 
-<title>My Website</title>
+<title>Datos para la construccion del indice de resliencia</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/spacelab.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -40,6 +40,16 @@ if (window.hljs) {
 </script>
 
 
+<style type="text/css">
+  p.abstract{
+    text-align: center;
+    font-weight: bold;
+  }
+  div.abstract{
+    margin: auto;
+    width: 90%;
+  }
+</style>
 
 <style type="text/css">
 h1 {
@@ -102,33 +112,33 @@ summary {
 <style type="text/css">
 /* padding for bootstrap navbar */
 body {
-  padding-top: 51px;
+  padding-top: 52px;
   padding-bottom: 40px;
 }
 /* offset scroll position for anchor links (for fixed navbar)  */
 .section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 57px;
+  margin-top: -57px;
 }
 .section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 57px;
+  margin-top: -57px;
 }
 .section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 57px;
+  margin-top: -57px;
 }
 .section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 57px;
+  margin-top: -57px;
 }
 .section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 57px;
+  margin-top: -57px;
 }
 .section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 57px;
+  margin-top: -57px;
 }
 .dropdown-submenu {
   position: relative;
@@ -289,16 +299,514 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">My Website</h1>
+<h1 class="title toc-ignore">Datos para la construccion del indice de resliencia</h1>
+<div class="abstract">
+<p class="abstract">Abstract</p>
+<p>El siguiente archivo interactua como una pagina WEB convencional. Actua como borrador para describir las principales variables para la construccion del indice de vulnerabilidad y resilencia de America. el paper de referencia es <a href="https://www.researchgate.net/profile/Lino_Briguglio/publication/46527233_Economic_Vulnerability_and_Resilience_Concepts_and_Measurements/links/0deec526adc947c677000000/Economic-Vulnerability-and-Resilience-Concepts-and-Measurements.pdf">Briguglio. L, Cordina. G, Farrugia. N, Vella. S.(2008)</a></p>
+</div>
 
 </div>
 
 
-<p>Hello, Website!</p>
-<div id="grafica-simple" class="section level1">
-<h1>Grafica simple</h1>
-<p>Aqui se demuestra un grafica simple para el menu index.</p>
-<p><img src="index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<div id="formula-para-la-estandarizacion-de-las-variables-0-1" class="section level1">
+<h1>Formula para la estandarizacion de las variables <code>(0-1)</code></h1>
+<p>Para todos los componentes es necesario aplicar la siguiente formula de estandarizacion. <span class="math display">\[
+  \mathrm{XE_{i,j}}=\frac{X_{ij}-MinX_{ij}}{MaxX_{ij}-MinX_{ij}}\
+\]</span> Los valores estandarizados toman un rango entre 0-1, que representaria <code>Min(X) y Max(X)</code>, respectivamente.</p>
+</div>
+<div id="indice-de-resilencia" class="section level1">
+<h1><strong>Indice de resilencia</strong></h1>
+<p>Esta formado por el promedio simple de cuatro componentes: <code>Estabilidad Macroeconomica</code>,<code>Eficiiencia Microeconomica</code>,<code>Bue Gobierno</code> y <code>Desarrollo Social</code></p>
+</div>
+<div id="revision-de-variables" class="section level1">
+<h1><strong>Revision de variables</strong></h1>
+<div id="estabilidad-macroeconomica" class="section level2">
+<h2>1 Estabilidad Macroeconomica</h2>
+<p>Compuesto por tres subcomponentes,<span class="math inline">\(\frac{DeficitFiscal}{PIB}\)</span>, <span class="math inline">\(\sum(Desempleo,Inflacion)\)</span>,<span class="math inline">\(\frac{Deuda Externa}{PIB}\)</span></p>
+<div id="fiscal-deficit" class="section level3">
+<h3>1.1 Fiscal Deficit</h3>
+<p>El deficit fiscal fue obtenida de la pagina de <a href="https://www.imf.org/external/pubs/ft/weo/2019/02/weodata/weoselser.aspx?c=512%2c668%2c914%2c672%2c612%2c946%2c614%2c137%2c311%2c546%2c213%2c674%2c911%2c676%2c314%2c548%2c193%2c556%2c122%2c678%2c912%2c181%2c313%2c867%2c419%2c682%2c513%2c684%2c316%2c273%2c913%2c868%2c124%2c921%2c339%2c948%2c638%2c943%2c514%2c686%2c218%2c688%2c963%2c518%2c616%2c728%2c223%2c836%2c516%2c558%2c918%2c138%2c748%2c196%2c618%2c278%2c624%2c692%2c522%2c694%2c622%2c962%2c156%2c142%2c626%2c449%2c628%2c564%2c228%2c565%2c924%2c283%2c233%2c853%2c632%2c288%2c636%2c293%2c634%2c566%2c238%2c964%2c662%2c182%2c960%2c359%2c423%2c453%2c935%2c968%2c128%2c922%2c611%2c714%2c321%2c862%2c243%2c135%2c248%2c716%2c469%2c456%2c253%2c722%2c642%2c942%2c643%2c718%2c939%2c724%2c734%2c576%2c644%2c936%2c819%2c961%2c172%2c813%2c132%2c726%2c646%2c199%2c648%2c733%2c915%2c184%2c134%2c524%2c652%2c361%2c174%2c362%2c328%2c364%2c258%2c732%2c656%2c366%2c654%2c144%2c336%2c146%2c263%2c463%2c268%2c528%2c532%2c923%2c944%2c738%2c176%2c578%2c534%2c537%2c536%2c742%2c429%2c866%2c433%2c369%2c178%2c744%2c436%2c186%2c136%2c925%2c343%2c869%2c158%2c746%2c439%2c926%2c916%2c466%2c664%2c112%2c826%2c111%2c542%2c298%2c967%2c927%2c443%2c846%2c917%2c299%2c544%2c582%2c941%2c474%2c446%2c754%2c666%2c698&amp;t=194">WEO</a> del FMI.</p>
+<p>Se toma Como deficit fiscal al saldo ajustado en función del ciclo, saldo fiscal ajustado por los efectos del ciclo económico. Por lo tanto se mide en porcentajes del PIB potencial. <strong>No hay los datos para algunos paises como Belize,Bolivia, Honduras y otros</strong></p>
+<pre><code>## # A tibble: 31 x 26
+##    Countries `2000` `2001` `2002` `2003` `2004` `2005` `2006` `2007` `2008` `2009`
+##    &lt;chr&gt;      &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+##  1 Antigua ~  NA    NA     NA     NA     NA     NA      NA    NA     NA      NA   
+##  2 Argentina  -4.56 -5.68   1.18   3.45   4.72   4.38    2.76  0.692 -0.445   0.47
+##  3 The Baha~  NA    NA     NA     NA     NA     NA      NA    NA     NA      NA   
+##  4 Barbados    5.47  4.33  -6.72  -4.63  -4.36  -4.53   -5.02 -6.36  -6.18   -8.69
+##  5 Belize     NA    NA     NA     NA     NA     NA      NA    NA     NA      NA   
+##  6 Bolivia    NA    NA     NA     NA     NA     NA      NA    NA     NA      NA   
+##  7 Brazil     -3.49 -2.61  -3.80  -3.83  -2.40  -2.89   -3.03 -3.00  -2.30   -3.08
+##  8 Canada      2.08  0.811 -0.08   0.197  0.614  0.994   1.16  1.17  -0.037  -1.77
+##  9 Chile      NA     0.67   0.326  0.824  1.06   1.11    1.37  1.06  -1      -2.87
+## 10 Colombia   -3.72 -3.15  -2.38  -1.16   0.09   0.571  -1.33 -2.02  -1.10   -2.16
+## # ... with 21 more rows, and 15 more variables: `2010` &lt;dbl&gt;, `2011` &lt;dbl&gt;,
+## #   `2012` &lt;dbl&gt;, `2013` &lt;dbl&gt;, `2014` &lt;dbl&gt;, `2015` &lt;dbl&gt;, `2016` &lt;dbl&gt;,
+## #   `2017` &lt;dbl&gt;, `2018` &lt;dbl&gt;, `2019` &lt;dbl&gt;, `2020` &lt;dbl&gt;, `2021` &lt;dbl&gt;,
+## #   `2022` &lt;dbl&gt;, `2023` &lt;dbl&gt;, `2024` &lt;dbl&gt;</code></pre>
+</div>
+<div id="unemployment-rate-inflation" class="section level3">
+<h3>1.2 Unemployment rate, Inflation,</h3>
+<p>Los datos fueron obtenidos de <a href="https://databank.worldbank.org/source/world-development-indicators">WDI</a> del <em>Banco Mundial</em></p>
+<div id="tasa-de-inflacion-enlazada." class="section level4">
+<h4>1.2.1 Tasa de inflacion enlazada.</h4>
+<p><strong>La inflacion medida por el cambio en el IPC no hay para algunos paises en la WDI &amp; ISF, como por ejemplo, Argentina.</strong> Por eso se opta por el momento por la inflacion medidad por el deflactor del PIB del BM que garantiza la comparabilidad de las series entre paises. <strong>Ojo con los datos de Ecuador</strong></p>
+<blockquote>
+<p>Se considera la inflación medida por la tasa de crecimiento anual del deflactor implícito del PIB que muestra la tasa de cambio de precios en la economía en su conjunto. <strong>Esta serie se ha vinculado para producir una serie de tiempo consistente para contrarrestar las interrupciones en la serie a lo largo del tiempo debido a cambios en los años base, datos fuente y metodologías</strong>.-<a href="https://databank.worldbank.org/source/world-development-indicators">WDI</a></p>
+</blockquote>
+<pre><code>## # A tibble: 32 x 21
+##    Countries `2000` `2001` `2002` `2003` `2004` `2005` `2006` `2007`  `2008` `2009`
+##    &lt;chr&gt;      &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;
+##  1 Antigua ~ -1.19   1.48   0.701 -0.963   1.64   4.46  0.408   3.74  4.38     1.79
+##  2 Argentina  1.04  -1.10  30.6   10.5    18.4   10.3  13.7    14.9  23.2     15.4 
+##  3 The Baha~  0.922  0.353  3.96   1.15    1.19   5.06  0.828   2.95  1.49    -1.04
+##  4 Barbados  -1.34   2.26   0.904  1.12    5.82   6.68  2.41    8.80  1.45    -1.91
+##  5 Belize     0.476 -0.223  1.75  -2.86    2.07   2.68  4.48    4.85  2.73    -3.09
+##  6 Bolivia    5.20   1.87   2.82   6.33    7.97   5.94 13.7     7.37 10.4     -2.42
+##  7 Brazil     5.61   8.23   9.80  14.1     7.75   7.43  6.77    6.44  8.78     7.31
+##  8 Canada     4.60   2.02   0.841  1.26    2.46   1.38  1.09   -1.33  4.00    -2.32
+##  9 Chile      4.27   3.86   3.39   4.58    7.85   7.64 12.2     5.34 -0.0534   4.65
+## 10 Colombia  11.2    6.52   5.97   6.83    7.28   4.56  5.78    5.13  7.74     4.24
+## # ... with 22 more rows, and 10 more variables: `2010` &lt;dbl&gt;, `2011` &lt;dbl&gt;,
+## #   `2012` &lt;dbl&gt;, `2013` &lt;dbl&gt;, `2014` &lt;dbl&gt;, `2015` &lt;dbl&gt;, `2016` &lt;dbl&gt;,
+## #   `2017` &lt;dbl&gt;, `2018` &lt;dbl&gt;, `2019` &lt;dbl&gt;</code></pre>
+</div>
+<div id="tasa-de-desempleo." class="section level4">
+<h4>1.2.2 Tasa de desempleo.</h4>
+<blockquote>
+<p>La serie es parte de las estimaciones de la <code>OIT</code> y está armonizada para garantizar la comparabilidad entre países y a lo largo del tiempo, teniendo en cuenta las diferencias en la fuente de datos, el alcance de la cobertura, la metodología y otros factores específicos de cada país.</p>
+</blockquote>
+<pre><code>## # A tibble: 32 x 21
+##    Countries `2000` `2001` `2002` `2003` `2004` `2005` `2006` `2007` `2008` `2009`
+##    &lt;chr&gt;      &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+##  1 Antigua ~  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
+##  2 Argentina  15     17.3   19.6   15.4   13.5   11.5   10.1    8.47   7.84   8.65
+##  3 The Baha~   6.96   6.87   9.05  10.8   10.2   10.2    7.54   7.88   8.18  14.2 
+##  4 Barbados    9.35   9.85  10.3   11      9.57   9.08   8.73   7.41   8.12  10.0 
+##  5 Belize     10.9    9.07  10.0   10.4   10.7   10.9    9.39   8.51   8.18   8.46
+##  6 Bolivia     2.89   2.89   2.93   2.94   2.90   2.84   2.73   2.63   2.60   2.86
+##  7 Brazil      9.90   9.61   9.37   9.99   9.10   9.57   8.64   8.33   7.34   8.52
+##  8 Canada      6.83   7.22   7.66   7.57   7.18   6.76   6.32   6.04   6.14   8.34
+##  9 Chile      10.5   10.4   10.2    9.77  10.2    9.34   9.02   8.43   9.28  11.3 
+## 10 Colombia   20.5   15.0   15.6   14.2   13.7   11.9   11.5   11.2   11.3   12.1 
+## # ... with 22 more rows, and 10 more variables: `2010` &lt;dbl&gt;, `2011` &lt;dbl&gt;,
+## #   `2012` &lt;dbl&gt;, `2013` &lt;dbl&gt;, `2014` &lt;dbl&gt;, `2015` &lt;dbl&gt;, `2016` &lt;dbl&gt;,
+## #   `2017` &lt;dbl&gt;, `2018` &lt;dbl&gt;, `2019` &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<div id="external-debt." class="section level3">
+<h3>1.3 External Debt.</h3>
+<p>Los datos fueron obtenidos de <a href="https://databank.worldbank.org/source/world-development-indicators">WDI</a></p>
+<p>Los datos para <span class="math inline">\(\frac{DeudaExterna}{PIB}\)</span> no hay en FMI o BM, por lo tanto <strong>Se considera</strong> <span class="math inline">\(\frac{DeudaExterna}{PNB}\)</span> de los datos del Banco Mundial.</p>
+<p>Para algunos paises no hay datos de la deuda externa total para obtener la relacion directa con el PIB, por ejemplo para Chile,Cuba, Estados Unidos,etc. <strong>Sugerir tratamiento</strong> Una opcion sería saldo de la cuenta corriente?</p>
+<pre><code>## # A tibble: 32 x 21
+##    Countries `2000` `2001` `2002` `2003` `2004` `2005` `2006` `2007` `2008` `2009`
+##    &lt;chr&gt;      &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+##  1 Antigua ~   NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  
+##  2 Argentina   54.2   58.5  160.   133.   115.    74.2   52.9   43.2   36.8   41.4
+##  3 The Baha~   NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  
+##  4 Barbados    NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  
+##  5 Belize      80.8   89.7   98.2  118.   103.   102.    96.5   95.0  106.   104. 
+##  6 Bolivia     72.1   60.5   66.3   75.4   74.9   76.0   56.6   40.1   35.3   34.7
+##  7 Brazil      38.1   42.5   47.2   43.6   34.0   21.8   18.0   17.4   15.9   17.3
+##  8 Canada      NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  
+##  9 Chile       NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  
+## 10 Colombia    35.1   38.2   35.2   40.8   33.8   26.5   24.4   22.1   20.0   23.7
+## # ... with 22 more rows, and 10 more variables: `2010` &lt;dbl&gt;, `2011` &lt;dbl&gt;,
+## #   `2012` &lt;dbl&gt;, `2013` &lt;dbl&gt;, `2014` &lt;dbl&gt;, `2015` &lt;dbl&gt;, `2016` &lt;dbl&gt;,
+## #   `2017` &lt;dbl&gt;, `2018` &lt;dbl&gt;, `2019` &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<div id="eficiencia-microeconomica" class="section level2">
+<h2>2 Eficiencia Microeconomica</h2>
+<p>Se toma el promedio de las subindicadores de <code>Regulacion del mercado de credito</code>,<code>trabajo</code> y <code>empresarial</code>. Va en una escala del 0-10. <strong>Datos Disponibles solo al 2017</strong> Los datos son tomados de <a href="https://www.fraserinstitute.org/economic-freedom/dataset?geozone=world&amp;year=2017&amp;page=dataset&amp;min-year=2&amp;max-year=0&amp;filter=0">Fraser Institute</a></p>
+<pre><code>##               Countries 2000 2001 2002 2003 2004 2005 2006 2007 2008 2009 2010 2011
+##  1:           Argentina 6.34 5.46 5.86 6.07 6.21 6.31 5.91 5.92 5.82 5.64 5.21 5.50
+##  2:            Barbados 6.89 6.87 6.84 6.80 6.82 6.86 7.12 6.61 6.53 6.88 6.52 6.85
+##  3:              Belize 6.74 6.23 6.92 6.93 8.88 8.77 8.89 9.16 9.21 9.24 8.02 7.92
+##  4:             Bolivia 5.76 5.42 4.76 5.07 5.64 5.74 5.98 5.63 5.61 6.00 5.85 5.71
+##  5:              Brazil 5.51 5.11 4.99 4.66 4.88 4.67 4.48 4.68 4.69 4.69 5.15 5.03
+##  6:              Canada 8.33 8.05 8.44 8.47 8.74 8.66 8.64 8.68 8.68 8.66 8.70 8.66
+##  7:               Chile 7.38 6.78 7.08 7.36 7.35 7.50 7.41 7.35 7.27 7.10 7.55 7.73
+##  8:            Colombia 6.39 5.85 6.45 6.55 6.67 6.54 6.58 6.65 6.75 6.80 7.13 7.30
+##  9:          Costa Rica 7.25 6.33 6.28 6.40 6.22 6.26 6.61 6.92 6.81 6.72 6.52 6.64
+## 10:  Dominican Republic 7.19 6.74 6.60 6.81 6.45 6.69 6.77 6.73 6.65 6.61 6.66 6.72
+## 11:             Ecuador 4.22 4.29 5.63 5.89 5.86 5.99 5.99 5.88 5.92 6.06 6.24 6.23
+## 12:         El Salvador 7.05 6.50 6.34 6.53 6.75 7.12 7.36 7.63 7.64 7.17 7.05 6.96
+## 13:           Guatemala 6.25 5.88 6.32 6.33 6.39 6.50 6.61 6.69 6.63 6.47 6.63 6.61
+## 14:              Guyana 6.55 6.29 7.79 7.72 6.78 7.02 7.10 7.29 7.35 7.53 7.58 7.64
+## 15:               Haiti 8.84 7.36 7.15 7.03 6.84 7.36 6.85 6.92 7.62 7.94 6.70 6.94
+## 16:            Honduras 6.86 6.52 6.48 6.40 6.61 6.81 7.10 7.19 7.00 6.75 6.86 6.84
+## 17:             Jamaica 7.42 6.48 6.88 7.53 7.74 7.68 7.58 7.06 6.55 6.99 7.36 7.12
+## 18:              Mexico 6.71 6.24 6.75 6.77 6.86 6.75 6.78 6.64 6.60 6.67 6.88 6.74
+## 19:           Nicaragua 6.83 6.42 6.82 6.92 7.07 7.32 7.64 7.61 7.40 7.16 7.20 7.14
+## 20:              Panama 6.88 6.68 6.60 6.72 6.74 6.77 6.84 6.87 6.75 6.81 6.92 7.03
+## 21:            Paraguay 5.67 5.55 5.45 5.31 5.02 5.57 5.69 5.77 5.78 6.03 6.29 6.54
+## 22:                Peru 7.41 6.76 7.01 7.02 7.16 6.93 6.79 6.81 7.18 7.15 7.67 7.41
+## 23:            Suriname   NA   NA   NA   NA   NA   NA   NA   NA   NA   NA 6.89 7.12
+## 24:         The Bahamas 7.51 7.47 7.41 7.38 7.39 7.42 9.17 9.15 9.24 9.10 8.72 8.60
+## 25: Trinidad and Tobago 7.76 7.11 7.40 7.29 7.71 7.34 7.69 7.65 7.39 7.35 7.54 6.97
+## 26:       United States 8.55 8.23 8.57 8.44 8.74 8.61 8.71 8.81 8.56 8.09 8.14 8.23
+## 27:             Uruguay 6.29 5.86 6.22 6.26 7.03 6.43 6.47 6.40 6.25 6.37 6.84 6.85
+## 28:           Venezuela 5.58 5.18 5.15 4.45 5.20 5.27 5.06 5.03 4.78 5.61 4.19 4.36
+##               Countries 2000 2001 2002 2003 2004 2005 2006 2007 2008 2009 2010 2011
+##     2012 2013 2014 2015 2016 2017
+##  1: 5.72 5.52 5.39 5.55 5.37 5.65
+##  2: 7.18 6.54 6.54 6.53 6.52 6.99
+##  3: 8.03 7.90 7.77 7.90 7.88 8.08
+##  4: 5.73 5.75 5.52 4.95 4.98 4.93
+##  5: 5.08 5.00 4.78 4.30 4.09 4.41
+##  6: 8.75 8.75 8.54 8.50 8.51 8.61
+##  7: 7.49 7.45 7.26 7.15 7.15 6.97
+##  8: 7.43 7.61 7.51 7.39 7.27 7.34
+##  9: 6.67 6.59 6.52 6.43 6.45 6.46
+## 10: 6.00 6.53 6.66 6.61 6.62 6.63
+## 11: 6.33 6.34 5.98 6.09 6.05 6.04
+## 12: 6.55 6.04 6.41 6.33 6.24 6.33
+## 13: 6.74 6.78 6.71 6.65 6.55 6.50
+## 14: 7.28 6.72 6.72 6.73 6.48 6.41
+## 15: 6.40 6.98 6.98 6.99 6.97 6.86
+## 16: 6.65 6.56 6.70 6.95 6.82 6.91
+## 17: 7.52 7.91 7.87 7.91 7.96 7.98
+## 18: 6.98 7.05 6.74 6.90 6.78 7.05
+## 19: 7.25 7.29 7.19 7.14 7.00 7.01
+## 20: 7.01 7.03 6.77 6.96 6.90 6.87
+## 21: 6.40 6.29 6.16 6.03 6.14 6.25
+## 22: 7.40 7.50 7.49 7.53 7.27 7.22
+## 23: 7.20 7.27 7.21 7.09 6.60 7.73
+## 24: 8.50 8.33 8.32 8.17 8.17 8.22
+## 25: 7.12 7.24 7.22 6.27 6.62 6.60
+## 26: 8.39 8.57 8.58 8.71 8.83 8.86
+## 27: 6.73 6.68 6.46 6.43 6.82 6.80
+## 28: 4.05 3.20 3.04 2.56 2.48 2.49
+##     2012 2013 2014 2015 2016 2017</code></pre>
+</div>
+<div id="buen-gobierno" class="section level2">
+<h2>3 Buen Gobierno</h2>
+<p>Promedio de los siguientes subindicadores del indice de liberta economica mundial citada en el paper de referencia <code>Judicial independence</code> , <code>Impartial courts</code>,<code>Protection of property rights</code>,<code>Military interference in rule of law and politics</code> y <code>Integrity of the legal system</code> . Datos tomados de la fuente anterior.</p>
+<pre><code>##              Countries     2000     2001     2002     2003     2004     2005
+## 1            Argentina 5.414000 3.638000 3.234000 3.266000 3.850000 3.996000
+## 2             Barbados 5.203333 5.203333 5.203333 6.425000 6.425000 8.005000
+## 3               Belize 7.010000 7.010000 7.010000 7.020000 7.020000 6.350000
+## 4              Bolivia 3.432000 2.952000 2.834000 3.134000 3.196000 3.690000
+## 5               Brazil 5.354000 4.938000 4.866000 4.868000 4.156000 4.662000
+## 6               Canada 9.272000 8.958000 8.266000 8.666000 8.400000 8.698000
+## 7                Chile 6.526000 6.154000 6.368000 6.466000 6.090000 6.688000
+## 8             Colombia 3.528000 3.444000 3.334000 3.198000 3.424000 4.044000
+## 9           Costa Rica 6.874000 6.506000 6.134000 6.634000 6.654000 7.226000
+## 10  Dominican Republic 4.617500 3.842000 4.198000 3.900000 3.208000 4.304000
+## 11             Ecuador 3.298000 2.498000 2.932000 2.700000 2.350000 3.006000
+## 12         El Salvador 4.514000 4.380000 4.334000 4.300000 4.146000 4.360000
+## 13           Guatemala 3.157500 2.644000 2.632000 3.000000 3.302000 5.028000
+## 14              Guyana 7.486667 7.486667 6.373333 6.013333 3.418000 4.040000
+## 15               Haiti 3.773333 1.956000 1.866000 2.124000 1.598000 2.150000
+## 16            Honduras 3.577500 2.568000 2.866000 3.100000 3.148000 3.534000
+## 17             Jamaica 5.582500 5.600000 5.000000 5.102000 5.422000 6.166000
+## 18              Mexico 4.246000 3.636000 4.166000 3.898000 4.470000 5.362000
+## 19           Nicaragua 4.060000 3.182000 3.132000 2.900000 2.856000 3.468000
+## 20              Panama 5.687500 4.670000 4.566000 4.532000 4.598000 5.108000
+## 21            Paraguay 3.670000 2.822000 2.098000 2.432000 1.922000 2.404000
+## 22                Peru 3.934000 4.226000 3.966000 3.998000 4.010000 4.326000
+## 23            Suriname      NaN      NaN      NaN      NaN      NaN      NaN
+## 24         The Bahamas 6.348000 6.348000 6.348000 8.166667 8.326667 8.466667
+## 25 Trinidad and Tobago 6.645000 6.526000 5.832000 5.398000 4.834000 5.722000
+## 26       United States 9.228000 8.660000 8.166000 7.900000 7.818000 7.290000
+## 27             Uruguay 6.382500 5.758000 5.798000 5.732000 5.776000 6.128000
+## 28           Venezuela 3.748000 1.884000 1.600000 1.434000 1.790000 1.868000
+##        2006     2007     2008     2009  2010   2011     2012     2013     2014
+## 1  3.834000 3.882000 3.884000 3.884000 3.966 3.7760 3.528000 3.552000 3.774000
+## 2  6.860000 7.860000 7.832500 7.795000 7.925 7.5900 7.337500 7.190000 7.237500
+## 3  6.200000 6.300000 6.100000 5.700000 4.485 6.4775 6.435000 6.690000 6.470000
+## 4  3.628000 3.284000 3.144000 3.134000 3.708 4.0080 4.076000 4.268000 3.806000
+## 5  4.656000 4.798000 4.724000 4.742000 4.910 5.0220 4.958000 4.560000 4.384000
+## 6  8.892000 9.118000 8.810000 8.630000 8.690 8.6940 8.592000 8.600000 8.612000
+## 7  6.970000 7.070000 7.118000 7.258000 7.074 7.0660 6.974000 6.816000 6.708000
+## 8  4.182000 4.250000 3.996000 3.908000 3.922 3.7580 3.722000 3.644000 3.600000
+## 9  7.094000 6.998000 6.788000 6.742000 6.506 6.3140 6.422000 6.516000 6.512000
+## 10 4.136000 4.076000 4.272000 4.222000 4.038 4.0200 3.964000 4.084000 4.058000
+## 11 2.856000 2.768000 2.978000 2.866000 2.986 3.1240 3.720000 3.464000 3.198000
+## 12 4.352000 3.958000 4.046000 3.714000 3.510 3.6000 3.658000 4.048000 3.712000
+## 13 4.804000 4.636000 4.320000 3.972000 3.872 4.0760 4.412000 4.582000 4.628000
+## 14 3.894000 4.094000 4.032000 4.200000 4.222 4.2180 4.502000 4.394000 4.336000
+## 15 2.943333 1.833333 2.176667 1.900000 1.504 1.4940 1.646000 1.748000 2.060000
+## 16 4.256000 4.504000 4.186000 3.918000 4.254 4.2500 3.668000 4.020000 4.230000
+## 17 5.904000 6.084000 6.012000 5.690000 5.708 5.6820 5.704000 5.958000 6.066000
+## 18 5.146000 4.962000 5.136000 4.628000 4.668 4.6360 4.288000 4.284000 3.910000
+## 19 3.800000 3.812000 3.950000 3.874000 3.630 3.9840 4.250000 3.932000 3.460000
+## 20 5.174000 5.304000 5.372000 5.182000 5.108 5.3300 5.254000 5.242000 5.182000
+## 21 2.364000 2.332000 2.502000 2.558000 2.676 2.6940 2.686000 2.724000 2.864000
+## 22 4.386000 4.772000 4.944000 4.834000 4.856 4.6100 4.610000 4.486000 4.574000
+## 23      NaN      NaN      NaN      NaN 4.560 4.4625 4.837500 4.342000 4.896000
+## 24 7.866667 8.366667 8.400000 8.166667 8.100 8.1000 8.033333 8.033333 8.063333
+## 25 5.538000 5.382000 5.742000 5.738000 5.486 5.4500 5.576000 5.336000 5.162000
+## 26 7.162000 7.224000 7.112000 6.830000 6.792 6.7400 6.914000 7.036000 7.174000
+## 27 5.704000 5.812000 5.768000 5.872000 5.996 5.7160 5.740000 5.818000 5.976000
+## 28 1.836000 1.526000 1.600000 1.226000 1.214 1.1280 0.954000 0.840000 0.868000
+##        2015  2016     2017
+## 1  4.082000 4.342 4.352000
+## 2  6.710000 6.710 7.132500
+## 3  6.530000 6.505 6.430000
+## 4  3.048000 3.048 2.662000
+## 5  4.546000 4.742 4.588000
+## 6  8.478000 8.518 8.474000
+## 7  6.658000 6.644 6.634000
+## 8  3.646000 3.664 3.668000
+## 9  6.454000 6.590 6.388000
+## 10 3.746000 3.806 3.898000
+## 11 3.012000 2.756 2.830000
+## 12 3.564000 3.426 3.392000
+## 13 4.900000 4.640 4.596000
+## 14 4.336000 4.336 4.512000
+## 15 2.060000 2.008 1.984000
+## 16 4.064000 3.396 3.702000
+## 17 6.174000 5.958 5.950000
+## 18 3.868000 3.722 3.748000
+## 19 3.460000 3.374 3.424000
+## 20 5.272000 5.184 5.082000
+## 21 2.930000 2.884 2.920000
+## 22 4.746000 4.588 4.518000
+## 23 4.978000 5.018 5.018000
+## 24 8.033333 7.790 7.523333
+## 25 5.090000 5.230 5.258000
+## 26 7.272000 7.534 7.644000
+## 27 5.902000 5.696 5.692000
+## 28 0.900000 0.902 0.898000</code></pre>
+</div>
+<div id="desarrollo-social" class="section level2">
+<h2>4 Desarrollo Social</h2>
+<p>El componente de desarrollo social se calcula de la siguiente forma: <span class="math display">\[
+\sum(Indice de Educacion,IndicedeSalud)
+\]</span> <span class="math inline">\({IndicedeEducacion}= {Tasa de AlfabetizaciondeAdultos&quot;y&quot;Tasa de Matriculacion Escolar}\)</span>. Esto es <strong>Suma</strong> <span class="math inline">\(\mathrm{IndicedeSalud}={EsperanzadeVidaalNacer}\)</span></p>
+<p>Datos tomados de <a href="http://hdr.undp.org/en/data">PNUD</a></p>
+<div id="indice-de-educacion" class="section level3">
+<h3>4.1 Indice de Educacion</h3>
+<div id="adult-iteracy-rate" class="section level4">
+<h4>4.1.1 Adult Iteracy Rate</h4>
+<p>Datos no disponibles para algunos paises, como por ejemplo, Estado Unido ,Cuba y demas. <strong>Muchos paises y años vacios, buscar alternativas</strong></p>
+<pre><code>## # A tibble: 32 x 12
+##    Countries `2000` `2005` `2010` `2011` `2012` `2013` `2014` `2015` `2016` `2017`
+##    &lt;chr&gt;      &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+##  1 Antigua ~   NA     NA     NA     NA     NA     NA     NA     99     NA       NA
+##  2 Argentina   NA     NA     99     99.1   99.1   99.1   99     99.2   99.1     NA
+##  3 Barbados    NA     NA     NA     NA     NA     NA     99.6   NA     NA       NA
+##  4 Brazil      86.4   NA     90.4   91.4   91.3   91.5   91.7   92     NA       NA
+##  5 Chile       NA     NA     NA     96.7   NA     96.3   NA     96.9   NA       NA
+##  6 Colombia    NA     92.8   93.4   93.6   NA     NA     94.2   94.2   94.7     NA
+##  7 Costa Ri~   94.9   NA     NA     97.4   NA     NA     NA     NA     NA       NA
+##  8 Cuba        NA     NA     NA     NA     99.8   NA     NA     NA     NA       NA
+##  9 Dominica~   NA     NA     89.5   90.1   90.2   90.9   91.8   92     93.8     NA
+## 10 Ecuador     NA     NA     91.9   91.6   92.1   93.3   94.2   94.5   94.3     NA
+## # ... with 22 more rows, and 1 more variable: `2018` &lt;dbl&gt;</code></pre>
+</div>
+<div id="school-enrolment-rates" class="section level4">
+<h4>4.1.2 School Enrolment rates</h4>
+<p>Se toma la variables de matriculacion en primaria. El paper de referencia no especifica el tipo de matriculacion escolar. <strong>Ojo, no hay años continuos en los primeros años.</strong></p>
+<pre><code>## # A tibble: 33 x 12
+##    Countries `2000` `2005` `2010` `2011` `2012` `2013` `2014` `2015` `2016` `2017`
+##    &lt;chr&gt;      &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+##  1 Antigua ~    115     NA     94     91     89     NA     88     88     NA     88
+##  2 Argentina    117    117    117    115    113    111    110    110    109     NA
+##  3 Barbados     101     96    100     98     NA     NA     94     93     93     92
+##  4 Belize       116    113    113    111    114    112    112    113    115    113
+##  5 Brazil        NA    133     NA    132    135    114    114    113    114     NA
+##  6 Canada       100     97     99     98    100    101    102    103    101     NA
+##  7 Chile        106    107    101    100    100     98     98     99    100    101
+##  8 Colombia     121    128    124    121    117    117    114    114    114    113
+##  9 Costa Ri~    113    113    117    116    115    112    111    110    110     NA
+## 10 Cuba         101     98    103    103    102    101    102    101    101    102
+## # ... with 23 more rows, and 1 more variable: `2018` &lt;dbl&gt;</code></pre>
+<p><strong>Para evitar estos problemas faltantes de paises y años, se sugiere a manera personal, el indice de educacion como reemplazo de alfabetizacion de adultos y la tasa de matriculacion escolar, El indice de eduacion es subcomponente del IDH, que recoge los <code>Años promedios de escolarida y los años esperados de escolaridad</code></strong>. Metodologia en <a href="http://hdr.undp.org/sites/default/files/hdr2019_technical_notes.pdf">ONU</a> Estos son:</p>
+<pre><code>## # A tibble: 34 x 20
+##    Countries `2000` `2001` `2002` `2003` `2004` `2005` `2006` `2007` `2008` `2009`
+##    &lt;chr&gt;      &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+##  1 Antigua ~ NA     NA     NA     NA     NA      0.773  0.779  0.784  0.783  0.776
+##  2 Argentina  0.77   0.775  0.77   0.775  0.775  0.777  0.801  0.806  0.81   0.81 
+##  3 Barbados   0.771  0.77   0.774  0.778  0.782  0.786  0.791  0.796  0.799  0.801
+##  4 Belize     0.643  0.647  0.655  0.663  0.668  0.666  0.676  0.678  0.683  0.688
+##  5 Bolivia    0.616  0.619  0.625  0.629  0.63   0.632  0.638  0.638  0.647  0.651
+##  6 Brazil     0.684  0.691  0.698  0.694  0.697  0.7    0.701  0.705  0.716  0.718
+##  7 Canada     0.868  0.872  0.877  0.882  0.887  0.892  0.895  0.891  0.893  0.893
+##  8 Chile      0.753  0.764  0.767  0.773  0.782  0.788  0.787  0.801  0.811  0.819
+##  9 Colombia   0.662  0.664  0.667  0.666  0.68   0.693  0.7    0.713  0.72   0.724
+## 10 Costa Ri~  0.711  0.714  0.717  0.72   0.724  0.728  0.734  0.742  0.75   0.751
+## # ... with 24 more rows, and 9 more variables: `2010` &lt;dbl&gt;, `2011` &lt;dbl&gt;,
+## #   `2012` &lt;dbl&gt;, `2013` &lt;dbl&gt;, `2014` &lt;dbl&gt;, `2015` &lt;dbl&gt;, `2016` &lt;dbl&gt;,
+## #   `2017` &lt;dbl&gt;, `2018` &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<div id="indice-de-salud" class="section level3">
+<h3>4.2 Indice de salud</h3>
+<p>Tomada por la variable de esperanza de vida al nacer. Por lo tanto, para poder sumarlar con el indice de educacion, se estabdariza usando la primera formula: <span class="math inline">\(\mathrm{XE}=\frac{X-MinX}{Max{X}-MinX}\)</span> , donde <span class="math inline">\(MinX=20\)</span> y <span class="math inline">\(MaxX=85\)</span> de acuerdo a la teoria. Verse <a href="http://hdr.undp.org/sites/default/files/hdr2019_technical_notes.pdf">IDH</a> Los resultados estandarizados no se muestran, para evitar confusiones.</p>
+<pre><code>## # A tibble: 34 x 20
+##    Countries `2000` `2001` `2002` `2003` `2004` `2005` `2006` `2007` `2008` `2009`
+##    &lt;chr&gt;      &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; 
+##  1 Antigua ~   73.9   74.2   74.4   74.6   74.8   75     75.2   75.4   75.5 75.7  
+##  2 Argentina   73.6   73.8   73.9   74.1   74.3   74.5   74.6   74.8   75   75.1  
+##  3 Barbados    77.2   77.4   77.5   77.7   77.8   77.9   78     78.1   78.2 78.3  
+##  4 Belize      68.8   69     69.3   69.5   69.7   70     70.3   70.6   71.1 71.5  
+##  5 Bolivia     62.5   63.1   63.6   64.2   64.8   65.3   65.9   66.4   66.9 67.5  
+##  6 Brazil      70.1   70.5   70.8   71.2   71.5   71.9   72.3   72.6   73   73.3  
+##  7 Canada      79.1   79.3   79.6   79.8   80     80.2   80.5   80.7   80.9 81.1  
+##  8 Chile       76.4   76.6   76.9   77.1   77.4   77.6   77.9   78.1   78.3 78.6  
+##  9 Colombia    72.9   73.2   73.5   73.8   74     74.3   74.5   74.7   75   75.2  
+## 10 Costa Ri~   77.5   77.6   77.7   77.9   78     78.1   78.2   78.4   78.5 78.6  
+## # ... with 24 more rows, and 9 more variables: `2010` &lt;chr&gt;, `2011` &lt;chr&gt;,
+## #   `2012` &lt;chr&gt;, `2013` &lt;chr&gt;, `2014` &lt;chr&gt;, `2015` &lt;chr&gt;, `2016` &lt;chr&gt;,
+## #   `2017` &lt;chr&gt;, `2018` &lt;chr&gt;</code></pre>
+<hr />
+</div>
+</div>
+</div>
+<div id="indice-de-resilencia-calculado" class="section level1">
+<h1><strong>Indice de resilencia calculado</strong></h1>
+<p>Indice calculado omitiendo aquellos paises que no tienen los valores completos en todos los años, corregir los datos faltantes y demas problemas conceptuales.</p>
+<p><img src="index_files/figure-html/costruccion%20del%20indide%20de%20resiliencia-1.png" width="672" /></p>
+<p>El indice de liberta econommica no considera a Suriname para el calculo antes del 2010. Una opcion seria recortar los años, por lo tanto quedarian <code>2010-2017</code>o eliminar a Suriname de la muestra. Solamente hasta 2017 hay datos del indice de libertad economica mundial, seria imposible considerar mas años puesto que este indicador es directo para el calculo.</p>
+<pre><code>##              Countries Year est_macro Regulation       idg       des resilience
+## 1            Argentina 2000 0.4523715  0.5710059 0.5424573 0.7520366  0.5794678
+## 2            Argentina 2001 0.4632356  0.4408284 0.3318311 0.7591059  0.4987503
+## 3            Argentina 2002 0.9294219  0.5000000 0.2839184 0.7560762  0.6173541
+## 4            Argentina 2003 0.7706151  0.5310651 0.2877135 0.7631455  0.5881348
+## 5            Argentina 2004 0.7332630  0.5517751 0.3569734 0.7658386  0.6019625
+## 6            Argentina 2005 0.5662426  0.5665680 0.3742884 0.7702821  0.5693453
+## 7            Argentina 2006 0.4974080  0.5073964 0.3550759 0.7926345  0.5381287
+## 8            Argentina 2007 0.4573916  0.5088757 0.3607685 0.7997038  0.5316849
+## 9            Argentina 2008 0.4577461  0.4940828 0.3610057 0.8058978  0.5296831
+## 10           Argentina 2009 0.4530145  0.4674556 0.3610057 0.8072443  0.5221800
+## 11           Argentina 2010 0.4295139  0.4038462 0.3707306 0.8169393  0.5052575
+## 12           Argentina 2011 0.4166550  0.4467456 0.3481973 0.8226621  0.5085650
+## 13           Argentina 2012 0.4079572  0.4792899 0.3187856 0.8253551  0.5078470
+## 14           Argentina 2013 0.4161525  0.4497041 0.3216319 0.8289234  0.5041030
+## 15           Argentina 2014 0.4768189  0.4304734 0.3479602 0.8311452  0.5215994
+## 16           Argentina 2015 0.4273954  0.4541420 0.3844877 0.8364640  0.5256223
+## 17           Argentina 2016 0.4887006  0.4275148 0.4153226 0.8378105  0.5423371
+## 18           Argentina 2017 0.4502370  0.4689349 0.4165085 0.8440046  0.5449213
+## 19              Brazil 2000 0.4011913  0.4482249 0.5353416 0.6296371  0.5035987
+## 20              Brazil 2001 0.4261221  0.3890533 0.4860057 0.6411499  0.4855827
+## 21              Brazil 2002 0.4421742  0.3713018 0.4774668 0.6513162  0.4855647
+## 22              Brazil 2003 0.4463617  0.3224852 0.4777040 0.6532014  0.4749381
+## 23              Brazil 2004 0.3956853  0.3550296 0.3932638 0.6598667  0.4509613
+## 24              Brazil 2005 0.3544657  0.3239645 0.4532732 0.6678785  0.4498955
+## 25              Brazil 2006 0.3364710  0.2958580 0.4525617 0.6741399  0.4397576
+## 26              Brazil 2007 0.3326583  0.3254438 0.4694023 0.6816805  0.4522962
+## 27              Brazil 2008 0.3343297  0.3269231 0.4606262 0.6966943  0.4546433
+## 28              Brazil 2009 0.3353651  0.3269231 0.4627609 0.7024843  0.4568834
+## 29              Brazil 2010 0.3261282  0.3949704 0.4826850 0.7135259  0.4793274
+## 30              Brazil 2011 0.3258644  0.3772189 0.4959677 0.7210665  0.4800294
+## 31              Brazil 2012 0.3339549  0.3846154 0.4883776 0.7286070  0.4838887
+## 32              Brazil 2013 0.3343034  0.3727811 0.4411765 0.7484010  0.4741655
+## 33              Brazil 2014 0.3363496  0.3402367 0.4203036 0.7537198  0.4626524
+## 34              Brazil 2015 0.3581417  0.2692308 0.4395161 0.7577594  0.4561620
+## 35              Brazil 2016 0.3782509  0.2381657 0.4627609 0.7622029  0.4603451
+## 36              Brazil 2017 0.3578142  0.2855030 0.4444972 0.7688682  0.4641706
+## 37            Colombia 2000 0.4437089  0.5784024 0.3187856 0.6480846  0.4972454
+## 38            Colombia 2001 0.4225636  0.4985207 0.3088235 0.6538746  0.4709456
+## 39            Colombia 2002 0.4153947  0.5872781 0.2957780 0.6605400  0.4897477
+## 40            Colombia 2003 0.4358798  0.6020710 0.2796490 0.6637043  0.4953260
+## 41            Colombia 2004 0.4169704  0.6198225 0.3064516 0.6786508  0.5054738
+## 42            Colombia 2005 0.3795042  0.6005917 0.3799810 0.6940685  0.5135364
+## 43            Colombia 2006 0.3693915  0.6065089 0.3963472 0.7028883  0.5187840
+## 44            Colombia 2007 0.3562250  0.6168639 0.4044118 0.7169595  0.5236150
+## 45            Colombia 2008 0.3613351  0.6316568 0.3742884 0.7271258  0.5236015
+## 46            Colombia 2009 0.3609779  0.6390533 0.3638520 0.7333199  0.5243007
+## 47            Colombia 2010 0.3531767  0.6878698 0.3655123 0.7403891  0.5367370
+## 48            Colombia 2011 0.3587708  0.7130178 0.3460626 0.7496802  0.5418828
+## 49            Colombia 2012 0.3489347  0.7322485 0.3417932 0.7532485  0.5440562
+## 50            Colombia 2013 0.3490639  0.7588757 0.3325427 0.7646940  0.5512941
+## 51            Colombia 2014 0.3547775  0.7440828 0.3273245 0.7708880  0.5492682
+## 52            Colombia 2015 0.3902265  0.7263314 0.3327799 0.7762068  0.5563861
+## 53            Colombia 2016 0.4211555  0.7085799 0.3349146 0.7841513  0.5622003
+## 54            Colombia 2017 0.4160086  0.7189349 0.3353890 0.7877197  0.5645131
+## 55          Costa Rica 2000 0.3798027  0.7056213 0.7156072 0.7529119  0.6384858
+## 56          Costa Rica 2001 0.3822735  0.5695266 0.6719639 0.7568841  0.5951621
+## 57          Costa Rica 2002 0.3794467  0.5621302 0.6278463 0.7608564  0.5825699
+## 58          Costa Rica 2003 0.3955416  0.5798817 0.6871442 0.7661752  0.6071857
+## 59          Costa Rica 2004 0.3967322  0.5532544 0.6895161 0.7710227  0.6026314
+## 60          Costa Rica 2005 0.4041290  0.5591716 0.7573529 0.7758702  0.6241309
+## 61          Costa Rica 2006 0.3984181  0.6109467 0.7416983 0.7824682  0.6333828
+## 62          Costa Rica 2007 0.3917364  0.6568047 0.7303131 0.7921632  0.6427543
+## 63          Costa Rica 2008 0.3841250  0.6405325 0.7054080 0.8005117  0.6326443
+## 64          Costa Rica 2009 0.3702363  0.6272189 0.6999526 0.8027335  0.6250353
+## 65          Costa Rica 2010 0.3393060  0.5976331 0.6719639 0.8080522  0.6042388
+## 66          Costa Rica 2011 0.3539729  0.6153846 0.6491935 0.8216522  0.6100508
+## 67          Costa Rica 2012 0.3721544  0.6198225 0.6620019 0.8295967  0.6208939
+## 68          Costa Rica 2013 0.3780654  0.6079882 0.6731499 0.8335690  0.6231931
+## 69          Costa Rica 2014 0.4000130  0.5976331 0.6726755 0.8432640  0.6283964
+## 70          Costa Rica 2015 0.4081194  0.5843195 0.6657970 0.8468323  0.6262671
+## 71          Costa Rica 2016 0.4072739  0.5872781 0.6819260 0.8508046  0.6318206
+## 72          Costa Rica 2017 0.4032747  0.5887574 0.6579696 0.8561233  0.6265313
+## 73  Dominican Republic 2000 0.3401025  0.6967456 0.4479957 0.5930788  0.5194807
+## 74  Dominican Republic 2001 0.3444529  0.6301775 0.3560247 0.6006194  0.4828186
+## 75  Dominican Republic 2002 0.3576536  0.6094675 0.3982448 0.6090352  0.4936003
+## 76  Dominican Republic 2003 0.4727848  0.6405325 0.3629032 0.6126035  0.5222060
+## 77  Dominican Republic 2004 0.5204991  0.5872781 0.2808349 0.6192688  0.5019702
+## 78  Dominican Republic 2005 0.3503955  0.6227811 0.4108159 0.6311856  0.5037945
+## 79  Dominican Republic 2006 0.3560674  0.6346154 0.3908918 0.6400054  0.5053950
+## 80  Dominican Republic 2007 0.3551931  0.6286982 0.3837761 0.6501717  0.5044598
+## 81  Dominican Republic 2008 0.3479065  0.6168639 0.4070209 0.6568370  0.5071571
+## 82  Dominican Republic 2009 0.3415945  0.6109467 0.4010911 0.6612805  0.5037282
+## 83  Dominican Republic 2010 0.3463141  0.6183432 0.3792694 0.6701003  0.5035068
+## 84  Dominican Republic 2011 0.3620870  0.6272189 0.3771347 0.6767656  0.5108016
+## 85  Dominican Republic 2012 0.3794599  0.5207101 0.3704934 0.6829597  0.4884058
+## 86  Dominican Republic 2013 0.3976137  0.5991124 0.3847249 0.6905002  0.5179878
+## 87  Dominican Republic 2014 0.3921148  0.6183432 0.3816414 0.7036962  0.5239489
+## 88  Dominican Republic 2015 0.3869565  0.6109467 0.3446395 0.7142665  0.5142023
+## 89  Dominican Republic 2016 0.3872971  0.6124260 0.3517552 0.7226823  0.5185402
+## 90  Dominican Republic 2017 0.3969425  0.6139053 0.3626660 0.7280011  0.5253787
+## 91             Ecuador 2000 0.7164280  0.2573964 0.2915085 0.6528647  0.4795494
+## 92             Ecuador 2001 0.5952889  0.2677515 0.1966319 0.6612805  0.4302382
+## 93             Ecuador 2002 0.5304753  0.4659763 0.2481025 0.6696964  0.4785626
+## 94             Ecuador 2003 0.5062673  0.5044379 0.2205882 0.6750151  0.4765771
+## 95             Ecuador 2004 0.4676355  0.5000000 0.1790797 0.6834310  0.4575365
+## 96             Ecuador 2005 0.4447774  0.5192308 0.2568786 0.6905002  0.4778467
+## 97             Ecuador 2006 0.4321430  0.5192308 0.2390892 0.6958190  0.4715705
+## 98             Ecuador 2007 0.4094592  0.5029586 0.2286528 0.7081398  0.4623026
+## 99             Ecuador 2008 0.3868342  0.5088757 0.2535579 0.7152090  0.4661192
+## 100            Ecuador 2009 0.3190346  0.5295858 0.2402751 0.7187774  0.4519182
+## 101            Ecuador 2010 0.3459095  0.5562130 0.2545066 0.7249714  0.4704001
+## 102            Ecuador 2011 0.3351151  0.5547337 0.2708729 0.7504208  0.4777856
+## 103            Ecuador 2012 0.3201586  0.5695266 0.3415560 0.7513634  0.4956511
+## 104            Ecuador 2013 0.3049284  0.5710059 0.3111954 0.7636841  0.4877035
+## 105            Ecuador 2014 0.3191933  0.5177515 0.2796490 0.7655019  0.4705239
+## 106            Ecuador 2015 0.3139316  0.5340237 0.2575901 0.7751969  0.4701856
+## 107            Ecuador 2016 0.3542214  0.5281065 0.2272296 0.7774860  0.4717609
+## 108            Ecuador 2017 0.3753612  0.5266272 0.2360057 0.7810543  0.4797621
+## 109        El Salvador 2000 0.3934663  0.6760355 0.4357211 0.5469602  0.5130458
+## 110        El Salvador 2001 0.4002582  0.5946746 0.4198292 0.5545008  0.4923157
+## 111        El Salvador 2002 0.4049839  0.5710059 0.4143738 0.5633205  0.4884210
+## 112        El Salvador 2003 0.4737032  0.5991124 0.4103416 0.5726116  0.5139422
+## 113        El Salvador 2004 0.4834961  0.6316568 0.3920778 0.5805561  0.5219467
+## 114        El Salvador 2005 0.4856457  0.6863905 0.4174573 0.5885006  0.5444985
+## 115        El Salvador 2006 0.4709374  0.7218935 0.4165085 0.5981957  0.5518838
+## 116        El Salvador 2007 0.4588664  0.7618343 0.3697818 0.6000135  0.5476240
+## 117        El Salvador 2008 0.4512773  0.7633136 0.3802182 0.6066788  0.5503720
+## 118        El Salvador 2009 0.4405862  0.6937870 0.3408444 0.6093718  0.5211474
+## 119        El Salvador 2010 0.4570094  0.6760355 0.3166509 0.6225678  0.5180659
+## 120        El Salvador 2011 0.4677517  0.6627219 0.3273245 0.6226352  0.5201083
+## 121        El Salvador 2012 0.4595855  0.6020710 0.3342030 0.6301757  0.5065088
+## 122        El Salvador 2013 0.4562151  0.5266272 0.3804554 0.6346193  0.4994792
+## 123        El Salvador 2014 0.4713126  0.5813609 0.3406072 0.6369084  0.5075473
+## 124        El Salvador 2015 0.4708354  0.5695266 0.3230550 0.6396014  0.5007546
+## 125        El Salvador 2016 0.4797839  0.5562130 0.3066888 0.6440450  0.4966827
+## 126        El Salvador 2017 0.4851405  0.5695266 0.3026565 0.6507103  0.5020085
+## 127          Guatemala 2000 0.3288720  0.5576923 0.2748458 0.4778833  0.4098234
+## 128          Guatemala 2001 0.3397914  0.5029586 0.2139469 0.4907426  0.3868599
+## 129          Guatemala 2002 0.3359835  0.5680473 0.2125237 0.5022554  0.4047025
+## 130          Guatemala 2003 0.3308162  0.5695266 0.2561670 0.5111425  0.4169131
+## 131          Guatemala 2004 0.3760605  0.5784024 0.2919829 0.5178079  0.4410634
+## 132          Guatemala 2005 0.3769055  0.5946746 0.4966793 0.5266949  0.4987386
+## 133          Guatemala 2006 0.3784061  0.6109467 0.4701139 0.5377365  0.4993008
+## 134          Guatemala 2007 0.3888809  0.6227811 0.4501898 0.5496533  0.5028762
+## 135          Guatemala 2008 0.3894741  0.6139053 0.4127135 0.5602909  0.4940959
+## 136          Guatemala 2009 0.3810883  0.5902367 0.3714421 0.5669562  0.4774308
+## 137          Guatemala 2010 0.3775811  0.6139053 0.3595825 0.5767185  0.4819469
+## 138          Guatemala 2011 0.3776951  0.6109467 0.3837761 0.5864808  0.4897247
+## 139          Guatemala 2012 0.3510005  0.6301775 0.4236243 0.5957719  0.5001436
+## 140          Guatemala 2013 0.3592110  0.6360947 0.4437856 0.6037837  0.5107188
+## 141          Guatemala 2014 0.3608806  0.6257396 0.4492410 0.6314549  0.5168290
+## 142          Guatemala 2015 0.3577858  0.6168639 0.4814991 0.6403420  0.5241227
+##  [ reached &#39;max&#39; / getOption(&quot;max.print&quot;) -- omitted 110 rows ]</code></pre>
+<p>Al parecer la inflacion medida por el deflactor del PIB genera ruido. Al no tratarse de datos para una interaccion entre paises y entre años, una regresion, es posible incorporar datos de diferentes fuentes para rellenar vacios? Por ejemplo, datos de las mismas instituciones de estadistica propias de cada pais, logicamente los años base jugarian un rol importante aqui.</p>
 </div>
 
 

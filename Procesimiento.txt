@@ -20,5 +20,7 @@ y el archico para temas, [.nojekyll]
         theme: spacelab
         highlight: textmate
 7) Una vez guardado los cambios, correr el comando del paso 3. [  rmarkdown::render_site(encoding = "UTF-8")]
-8) Comentar los cambios hechos y se hace de manera diferente. Se usa el icono git+ que esta arriba, a lado de "Go to file/Functtion"
+8) Comentar los cambios hechos y se hace de manera diferente. Se usa el icono git+ que esta arriba, a lado de "Go to file/Functtion" Los comentarios pueden ser uno por uno, o todos a la vez.
+9) Pinchar en PUSH para que suba de una vez, todos los archivos.
+
  
