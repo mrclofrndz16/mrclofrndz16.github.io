@@ -11,17 +11,32 @@
 
 
 
-<title>Datos para la construccion del indice de resliencia</title>
+<title>Construccion de un índice de resliencia para América Latina</title>
 
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/jquery-1.12.4/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/spacelab.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="site_libs/datatables-binding-0.13/datatables.js"></script>
+<link href="site_libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="site_libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="site_libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<link href="site_libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+<script src="site_libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
+<script src="site_libs/plotly-binding-4.9.2.1/plotly.js"></script>
+<script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="site_libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="site_libs/plotly-main-1.52.2/plotly-latest.min.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -258,6 +273,69 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
 
 </head>
 
@@ -265,6 +343,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -299,518 +387,126 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Datos para la construccion del indice de resliencia</h1>
+<h1 class="title toc-ignore">Construccion de un índice de resliencia para América Latina</h1>
 <div class="abstract">
 <p class="abstract">Abstract</p>
-<p>El siguiente archivo interactua como una pagina WEB convencional. Actua como borrador para describir las principales variables para la construccion del indice de vulnerabilidad y resilencia de America. el paper de referencia es <a href="https://www.researchgate.net/profile/Lino_Briguglio/publication/46527233_Economic_Vulnerability_and_Resilience_Concepts_and_Measurements/links/0deec526adc947c677000000/Economic-Vulnerability-and-Resilience-Concepts-and-Measurements.pdf">Briguglio. L, Cordina. G, Farrugia. N, Vella. S.(2008)</a></p>
+<p>Esta pagina resume el procedimiento y las variables utilizadas para la construción del índice de reslicencia para América Latina siguiendo las referencias de <a href="https://www.researchgate.net/profile/Lino_Briguglio/publication/46527233_Economic_Vulnerability_and_Resilience_Concepts_and_Measurements/links/0deec526adc947c677000000/Economic-Vulnerability-and-Resilience-Concepts-and-Measurements.pdf">Briguglio. L, Cordina. G, Farrugia. N, Vella. S.(2008)</a>.</p>
 </div>
 
 </div>
 
 
-<div id="formula-para-la-estandarizacion-de-las-variables-0-1" class="section level1">
-<h1>Formula para la estandarizacion de las variables <code>(0-1)</code></h1>
-<p>Para todos los componentes es necesario aplicar la siguiente formula de estandarizacion. <span class="math display">\[
+<div id="conceptos-iniciales" class="section level1">
+<h1><span class="header-section-number">1</span> Conceptos iniciales</h1>
+<p>El índice de resilencia propuesto por Briguglio. L, Cordina. G, Farrugia. N, Vella. S.(2008) esta formado por el promedio simple de cuatro componentes:</p>
+<ol style="list-style-type: decimal">
+<li>Estabilidad Macroeconomica</li>
+<li>Eficiiencia Microeconomica</li>
+<li>Buen Gobierno</li>
+<li>Desarrollo Social</li>
+</ol>
+<p>Para todos los componentes es necesario aplicar la siguiente fórmula de estandarización. <span class="math display">\[
   \mathrm{XE_{i,j}}=\frac{X_{ij}-MinX_{ij}}{MaxX_{ij}-MinX_{ij}}\
-\]</span> Los valores estandarizados toman un rango entre 0-1, que representaria <code>Min(X) y Max(X)</code>, respectivamente.</p>
+\]</span> Los valores estandarizados toman un rango entre 0-1.</p>
 </div>
-<div id="indice-de-resilencia" class="section level1">
-<h1><strong>Indice de resilencia</strong></h1>
-<p>Esta formado por el promedio simple de cuatro componentes: <code>Estabilidad Macroeconomica</code>,<code>Eficiiencia Microeconomica</code>,<code>Bue Gobierno</code> y <code>Desarrollo Social</code></p>
-</div>
-<div id="revision-de-variables" class="section level1">
-<h1><strong>Revision de variables</strong></h1>
+<div id="descripcion-de-los-componentes" class="section level1">
+<h1><span class="header-section-number">2</span> Descripcion de los componentes</h1>
 <div id="estabilidad-macroeconomica" class="section level2">
-<h2>1 Estabilidad Macroeconomica</h2>
+<h2><span class="header-section-number">2.1</span> Estabilidad Macroeconomica</h2>
 <p>Compuesto por tres subcomponentes,<span class="math inline">\(\frac{DeficitFiscal}{PIB}\)</span>, <span class="math inline">\(\sum(Desempleo,Inflacion)\)</span>,<span class="math inline">\(\frac{Deuda Externa}{PIB}\)</span></p>
 <div id="fiscal-deficit" class="section level3">
-<h3>1.1 Fiscal Deficit</h3>
-<p>El deficit fiscal fue obtenida de la pagina de <a href="https://www.imf.org/external/pubs/ft/weo/2019/02/weodata/weoselser.aspx?c=512%2c668%2c914%2c672%2c612%2c946%2c614%2c137%2c311%2c546%2c213%2c674%2c911%2c676%2c314%2c548%2c193%2c556%2c122%2c678%2c912%2c181%2c313%2c867%2c419%2c682%2c513%2c684%2c316%2c273%2c913%2c868%2c124%2c921%2c339%2c948%2c638%2c943%2c514%2c686%2c218%2c688%2c963%2c518%2c616%2c728%2c223%2c836%2c516%2c558%2c918%2c138%2c748%2c196%2c618%2c278%2c624%2c692%2c522%2c694%2c622%2c962%2c156%2c142%2c626%2c449%2c628%2c564%2c228%2c565%2c924%2c283%2c233%2c853%2c632%2c288%2c636%2c293%2c634%2c566%2c238%2c964%2c662%2c182%2c960%2c359%2c423%2c453%2c935%2c968%2c128%2c922%2c611%2c714%2c321%2c862%2c243%2c135%2c248%2c716%2c469%2c456%2c253%2c722%2c642%2c942%2c643%2c718%2c939%2c724%2c734%2c576%2c644%2c936%2c819%2c961%2c172%2c813%2c132%2c726%2c646%2c199%2c648%2c733%2c915%2c184%2c134%2c524%2c652%2c361%2c174%2c362%2c328%2c364%2c258%2c732%2c656%2c366%2c654%2c144%2c336%2c146%2c263%2c463%2c268%2c528%2c532%2c923%2c944%2c738%2c176%2c578%2c534%2c537%2c536%2c742%2c429%2c866%2c433%2c369%2c178%2c744%2c436%2c186%2c136%2c925%2c343%2c869%2c158%2c746%2c439%2c926%2c916%2c466%2c664%2c112%2c826%2c111%2c542%2c298%2c967%2c927%2c443%2c846%2c917%2c299%2c544%2c582%2c941%2c474%2c446%2c754%2c666%2c698&amp;t=194">WEO</a> del FMI.</p>
-<p>Se toma Como deficit fiscal al saldo ajustado en función del ciclo, saldo fiscal ajustado por los efectos del ciclo económico. Por lo tanto se mide en porcentajes del PIB potencial. <strong>No hay los datos para algunos paises como Belize,Bolivia, Honduras y otros</strong></p>
-<pre><code>## # A tibble: 31 x 26
-##    Countries `2000` `2001` `2002` `2003` `2004` `2005` `2006` `2007` `2008` `2009`
-##    &lt;chr&gt;      &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
-##  1 Antigua ~  NA    NA     NA     NA     NA     NA      NA    NA     NA      NA   
-##  2 Argentina  -4.56 -5.68   1.18   3.45   4.72   4.38    2.76  0.692 -0.445   0.47
-##  3 The Baha~  NA    NA     NA     NA     NA     NA      NA    NA     NA      NA   
-##  4 Barbados    5.47  4.33  -6.72  -4.63  -4.36  -4.53   -5.02 -6.36  -6.18   -8.69
-##  5 Belize     NA    NA     NA     NA     NA     NA      NA    NA     NA      NA   
-##  6 Bolivia    NA    NA     NA     NA     NA     NA      NA    NA     NA      NA   
-##  7 Brazil     -3.49 -2.61  -3.80  -3.83  -2.40  -2.89   -3.03 -3.00  -2.30   -3.08
-##  8 Canada      2.08  0.811 -0.08   0.197  0.614  0.994   1.16  1.17  -0.037  -1.77
-##  9 Chile      NA     0.67   0.326  0.824  1.06   1.11    1.37  1.06  -1      -2.87
-## 10 Colombia   -3.72 -3.15  -2.38  -1.16   0.09   0.571  -1.33 -2.02  -1.10   -2.16
-## # ... with 21 more rows, and 15 more variables: `2010` &lt;dbl&gt;, `2011` &lt;dbl&gt;,
-## #   `2012` &lt;dbl&gt;, `2013` &lt;dbl&gt;, `2014` &lt;dbl&gt;, `2015` &lt;dbl&gt;, `2016` &lt;dbl&gt;,
-## #   `2017` &lt;dbl&gt;, `2018` &lt;dbl&gt;, `2019` &lt;dbl&gt;, `2020` &lt;dbl&gt;, `2021` &lt;dbl&gt;,
-## #   `2022` &lt;dbl&gt;, `2023` &lt;dbl&gt;, `2024` &lt;dbl&gt;</code></pre>
+<h3><span class="header-section-number">2.1.1</span> Fiscal Deficit</h3>
+<p>Se toma Como deficit fiscal al saldo ajustado en función del ciclo, saldo fiscal ajustado por los efectos del ciclo económico. Por lo tanto se mide en porcentajes del PIB potencial. Los datos fueron obtenidos de la página del FMI.</p>
+<div id="htmlwidget-87c370ecc516d7ff2302" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-87c370ecc516d7ff2302">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19"],["Argentina","Bolivia","Brazil","Chile","Colombia","Costa Rica","Dominican Republic","Ecuador","El Salvador","Guatemala","Haiti","Honduras","Mexico","Nicaragua","Panama","Paraguay","Peru","Uruguay","Venezuela"],[-4.558,null,-3.488,null,-3.721,-3.812,-2.011,null,-1.806,-2.235,null,null,-2.547,null,-1.004,null,-1.972,-3.425,null],[-5.683,null,-2.61,0.67,-3.153,-3.523,-1.765,0.009,-4.925,-2.508,null,null,-0.108,null,-1.947,null,-1.531,-2.379,null],[1.185,null,-3.805,0.326,-2.384,-4.925,-1.952,0.776,-5.508,-1.158,null,null,1.264,null,-2.483,-0.295,-1.141,-0.957,null],[3.454,null,-3.832,0.824,-1.159,-3.349,-4.389,1.365,-4.209,-2.494,null,null,0.971,null,-3.578,1.403,-1.275,0.478,null],[4.723,null,-2.402,1.059,0.09,-3.273,-2.42,1.764,-2.504,-0.965,null,null,0.564,null,-4.066,2.136,-0.993,0.424,null],[4.381,null,-2.894,1.114,0.571,-2.454,-0.406,0.436,-3.339,-1.511,null,null,-0.497,null,-2.06,2.188,-0.723,0.587,null],[2.761,null,-3.034,1.374,-1.328,-1.388,-1.372,2.67,-3.8,-1.869,null,null,-0.963,null,0.596,2.795,0.196,1.369,null],[0.692,null,-2.995,1.055,-2.02,-0.088,-0.392,-0.207,-2.677,-1.877,null,null,-1.426,null,2.33,2.526,1.59,0.586,null],[-0.445,null,-2.299,-1,-1.099,-0.737,-4.109,-3.563,-4.312,-2.042,null,null,-1.289,null,-0.952,2.876,0.967,-0.397,null],[0.47,null,-3.079,-2.873,-2.16,-3.133,-2.439,-2.035,-6.193,-3.225,null,null,-2.858,null,-0.575,0.65,-0.62,-0.456,null],[-0.829,null,-5.377,-1.904,-2.535,-5.119,-3.214,-0.747,-4.593,-3.112,null,null,-3.765,null,-0.922,0.956,-0.078,-2.344,null],[-3.8,null,-3.956,-1.003,-2.789,-4.139,-3.118,0.113,-4.523,-2.373,null,null,-3.977,null,-1.879,1.985,1.151,-2.142,null],[-3.574,null,-3.782,-0.372,-1.542,-4.691,-6.267,-1.581,-4.506,-2.472,null,null,-4.515,null,-1.906,-0.453,1.332,-2.576,null],[-4.086,null,-4.572,-0.52,-2.67,-5.503,-3.144,-5.779,-4.676,-2.198,null,null,-4.144,null,-2.763,-0.564,0.131,-3.68,null],[-4.087,null,-7.307,-0.497,-3.185,-5.827,-5.516,-6.359,-4.034,-1.96,null,null,-4.656,null,-3.388,-0.404,-0.118,-4.287,null],[-6.482,null,-9.829,0.467,-3.598,-5.602,-4.886,-6.727,-3.64,-1.538,null,null,-4.39,null,-2.456,-1.541,-1.551,-4.064,null],[-6.908,null,-7.477,-0.954,-1.231,-5.388,-4.352,-6.774,-3.135,-1.139,null,null,-3.922,null,-1.891,-0.093,-1.857,-4.09,null],[-7.041,null,-6.518,-1.975,-0.916,-6.341,-4.404,-3.872,-2.528,-1.307,null,null,-2.292,null,-2.013,-0.883,-2.112,-4.091,null],[-4.432,null,-6.087,-1.492,-1.691,-6.055,-4.065,-2.207,-2.701,-1.699,null,null,-2.294,null,-1.882,-1.356,-1.704,-4.457,null],[-2.274,null,-6.272,-1.604,-0.887,-5.971,-4.078,-0.768,-3.35,-2.01,null,null,-2.753,null,-2.842,-0.762,-1.007,-4.251,null],[-0.689,null,-6.044,-1.408,-0.091,-5.507,-4.388,2.392,-3.411,-2.372,null,null,-2.475,null,-2.322,-0.541,-1.079,-3.92,null],[-1.19,null,-6.046,-1.212,0.252,-5.053,-4.237,3.55,-2.923,-2.31,null,null,-2.06,null,-1.693,-0.329,-0.712,-3.734,null],[-1.208,null,-6.211,-1.014,0.006,-4.383,-4.05,3.223,-3.012,-2.242,null,null,-2.196,null,-1.502,0.459,-0.802,-3.297,null],[-1.348,null,-6.158,-0.815,-0.514,-3.815,-4.039,3.318,-3.225,-2.177,null,null,-2.272,null,-1.49,0.085,-0.946,-3.423,null],[-1.994,null,-5.776,-0.615,-0.534,-3.289,-4.213,3.003,-3.34,-2.084,null,null,-2.416,null,-1.507,-0.572,-0.973,-3.475,null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Countries<\/th>\n      <th>2000<\/th>\n      <th>2001<\/th>\n      <th>2002<\/th>\n      <th>2003<\/th>\n      <th>2004<\/th>\n      <th>2005<\/th>\n      <th>2006<\/th>\n      <th>2007<\/th>\n      <th>2008<\/th>\n      <th>2009<\/th>\n      <th>2010<\/th>\n      <th>2011<\/th>\n      <th>2012<\/th>\n      <th>2013<\/th>\n      <th>2014<\/th>\n      <th>2015<\/th>\n      <th>2016<\/th>\n      <th>2017<\/th>\n      <th>2018<\/th>\n      <th>2019<\/th>\n      <th>2020<\/th>\n      <th>2021<\/th>\n      <th>2022<\/th>\n      <th>2023<\/th>\n      <th>2024<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="unemployment-rate-inflation" class="section level3">
-<h3>1.2 Unemployment rate, Inflation,</h3>
-<p>Los datos fueron obtenidos de <a href="https://databank.worldbank.org/source/world-development-indicators">WDI</a> del <em>Banco Mundial</em></p>
+<h3><span class="header-section-number">2.1.2</span> Unemployment rate, Inflation,</h3>
+<p>Los datos fueron obtenidos de WDI del Banco Mundial.</p>
 <div id="tasa-de-inflacion-enlazada." class="section level4">
-<h4>1.2.1 Tasa de inflacion enlazada.</h4>
-<p><strong>La inflacion medida por el cambio en el IPC no hay para algunos paises en la WDI &amp; ISF, como por ejemplo, Argentina.</strong> Por eso se opta por el momento por la inflacion medidad por el deflactor del PIB del BM que garantiza la comparabilidad de las series entre paises. <strong>Ojo con los datos de Ecuador</strong></p>
-<blockquote>
-<p>Se considera la inflación medida por la tasa de crecimiento anual del deflactor implícito del PIB que muestra la tasa de cambio de precios en la economía en su conjunto. <strong>Esta serie se ha vinculado para producir una serie de tiempo consistente para contrarrestar las interrupciones en la serie a lo largo del tiempo debido a cambios en los años base, datos fuente y metodologías</strong>.-<a href="https://databank.worldbank.org/source/world-development-indicators">WDI</a></p>
-</blockquote>
-<pre><code>## # A tibble: 32 x 21
-##    Countries `2000` `2001` `2002` `2003` `2004` `2005` `2006` `2007`  `2008` `2009`
-##    &lt;chr&gt;      &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;
-##  1 Antigua ~ -1.19   1.48   0.701 -0.963   1.64   4.46  0.408   3.74  4.38     1.79
-##  2 Argentina  1.04  -1.10  30.6   10.5    18.4   10.3  13.7    14.9  23.2     15.4 
-##  3 The Baha~  0.922  0.353  3.96   1.15    1.19   5.06  0.828   2.95  1.49    -1.04
-##  4 Barbados  -1.34   2.26   0.904  1.12    5.82   6.68  2.41    8.80  1.45    -1.91
-##  5 Belize     0.476 -0.223  1.75  -2.86    2.07   2.68  4.48    4.85  2.73    -3.09
-##  6 Bolivia    5.20   1.87   2.82   6.33    7.97   5.94 13.7     7.37 10.4     -2.42
-##  7 Brazil     5.61   8.23   9.80  14.1     7.75   7.43  6.77    6.44  8.78     7.31
-##  8 Canada     4.60   2.02   0.841  1.26    2.46   1.38  1.09   -1.33  4.00    -2.32
-##  9 Chile      4.27   3.86   3.39   4.58    7.85   7.64 12.2     5.34 -0.0534   4.65
-## 10 Colombia  11.2    6.52   5.97   6.83    7.28   4.56  5.78    5.13  7.74     4.24
-## # ... with 22 more rows, and 10 more variables: `2010` &lt;dbl&gt;, `2011` &lt;dbl&gt;,
-## #   `2012` &lt;dbl&gt;, `2013` &lt;dbl&gt;, `2014` &lt;dbl&gt;, `2015` &lt;dbl&gt;, `2016` &lt;dbl&gt;,
-## #   `2017` &lt;dbl&gt;, `2018` &lt;dbl&gt;, `2019` &lt;dbl&gt;</code></pre>
+<h4><span class="header-section-number">2.1.2.1</span> Tasa de inflacion enlazada.</h4>
+<p>La inflación medida por el deflactor del PIB calculado por el BM garantiza la comparabilidad de las series entre paises. Es una serie de tiempo consistente para contrarrestar las interrupciones en la serie a lo largo del tiempo debido a cambios en los años base, datos fuente y metodologías.</p>
+<div id="htmlwidget-a6cf4173bfaf7bdd72b1" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a6cf4173bfaf7bdd72b1">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"],["Argentina","Bolivia","Brazil","Chile","Colombia","Costa Rica","Cuba","Dominican Republic","Ecuador","El Salvador","Guatemala","Haiti","Honduras","Mexico","Nicaragua","Panama","Paraguay","Peru","Uruguay","Venezuela"],[1.037287101,5.19540791,5.606065146,4.271839188,11.15327404,9.414587533,1.741163593,7.207762797,-7.714066764,3.274520865,6.83011464,11.05615589,9.657353401,11.15220612,8.56622846,-1.248182202,14.66450544,3.524720039,3.539308497,29.45282511],[-1.095767718,1.870092796,8.225094319,3.860901228,6.518448292,9.759027717,0.454939112,6.040738836,28.41427846,3.315981844,7.592384338,11.63247619,8.08434938,6.041490115,7.241509274,1.028214443,13.93560469,0.455248303,4.826618341,7.996904056],[30.55520405,2.820758433,9.798112239,3.392072989,5.968190573,9.861003242,4.533175759,6.920668849,12.08527442,1.502694686,6.449502284,9.994215885,5.131939922,5.503365872,3.248378725,1.671335752,17.94938421,0.109017024,12.61627663,33.02287608],[10.49570302,6.329991141,14.09102152,4.578857544,6.829014842,10.72253447,2.973510543,33.46154066,10.59308704,2.968877057,4.456032694,26.90251769,5.759740767,4.039455569,5.331077194,1.131364218,15.14432465,1.803724665,16.54163515,34.93375574],[18.36335425,7.967709974,7.752060761,7.849482044,7.283033407,13.44587624,0.605978559,45.16631005,4.261845701,2.716266799,6.076932675,21.50609553,6.451983852,7.961710977,9.050902449,1.965004598,11.83500522,6.279038577,10.10505599,33.95372434],[10.3175112,5.940795568,7.431225467,7.642888649,4.55983989,13.10309246,0.380080729,5.781251843,7.732711011,4.267723845,5.634571862,17.57194432,7.279164158,5.873921411,9.867094176,1.748321296,12.95282412,3.5037224,0.677868397,29.60405935],[13.74105249,13.66367938,6.774274099,12.16220724,5.783510561,13.03749845,10.3655612,6.641244773,8.000910822,4.326762659,4.993878412,14.73887467,5.348663465,6.389222408,7.868819714,1.969984822,8.855832654,7.656248079,6.533334634,17.90431555],[14.93992502,7.373355353,6.439038091,5.338018812,5.130078342,10.53527788,3.589775462,5.700857255,6.650502273,4.38208669,7.135991414,8.040650836,6.625507168,5.789061291,9.674061023,4.824939923,12.63550564,1.490675955,9.417473477,15.44847776],[23.17116498,10.38118272,8.778552726,-0.053439049,7.741429293,11.4176941,-0.344532567,10.39168751,13.8473189,3.082068188,9.440696116,12.89485167,7.790513639,6.172512071,16.19830264,7.527495301,12.19388467,1.103276292,8.023536413,30.13245285],[15.37764937,-2.419895917,7.313482736,4.654764991,4.244563778,9.827297783,0.634175021,3.498146563,0.655537559,-0.057017912,3.543298675,3.702317192,7.653732423,3.947662895,6.036484918,6.470959912,3.742603787,2.063698334,7.747542078,7.83166636],[20.91512427,8.777512449,8.423338328,8.962293747,3.741545095,6.570813123,1.202048529,5.443413322,7.46507997,2.648519122,5.141894383,2.865441029,4.676043295,4.545151338,6.139759838,2.590346499,4.59103037,5.710728594,4.907025273,45.9432687],[23.70347218,14.60235035,8.318565045,3.112906925,5.990888943,4.548391869,4.323767132,8.06075517,5.662656747,5.909666647,6.933033094,7.510271816,7.807205237,5.842873195,10.21313826,5.843879616,5.090635119,6.745787125,9.009675538,28.14919095],[22.31488067,7.100275959,7.94317879,1.130160918,3.680921651,4.355873016,2.914057805,5.098181542,4.985253061,2.545678047,3.3225079,5.283996798,3.579787426,4.065926968,6.242963163,6.175644152,4.78158429,1.20258494,8.557551681,14.05943006],[23.94879842,5.995387516,7.504539865,1.976645267,2.489324066,4.013244205,2.65783024,4.692819149,3.095049013,0.583779863,3.366444485,6.99005121,1.374030519,1.529730821,4.349891319,5.505068478,4.410361917,1.057234351,8.153729834,35.50267463],[40.28297163,2.049500697,7.846709744,5.906349057,2.078463478,5.797551943,3.463247464,4.321288936,3.030703069,1.009503888,3.016208077,4.124946024,6.849356725,4.423341944,8.392612076,4.197551319,2.804744257,2.432441085,9.372246313,40.44049011],[26.5799916,-4.620603311,7.566175012,4.953538064,2.449284108,3.776914738,3.439604236,2.471885977,-2.491020758,1.309703912,3.230927516,6.876064605,6.932770369,2.787393039,7.588937847,2.478655902,1.604800376,2.690520901,9.016280687,null],[41.11937999,-1.354869337,8.103604359,4.469739686,5.148334305,2.00347227,4.32669085,1.993678464,1.901646775,0.534445496,3.698831257,11.96228051,3.678068144,5.377774167,4.589219691,2.077347272,4.1244648,3.08088269,7.345490949,null],[26.00748315,6.06139712,3.637380883,4.995391678,5.110429218,2.549715887,4.1151863,4.181375036,1.946398244,0.877637937,3.619170034,13.37824179,4.512842976,6.657226273,4.124122657,2.034909846,2.14579838,3.615658261,4.706385807,null],[40.70279069,3.056263806,3.285439898,2.018808264,3.67026156,2.387508538,1.004077099,4.121489687,2.521380234,1.940817467,2.937514187,12.7899934,1.908079803,4.966880925,3.592466231,0.745061953,2.149917363,2.016232913,5.555042955,null],[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Countries<\/th>\n      <th>2000<\/th>\n      <th>2001<\/th>\n      <th>2002<\/th>\n      <th>2003<\/th>\n      <th>2004<\/th>\n      <th>2005<\/th>\n      <th>2006<\/th>\n      <th>2007<\/th>\n      <th>2008<\/th>\n      <th>2009<\/th>\n      <th>2010<\/th>\n      <th>2011<\/th>\n      <th>2012<\/th>\n      <th>2013<\/th>\n      <th>2014<\/th>\n      <th>2015<\/th>\n      <th>2016<\/th>\n      <th>2017<\/th>\n      <th>2018<\/th>\n      <th>2019<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<p>** Ojo con la inflación de Ecuador al 2000**</p>
 </div>
 <div id="tasa-de-desempleo." class="section level4">
-<h4>1.2.2 Tasa de desempleo.</h4>
-<blockquote>
-<p>La serie es parte de las estimaciones de la <code>OIT</code> y está armonizada para garantizar la comparabilidad entre países y a lo largo del tiempo, teniendo en cuenta las diferencias en la fuente de datos, el alcance de la cobertura, la metodología y otros factores específicos de cada país.</p>
-</blockquote>
-<pre><code>## # A tibble: 32 x 21
-##    Countries `2000` `2001` `2002` `2003` `2004` `2005` `2006` `2007` `2008` `2009`
-##    &lt;chr&gt;      &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
-##  1 Antigua ~  NA     NA     NA     NA     NA     NA     NA     NA     NA     NA   
-##  2 Argentina  15     17.3   19.6   15.4   13.5   11.5   10.1    8.47   7.84   8.65
-##  3 The Baha~   6.96   6.87   9.05  10.8   10.2   10.2    7.54   7.88   8.18  14.2 
-##  4 Barbados    9.35   9.85  10.3   11      9.57   9.08   8.73   7.41   8.12  10.0 
-##  5 Belize     10.9    9.07  10.0   10.4   10.7   10.9    9.39   8.51   8.18   8.46
-##  6 Bolivia     2.89   2.89   2.93   2.94   2.90   2.84   2.73   2.63   2.60   2.86
-##  7 Brazil      9.90   9.61   9.37   9.99   9.10   9.57   8.64   8.33   7.34   8.52
-##  8 Canada      6.83   7.22   7.66   7.57   7.18   6.76   6.32   6.04   6.14   8.34
-##  9 Chile      10.5   10.4   10.2    9.77  10.2    9.34   9.02   8.43   9.28  11.3 
-## 10 Colombia   20.5   15.0   15.6   14.2   13.7   11.9   11.5   11.2   11.3   12.1 
-## # ... with 22 more rows, and 10 more variables: `2010` &lt;dbl&gt;, `2011` &lt;dbl&gt;,
-## #   `2012` &lt;dbl&gt;, `2013` &lt;dbl&gt;, `2014` &lt;dbl&gt;, `2015` &lt;dbl&gt;, `2016` &lt;dbl&gt;,
-## #   `2017` &lt;dbl&gt;, `2018` &lt;dbl&gt;, `2019` &lt;dbl&gt;</code></pre>
+<h4><span class="header-section-number">2.1.2.2</span> Tasa de desempleo.</h4>
+<p>La serie es parte de las estimaciones de la <code>OIT</code> y está armonizada para garantizar la comparabilidad entre países y a lo largo del tiempo.</p>
+<div id="htmlwidget-0ea995aaa92bb5d9b8e7" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0ea995aaa92bb5d9b8e7">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"],["Argentina","Bolivia","Brazil","Chile","Colombia","Costa Rica","Cuba","Dominican Republic","Ecuador","El Salvador","Guatemala","Haiti","Honduras","Mexico","Nicaragua","Panama","Paraguay","Peru","Uruguay","Venezuela"],[15,2.892999887,9.895000458,10.49100018,20.52000046,5.081999779,5.449999809,6.43200016,4.798999786,6.960000038,2.766000032,8.225999832,3.917999983,2.562999964,7.521999836,3.727999926,9.303999901,5.736000061,12.62699986,13.98999977],[17.31999969,2.890000105,9.609999657,10.39000034,15.03999996,5.914999962,4.079999924,7.262000084,4.251999855,6.960000038,2.765000105,9.335000038,4,2.538000107,7.519999981,3.726000071,9.300999641,5.734000206,15.05200005,13.03999996],[19.59000015,2.934999943,9.37100029,10.16800022,15.63300037,6.334000111,3.309999943,6.778999805,4.954999924,5.730000019,2.802999973,10.59000015,4.019999981,3.003000021,7.592000008,3.776000023,9.392999649,5.798999786,16.64800072,16.17000008],[15.35999966,2.938999891,9.991000175,9.765000343,14.18900013,6.558000088,2.329999924,6.938000202,5.662000179,6.260000229,2.806999922,11.86200047,5.300000191,3.454999924,7.599999905,3.780999899,6.81400013,4.788000107,16.6609993,16.78000069],[13.52200031,2.895999908,9.104999542,10.1619997,13.71700001,6.390999794,1.853999972,6.302999973,5.001999855,6.050000191,2.970999956,13.11600018,5.989999771,3.937000036,6.409999847,3.736000061,6.513000011,4.901000023,12.97999954,15.06999969],[11.50599957,2.84100008,9.56799984,9.340000153,11.86999989,6.571000099,1.950000048,6.586999893,3.778000116,7.21999979,3.010999918,14.39400005,4.90899992,3.558000088,5.369999886,3.677999973,4.824999809,4.860000134,12.00899982,10.66300011],[10.07699966,2.729000092,8.638999939,9.024000168,11.52600002,5.739999771,1.912999988,5.65500021,3.549999952,6.570000172,2.994999886,15.5710001,3.575000048,3.565999985,5.309999943,3.559000015,5.276000023,4.260000229,10.84399986,8.605999947],[8.470000267,2.63499999,8.326999664,8.427000046,11.20400047,4.489999771,1.787999988,5.157999992,3.14199996,6.409999847,2.990999937,16.79999924,3.210999966,3.628000021,4.889999866,3.459000111,4.712999821,4.188000202,9.402999878,7.278999805],[7.836999893,2.602999926,7.342999935,9.284999847,11.27299976,4.781000137,1.582999945,4.763999939,3.917000055,5.880000114,3.04399991,16.04000092,3.155999899,3.874000072,6.199999809,3.426000118,4.414999962,4.05700016,8.026000023,6.244999886],[8.645000458,2.862999916,8.522000313,11.31299973,12.06599998,7.712999821,1.669999957,5.467000008,4.607999802,7.329999924,3.346999884,15.92500019,3.292000055,5.355999947,8.159999847,3.654999971,5.460000038,3.900000095,7.739999771,6.097000122],[7.714000225,2.552000046,7.736000061,8.423999786,10.98400021,7.171000004,2.5,5.211999893,4.087999821,4.893000126,3.496999979,15.37899971,4.118999958,5.302999973,7.829999924,3.713000059,4.568999767,3.477999926,7.157999992,7.111999989],[7.179999828,2.219000101,6.916999817,7.343999863,10.11100006,10.13899994,3.180000067,6.086999893,3.457999945,4.296999931,3.115999937,14.72299957,4.473999977,5.170000076,6.447000027,2.311000109,4.669000149,3.441999912,6.30700016,6.90199995],[7.217000008,2.048000097,7.18599987,6.65899992,9.739999771,9.784000397,3.460000038,6.722000122,3.234999895,3.842999935,2.765000105,14.10000038,3.753999949,4.887000084,5.208000183,2.391000032,4.085000038,3.108999968,6.451000214,6.600999832],[7.099999905,2.394000053,6.975999832,6.214000225,9.052000046,8.767999649,3.289999962,7.352000237,3.082999945,3.693000078,3.01699996,14.13000011,4.096000195,4.914000034,5.28000021,2.299999952,4.385000229,3.236999989,6.443999767,7.539999962],[7.268000126,2.006999969,6.660999775,6.664999962,8.57199955,9.059000015,2.700000048,6.718999863,3.480000019,4.153999805,2.717000008,14.03299999,5.487999916,4.809000015,4.519000053,2.72300005,5.03399992,2.961999893,6.546999931,7.480999947],[7.75,3.065999985,8.427000046,6.507999897,8.298999786,8.998999596,2.400000095,7.605000019,3.615999937,3.997999907,2.506000042,13.96500015,6.146999836,4.313000202,4.699999809,3.002000093,4.556000233,3,7.487999916,7.440000057],[7.977000237,3.525000095,11.60000038,6.737999916,8.692000389,8.597999573,2,7.282999992,4.597000122,4.418000221,2.582999945,13.88099957,6.727000237,3.858999968,3.900000095,3.315000057,5.255000114,3.535000086,7.84100008,7.389999866],[8.347000122,3.670000076,12.82199955,6.958000183,8.871999741,8.142000198,1.700000048,5.831999779,3.835999966,4.385000229,2.461999893,13.73499966,5.527999878,3.420000076,3.299999952,3.900000095,4.614999771,3.460000038,7.889999866,7.302000046],[9.220000267,3.53399992,12.33399963,7.232999802,9.111000061,9.631999969,1.700000048,5.738999844,3.529999971,4.006000042,2.40199995,13.59200001,5.647999763,3.282999992,5.199999809,3.894000053,4.53399992,3.390000105,8.336000443,7.217000008],[9.788999557,3.497999907,12.08300018,7.090000153,9.706999779,11.85400009,1.638000011,5.84499979,3.967999935,4.110000134,2.459000111,13.78100014,5.386000156,3.424999952,6.836999893,3.90199995,4.809000015,3.309999943,8.730999947,8.800999641]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Countries<\/th>\n      <th>2000<\/th>\n      <th>2001<\/th>\n      <th>2002<\/th>\n      <th>2003<\/th>\n      <th>2004<\/th>\n      <th>2005<\/th>\n      <th>2006<\/th>\n      <th>2007<\/th>\n      <th>2008<\/th>\n      <th>2009<\/th>\n      <th>2010<\/th>\n      <th>2011<\/th>\n      <th>2012<\/th>\n      <th>2013<\/th>\n      <th>2014<\/th>\n      <th>2015<\/th>\n      <th>2016<\/th>\n      <th>2017<\/th>\n      <th>2018<\/th>\n      <th>2019<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div id="external-debt." class="section level3">
-<h3>1.3 External Debt.</h3>
-<p>Los datos fueron obtenidos de <a href="https://databank.worldbank.org/source/world-development-indicators">WDI</a></p>
-<p>Los datos para <span class="math inline">\(\frac{DeudaExterna}{PIB}\)</span> no hay en FMI o BM, por lo tanto <strong>Se considera</strong> <span class="math inline">\(\frac{DeudaExterna}{PNB}\)</span> de los datos del Banco Mundial.</p>
-<p>Para algunos paises no hay datos de la deuda externa total para obtener la relacion directa con el PIB, por ejemplo para Chile,Cuba, Estados Unidos,etc. <strong>Sugerir tratamiento</strong> Una opcion sería saldo de la cuenta corriente?</p>
-<pre><code>## # A tibble: 32 x 21
-##    Countries `2000` `2001` `2002` `2003` `2004` `2005` `2006` `2007` `2008` `2009`
-##    &lt;chr&gt;      &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
-##  1 Antigua ~   NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  
-##  2 Argentina   54.2   58.5  160.   133.   115.    74.2   52.9   43.2   36.8   41.4
-##  3 The Baha~   NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  
-##  4 Barbados    NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  
-##  5 Belize      80.8   89.7   98.2  118.   103.   102.    96.5   95.0  106.   104. 
-##  6 Bolivia     72.1   60.5   66.3   75.4   74.9   76.0   56.6   40.1   35.3   34.7
-##  7 Brazil      38.1   42.5   47.2   43.6   34.0   21.8   18.0   17.4   15.9   17.3
-##  8 Canada      NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  
-##  9 Chile       NA     NA     NA     NA     NA     NA     NA     NA     NA     NA  
-## 10 Colombia    35.1   38.2   35.2   40.8   33.8   26.5   24.4   22.1   20.0   23.7
-## # ... with 22 more rows, and 10 more variables: `2010` &lt;dbl&gt;, `2011` &lt;dbl&gt;,
-## #   `2012` &lt;dbl&gt;, `2013` &lt;dbl&gt;, `2014` &lt;dbl&gt;, `2015` &lt;dbl&gt;, `2016` &lt;dbl&gt;,
-## #   `2017` &lt;dbl&gt;, `2018` &lt;dbl&gt;, `2019` &lt;dbl&gt;</code></pre>
+<h3><span class="header-section-number">2.1.3</span> External Debt.</h3>
+<p>Se toma <span class="math inline">\(\frac{DeudaExterna}{PNB}\)</span> de los datos del Banco Mundial. <em>No hay datos completos para ciertos paises</em> <div id="htmlwidget-3f903779fc9686c7f0e5" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3f903779fc9686c7f0e5">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"],["Argentina","Bolivia","Brazil","Chile","Colombia","Costa Rica","Cuba","Dominican Republic","Ecuador","El Salvador","Guatemala","Haiti","Honduras","Mexico","Nicaragua","Panama","Paraguay","Peru","Uruguay","Venezuela"],[54.24170994,72.10585509,38.09807695,null,35.12665807,32.90306489,null,19.85042316,100.4201896,39.32650524,20.69280591,30.33686528,81.59936941,22.02337309,139.0761504,null,40.11879675,57.00262354,null,42.72954537],[58.49329352,60.45162954,42.48988865,null,38.22421188,32.19024287,null,21.26830836,76.63523099,44.47555534,23.53493179,35.74088252,70.57885554,22.3603548,125.6582105,null,37.86437067,54.16546194,null,38.60359599],[159.8901835,66.31798774,47.24672558,null,35.22595836,32.2090792,null,25.08457641,71.72621992,49.54319297,22.12840603,37.02652736,73.41750919,20.72710261,128.3381691,null,51.12075253,53.08497888,null,49.60046766],[133.4749556,75.36950331,43.63801751,null,40.83206634,34.45646541,null,35.93648738,64.53902819,67.20726092,23.87785145,46.3503302,72.73313681,22.14925013,133.7599194,null,103.9032081,53.1443427,null,57.39918429],[114.783966,74.91558841,33.97677149,null,33.83369448,32.18724087,null,37.4504783,59.34864959,68.95166373,34.36337829,36.43047021,74.56819187,21.52958444,90.95706149,null,88.42716705,50.07085203,null,41.64367723],[74.24694157,75.9604182,21.75472316,null,26.49577637,33.7870342,null,22.65627125,51.45809064,67.72084678,35.56945318,31.21143925,56.08208743,19.88266121,81.20275406,null,88.66755891,41.37273504,null,34.56266611],[52.8779757,56.58960093,17.99230408,null,24.43077642,31.87582302,null,25.42419899,45.33044005,64.28681453,37.04181799,29.78067615,38.66681179,17.76434483,63.99587106,null,78.99519594,35.95340611,null,27.07464176],[43.15019175,40.09884352,17.43768212,null,22.08242653,32.29012847,null,25.61493364,43.04733091,59.58683679,38.10649915,27.20316586,25.25449623,18.94515522,56.91720568,null,63.54032432,34.19613752,null,27.98604006],[36.79707555,35.32692283,15.8959322,null,20.03966286,29.44426238,null,22.81270882,31.53094238,60.73720659,36.09474254,29.97351787,26.36483945,18.06324144,57.01516399,null,53.29526716,30.93202991,null,23.10343882],[41.42446814,34.68295928,17.27780289,null,23.6955685,26.26264222,null,25.40810706,21.82499184,61.04653793,40.31446452,21.95425195,27.53484479,21.8484026,73.37132755,null,65.51019395,32.998556,null,28.84334578],[30.94935673,30.74963222,16.43472025,null,23.27626002,22.6134533,null,25.93230725,22.4442154,64.18702758,37.38317771,14.43329712,26.58101875,23.52675031,82.10487977,null,61.3460103,30.83840183,null,30.11933761],[27.74407635,27.11131619,15.85704541,null,23.86009439,25.1612369,null,27.15464539,20.72437096,64.72826776,35.26880728,10.26979989,26.47602257,25.11607667,83.30236178,null,47.88177668,28.29469829,null,44.11595423],[26.21685992,25.99496715,18.25701851,null,22.2940551,31.80608508,null,37.92994472,18.75708109,66.03858923,31.1875558,14.64413022,29.56594927,29.65224314,86.91512849,null,50.37519154,34.13919249,null,40.9928574],[27.71149274,28.31771483,19.80194192,null,25.34105994,35.77956502,null,40.119152,20.35210429,67.29250549,33.12180741,18.49820571,40.20152794,32.82998084,90.66728926,null,42.37319509,33.30331946,null,43.0576047],[29.71345089,28.38504288,23.13386147,null,28.48957682,40.72222665,null,41.81854844,24.95022015,70.36849277,34.04326491,22.11705551,40.75363759,34.45387335,87.13254152,null,42.42738471,35.38740861,null,33.90547561],[30.25536257,31.04575266,30.81693516,null,39.61662466,45.05029966,null,40.57868708,29.09912775,69.68474837,32.67363392,23.9140969,39.13535995,37.39350831,84.67723989,null,46.32445567,36.66087997,null,null],[34.61291657,32.99582718,30.88775236,null,43.59086116,46.75285381,null,40.94876644,36.06078766,72.26427773,31.98485343,27.01839033,37.87008702,40.2464258,84.9664024,null,46.89996527,37.84247684,null,null],[37.75650464,35.63897569,26.9398308,null,41.56397583,46.39586639,null,43.20590639,40.32260927,72.98084679,30.93574268,25.64215675,41.42565422,39.05055533,85.02508114,null,42.12345457,33.61531614,null,null],[56.13284079,33.78095738,30.31317026,null,42.28936078,48.98215958,null,43.77474033,42.6295373,71.12502565,28.96798216,22.78714576,43.72910037,38.01755052,90.70408932,null,39.85119321,31.28266657,null,null],[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Countries<\/th>\n      <th>2000<\/th>\n      <th>2001<\/th>\n      <th>2002<\/th>\n      <th>2003<\/th>\n      <th>2004<\/th>\n      <th>2005<\/th>\n      <th>2006<\/th>\n      <th>2007<\/th>\n      <th>2008<\/th>\n      <th>2009<\/th>\n      <th>2010<\/th>\n      <th>2011<\/th>\n      <th>2012<\/th>\n      <th>2013<\/th>\n      <th>2014<\/th>\n      <th>2015<\/th>\n      <th>2016<\/th>\n      <th>2017<\/th>\n      <th>2018<\/th>\n      <th>2019<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script></p>
 </div>
 </div>
 <div id="eficiencia-microeconomica" class="section level2">
-<h2>2 Eficiencia Microeconomica</h2>
-<p>Se toma el promedio de las subindicadores de <code>Regulacion del mercado de credito</code>,<code>trabajo</code> y <code>empresarial</code>. Va en una escala del 0-10. <strong>Datos Disponibles solo al 2017</strong> Los datos son tomados de <a href="https://www.fraserinstitute.org/economic-freedom/dataset?geozone=world&amp;year=2017&amp;page=dataset&amp;min-year=2&amp;max-year=0&amp;filter=0">Fraser Institute</a></p>
-<pre><code>##               Countries 2000 2001 2002 2003 2004 2005 2006 2007 2008 2009 2010 2011
-##  1:           Argentina 6.34 5.46 5.86 6.07 6.21 6.31 5.91 5.92 5.82 5.64 5.21 5.50
-##  2:            Barbados 6.89 6.87 6.84 6.80 6.82 6.86 7.12 6.61 6.53 6.88 6.52 6.85
-##  3:              Belize 6.74 6.23 6.92 6.93 8.88 8.77 8.89 9.16 9.21 9.24 8.02 7.92
-##  4:             Bolivia 5.76 5.42 4.76 5.07 5.64 5.74 5.98 5.63 5.61 6.00 5.85 5.71
-##  5:              Brazil 5.51 5.11 4.99 4.66 4.88 4.67 4.48 4.68 4.69 4.69 5.15 5.03
-##  6:              Canada 8.33 8.05 8.44 8.47 8.74 8.66 8.64 8.68 8.68 8.66 8.70 8.66
-##  7:               Chile 7.38 6.78 7.08 7.36 7.35 7.50 7.41 7.35 7.27 7.10 7.55 7.73
-##  8:            Colombia 6.39 5.85 6.45 6.55 6.67 6.54 6.58 6.65 6.75 6.80 7.13 7.30
-##  9:          Costa Rica 7.25 6.33 6.28 6.40 6.22 6.26 6.61 6.92 6.81 6.72 6.52 6.64
-## 10:  Dominican Republic 7.19 6.74 6.60 6.81 6.45 6.69 6.77 6.73 6.65 6.61 6.66 6.72
-## 11:             Ecuador 4.22 4.29 5.63 5.89 5.86 5.99 5.99 5.88 5.92 6.06 6.24 6.23
-## 12:         El Salvador 7.05 6.50 6.34 6.53 6.75 7.12 7.36 7.63 7.64 7.17 7.05 6.96
-## 13:           Guatemala 6.25 5.88 6.32 6.33 6.39 6.50 6.61 6.69 6.63 6.47 6.63 6.61
-## 14:              Guyana 6.55 6.29 7.79 7.72 6.78 7.02 7.10 7.29 7.35 7.53 7.58 7.64
-## 15:               Haiti 8.84 7.36 7.15 7.03 6.84 7.36 6.85 6.92 7.62 7.94 6.70 6.94
-## 16:            Honduras 6.86 6.52 6.48 6.40 6.61 6.81 7.10 7.19 7.00 6.75 6.86 6.84
-## 17:             Jamaica 7.42 6.48 6.88 7.53 7.74 7.68 7.58 7.06 6.55 6.99 7.36 7.12
-## 18:              Mexico 6.71 6.24 6.75 6.77 6.86 6.75 6.78 6.64 6.60 6.67 6.88 6.74
-## 19:           Nicaragua 6.83 6.42 6.82 6.92 7.07 7.32 7.64 7.61 7.40 7.16 7.20 7.14
-## 20:              Panama 6.88 6.68 6.60 6.72 6.74 6.77 6.84 6.87 6.75 6.81 6.92 7.03
-## 21:            Paraguay 5.67 5.55 5.45 5.31 5.02 5.57 5.69 5.77 5.78 6.03 6.29 6.54
-## 22:                Peru 7.41 6.76 7.01 7.02 7.16 6.93 6.79 6.81 7.18 7.15 7.67 7.41
-## 23:            Suriname   NA   NA   NA   NA   NA   NA   NA   NA   NA   NA 6.89 7.12
-## 24:         The Bahamas 7.51 7.47 7.41 7.38 7.39 7.42 9.17 9.15 9.24 9.10 8.72 8.60
-## 25: Trinidad and Tobago 7.76 7.11 7.40 7.29 7.71 7.34 7.69 7.65 7.39 7.35 7.54 6.97
-## 26:       United States 8.55 8.23 8.57 8.44 8.74 8.61 8.71 8.81 8.56 8.09 8.14 8.23
-## 27:             Uruguay 6.29 5.86 6.22 6.26 7.03 6.43 6.47 6.40 6.25 6.37 6.84 6.85
-## 28:           Venezuela 5.58 5.18 5.15 4.45 5.20 5.27 5.06 5.03 4.78 5.61 4.19 4.36
-##               Countries 2000 2001 2002 2003 2004 2005 2006 2007 2008 2009 2010 2011
-##     2012 2013 2014 2015 2016 2017
-##  1: 5.72 5.52 5.39 5.55 5.37 5.65
-##  2: 7.18 6.54 6.54 6.53 6.52 6.99
-##  3: 8.03 7.90 7.77 7.90 7.88 8.08
-##  4: 5.73 5.75 5.52 4.95 4.98 4.93
-##  5: 5.08 5.00 4.78 4.30 4.09 4.41
-##  6: 8.75 8.75 8.54 8.50 8.51 8.61
-##  7: 7.49 7.45 7.26 7.15 7.15 6.97
-##  8: 7.43 7.61 7.51 7.39 7.27 7.34
-##  9: 6.67 6.59 6.52 6.43 6.45 6.46
-## 10: 6.00 6.53 6.66 6.61 6.62 6.63
-## 11: 6.33 6.34 5.98 6.09 6.05 6.04
-## 12: 6.55 6.04 6.41 6.33 6.24 6.33
-## 13: 6.74 6.78 6.71 6.65 6.55 6.50
-## 14: 7.28 6.72 6.72 6.73 6.48 6.41
-## 15: 6.40 6.98 6.98 6.99 6.97 6.86
-## 16: 6.65 6.56 6.70 6.95 6.82 6.91
-## 17: 7.52 7.91 7.87 7.91 7.96 7.98
-## 18: 6.98 7.05 6.74 6.90 6.78 7.05
-## 19: 7.25 7.29 7.19 7.14 7.00 7.01
-## 20: 7.01 7.03 6.77 6.96 6.90 6.87
-## 21: 6.40 6.29 6.16 6.03 6.14 6.25
-## 22: 7.40 7.50 7.49 7.53 7.27 7.22
-## 23: 7.20 7.27 7.21 7.09 6.60 7.73
-## 24: 8.50 8.33 8.32 8.17 8.17 8.22
-## 25: 7.12 7.24 7.22 6.27 6.62 6.60
-## 26: 8.39 8.57 8.58 8.71 8.83 8.86
-## 27: 6.73 6.68 6.46 6.43 6.82 6.80
-## 28: 4.05 3.20 3.04 2.56 2.48 2.49
-##     2012 2013 2014 2015 2016 2017</code></pre>
+<h2><span class="header-section-number">2.2</span> Eficiencia Microeconomica</h2>
+<p>Se toma el promedio de las subindicadores de <code>Regulacion del mercado de credito</code>,<code>trabajo</code> y <code>empresarial</code>.</p>
+<div id="htmlwidget-c61d1043a6fa7771f0c4" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c61d1043a6fa7771f0c4">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19"],["Argentina","Bolivia","Brazil","Chile","Colombia","Costa Rica","Dominican Republic","Ecuador","El Salvador","Guatemala","Haiti","Honduras","Mexico","Nicaragua","Panama","Paraguay","Peru","Uruguay","Venezuela"],[6.34,5.76,5.51,7.38,6.39,7.25,7.19,4.22,7.05,6.25,8.84,6.86,6.71,6.83,6.88,5.67,7.41,6.29,5.58],[5.46,5.42,5.11,6.78,5.85,6.33,6.74,4.29,6.5,5.88,7.36,6.52,6.24,6.42,6.68,5.55,6.76,5.86,5.18],[5.86,4.76,4.99,7.08,6.45,6.28,6.6,5.63,6.34,6.32,7.15,6.48,6.75,6.82,6.6,5.45,7.01,6.22,5.15],[6.07,5.07,4.66,7.36,6.55,6.4,6.81,5.89,6.53,6.33,7.03,6.4,6.77,6.92,6.72,5.31,7.02,6.26,4.45],[6.21,5.64,4.88,7.35,6.67,6.22,6.45,5.86,6.75,6.39,6.84,6.61,6.86,7.07,6.74,5.02,7.16,7.03,5.2],[6.31,5.74,4.67,7.5,6.54,6.26,6.69,5.99,7.12,6.5,7.36,6.81,6.75,7.32,6.77,5.57,6.93,6.43,5.27],[5.91,5.98,4.48,7.41,6.58,6.61,6.77,5.99,7.36,6.61,6.85,7.1,6.78,7.64,6.84,5.69,6.79,6.47,5.06],[5.92,5.63,4.68,7.35,6.65,6.92,6.73,5.88,7.63,6.69,6.92,7.19,6.64,7.61,6.87,5.77,6.81,6.4,5.03],[5.82,5.61,4.69,7.27,6.75,6.81,6.65,5.92,7.64,6.63,7.62,7,6.6,7.4,6.75,5.78,7.18,6.25,4.78],[5.64,6,4.69,7.1,6.8,6.72,6.61,6.06,7.17,6.47,7.94,6.75,6.67,7.16,6.81,6.03,7.15,6.37,5.61],[5.21,5.85,5.15,7.55,7.13,6.52,6.66,6.24,7.05,6.63,6.7,6.86,6.88,7.2,6.92,6.29,7.67,6.84,4.19],[5.5,5.71,5.03,7.73,7.3,6.64,6.72,6.23,6.96,6.61,6.94,6.84,6.74,7.14,7.03,6.54,7.41,6.85,4.36],[5.72,5.73,5.08,7.49,7.43,6.67,6,6.33,6.55,6.74,6.4,6.65,6.98,7.25,7.01,6.4,7.4,6.73,4.05],[5.52,5.75,5,7.45,7.61,6.59,6.53,6.34,6.04,6.78,6.98,6.56,7.05,7.29,7.03,6.29,7.5,6.68,3.2],[5.39,5.52,4.78,7.26,7.51,6.52,6.66,5.98,6.41,6.71,6.98,6.7,6.74,7.19,6.77,6.16,7.49,6.46,3.04],[5.55,4.95,4.3,7.15,7.39,6.43,6.61,6.09,6.33,6.65,6.99,6.95,6.9,7.14,6.96,6.03,7.53,6.43,2.56],[5.37,4.98,4.09,7.15,7.27,6.45,6.62,6.05,6.24,6.55,6.97,6.82,6.78,7,6.9,6.14,7.27,6.82,2.48],[5.65,4.93,4.41,6.97,7.34,6.46,6.63,6.04,6.33,6.5,6.86,6.91,7.05,7.01,6.87,6.25,7.22,6.8,2.49]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Countries<\/th>\n      <th>2000<\/th>\n      <th>2001<\/th>\n      <th>2002<\/th>\n      <th>2003<\/th>\n      <th>2004<\/th>\n      <th>2005<\/th>\n      <th>2006<\/th>\n      <th>2007<\/th>\n      <th>2008<\/th>\n      <th>2009<\/th>\n      <th>2010<\/th>\n      <th>2011<\/th>\n      <th>2012<\/th>\n      <th>2013<\/th>\n      <th>2014<\/th>\n      <th>2015<\/th>\n      <th>2016<\/th>\n      <th>2017<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="buen-gobierno" class="section level2">
-<h2>3 Buen Gobierno</h2>
-<p>Promedio de los siguientes subindicadores del indice de liberta economica mundial citada en el paper de referencia <code>Judicial independence</code> , <code>Impartial courts</code>,<code>Protection of property rights</code>,<code>Military interference in rule of law and politics</code> y <code>Integrity of the legal system</code> . Datos tomados de la fuente anterior.</p>
-<pre><code>##              Countries     2000     2001     2002     2003     2004     2005
-## 1            Argentina 5.414000 3.638000 3.234000 3.266000 3.850000 3.996000
-## 2             Barbados 5.203333 5.203333 5.203333 6.425000 6.425000 8.005000
-## 3               Belize 7.010000 7.010000 7.010000 7.020000 7.020000 6.350000
-## 4              Bolivia 3.432000 2.952000 2.834000 3.134000 3.196000 3.690000
-## 5               Brazil 5.354000 4.938000 4.866000 4.868000 4.156000 4.662000
-## 6               Canada 9.272000 8.958000 8.266000 8.666000 8.400000 8.698000
-## 7                Chile 6.526000 6.154000 6.368000 6.466000 6.090000 6.688000
-## 8             Colombia 3.528000 3.444000 3.334000 3.198000 3.424000 4.044000
-## 9           Costa Rica 6.874000 6.506000 6.134000 6.634000 6.654000 7.226000
-## 10  Dominican Republic 4.617500 3.842000 4.198000 3.900000 3.208000 4.304000
-## 11             Ecuador 3.298000 2.498000 2.932000 2.700000 2.350000 3.006000
-## 12         El Salvador 4.514000 4.380000 4.334000 4.300000 4.146000 4.360000
-## 13           Guatemala 3.157500 2.644000 2.632000 3.000000 3.302000 5.028000
-## 14              Guyana 7.486667 7.486667 6.373333 6.013333 3.418000 4.040000
-## 15               Haiti 3.773333 1.956000 1.866000 2.124000 1.598000 2.150000
-## 16            Honduras 3.577500 2.568000 2.866000 3.100000 3.148000 3.534000
-## 17             Jamaica 5.582500 5.600000 5.000000 5.102000 5.422000 6.166000
-## 18              Mexico 4.246000 3.636000 4.166000 3.898000 4.470000 5.362000
-## 19           Nicaragua 4.060000 3.182000 3.132000 2.900000 2.856000 3.468000
-## 20              Panama 5.687500 4.670000 4.566000 4.532000 4.598000 5.108000
-## 21            Paraguay 3.670000 2.822000 2.098000 2.432000 1.922000 2.404000
-## 22                Peru 3.934000 4.226000 3.966000 3.998000 4.010000 4.326000
-## 23            Suriname      NaN      NaN      NaN      NaN      NaN      NaN
-## 24         The Bahamas 6.348000 6.348000 6.348000 8.166667 8.326667 8.466667
-## 25 Trinidad and Tobago 6.645000 6.526000 5.832000 5.398000 4.834000 5.722000
-## 26       United States 9.228000 8.660000 8.166000 7.900000 7.818000 7.290000
-## 27             Uruguay 6.382500 5.758000 5.798000 5.732000 5.776000 6.128000
-## 28           Venezuela 3.748000 1.884000 1.600000 1.434000 1.790000 1.868000
-##        2006     2007     2008     2009  2010   2011     2012     2013     2014
-## 1  3.834000 3.882000 3.884000 3.884000 3.966 3.7760 3.528000 3.552000 3.774000
-## 2  6.860000 7.860000 7.832500 7.795000 7.925 7.5900 7.337500 7.190000 7.237500
-## 3  6.200000 6.300000 6.100000 5.700000 4.485 6.4775 6.435000 6.690000 6.470000
-## 4  3.628000 3.284000 3.144000 3.134000 3.708 4.0080 4.076000 4.268000 3.806000
-## 5  4.656000 4.798000 4.724000 4.742000 4.910 5.0220 4.958000 4.560000 4.384000
-## 6  8.892000 9.118000 8.810000 8.630000 8.690 8.6940 8.592000 8.600000 8.612000
-## 7  6.970000 7.070000 7.118000 7.258000 7.074 7.0660 6.974000 6.816000 6.708000
-## 8  4.182000 4.250000 3.996000 3.908000 3.922 3.7580 3.722000 3.644000 3.600000
-## 9  7.094000 6.998000 6.788000 6.742000 6.506 6.3140 6.422000 6.516000 6.512000
-## 10 4.136000 4.076000 4.272000 4.222000 4.038 4.0200 3.964000 4.084000 4.058000
-## 11 2.856000 2.768000 2.978000 2.866000 2.986 3.1240 3.720000 3.464000 3.198000
-## 12 4.352000 3.958000 4.046000 3.714000 3.510 3.6000 3.658000 4.048000 3.712000
-## 13 4.804000 4.636000 4.320000 3.972000 3.872 4.0760 4.412000 4.582000 4.628000
-## 14 3.894000 4.094000 4.032000 4.200000 4.222 4.2180 4.502000 4.394000 4.336000
-## 15 2.943333 1.833333 2.176667 1.900000 1.504 1.4940 1.646000 1.748000 2.060000
-## 16 4.256000 4.504000 4.186000 3.918000 4.254 4.2500 3.668000 4.020000 4.230000
-## 17 5.904000 6.084000 6.012000 5.690000 5.708 5.6820 5.704000 5.958000 6.066000
-## 18 5.146000 4.962000 5.136000 4.628000 4.668 4.6360 4.288000 4.284000 3.910000
-## 19 3.800000 3.812000 3.950000 3.874000 3.630 3.9840 4.250000 3.932000 3.460000
-## 20 5.174000 5.304000 5.372000 5.182000 5.108 5.3300 5.254000 5.242000 5.182000
-## 21 2.364000 2.332000 2.502000 2.558000 2.676 2.6940 2.686000 2.724000 2.864000
-## 22 4.386000 4.772000 4.944000 4.834000 4.856 4.6100 4.610000 4.486000 4.574000
-## 23      NaN      NaN      NaN      NaN 4.560 4.4625 4.837500 4.342000 4.896000
-## 24 7.866667 8.366667 8.400000 8.166667 8.100 8.1000 8.033333 8.033333 8.063333
-## 25 5.538000 5.382000 5.742000 5.738000 5.486 5.4500 5.576000 5.336000 5.162000
-## 26 7.162000 7.224000 7.112000 6.830000 6.792 6.7400 6.914000 7.036000 7.174000
-## 27 5.704000 5.812000 5.768000 5.872000 5.996 5.7160 5.740000 5.818000 5.976000
-## 28 1.836000 1.526000 1.600000 1.226000 1.214 1.1280 0.954000 0.840000 0.868000
-##        2015  2016     2017
-## 1  4.082000 4.342 4.352000
-## 2  6.710000 6.710 7.132500
-## 3  6.530000 6.505 6.430000
-## 4  3.048000 3.048 2.662000
-## 5  4.546000 4.742 4.588000
-## 6  8.478000 8.518 8.474000
-## 7  6.658000 6.644 6.634000
-## 8  3.646000 3.664 3.668000
-## 9  6.454000 6.590 6.388000
-## 10 3.746000 3.806 3.898000
-## 11 3.012000 2.756 2.830000
-## 12 3.564000 3.426 3.392000
-## 13 4.900000 4.640 4.596000
-## 14 4.336000 4.336 4.512000
-## 15 2.060000 2.008 1.984000
-## 16 4.064000 3.396 3.702000
-## 17 6.174000 5.958 5.950000
-## 18 3.868000 3.722 3.748000
-## 19 3.460000 3.374 3.424000
-## 20 5.272000 5.184 5.082000
-## 21 2.930000 2.884 2.920000
-## 22 4.746000 4.588 4.518000
-## 23 4.978000 5.018 5.018000
-## 24 8.033333 7.790 7.523333
-## 25 5.090000 5.230 5.258000
-## 26 7.272000 7.534 7.644000
-## 27 5.902000 5.696 5.692000
-## 28 0.900000 0.902 0.898000</code></pre>
+<h2><span class="header-section-number">2.3</span> Buen Gobierno</h2>
+<p>Promedio de los siguientes subindicadores del indice de libertad económica mundial de <strong>Fraser Institute</strong></p>
+<ol style="list-style-type: decimal">
+<li><code>Independencia judicial</code></li>
+<li><code>Tribunales imparciales</code></li>
+<li><code>Protección de los derechos de propiedad</code></li>
+<li><code>Interferencia militar en el estado de derecho y la política</code></li>
+<li><code>Integridad del sistema jurídico</code>.</li>
+</ol>
+<div id="htmlwidget-bba167915a734df7361e" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-bba167915a734df7361e">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19"],["Argentina","Bolivia","Brazil","Chile","Colombia","Costa Rica","Dominican Republic","Ecuador","El Salvador","Guatemala","Haiti","Honduras","Mexico","Nicaragua","Panama","Paraguay","Peru","Uruguay","Venezuela"],[5.414,3.432,5.354,6.526,3.528,6.874,4.6175,3.298,4.514,3.1575,3.77333333333333,3.5775,4.246,4.06,5.6875,3.67,3.934,6.3825,3.748],[3.638,2.952,4.938,6.154,3.444,6.506,3.842,2.498,4.38,2.644,1.956,2.568,3.636,3.182,4.67,2.822,4.226,5.758,1.884],[3.234,2.834,4.866,6.368,3.334,6.134,4.198,2.932,4.334,2.632,1.866,2.866,4.166,3.132,4.566,2.098,3.966,5.798,1.6],[3.266,3.134,4.868,6.466,3.198,6.634,3.9,2.7,4.3,3,2.124,3.1,3.898,2.9,4.532,2.432,3.998,5.732,1.434],[3.85,3.196,4.156,6.09,3.424,6.654,3.208,2.35,4.146,3.302,1.598,3.148,4.47,2.856,4.598,1.922,4.01,5.776,1.79],[3.996,3.69,4.662,6.688,4.044,7.226,4.304,3.006,4.36,5.028,2.15,3.534,5.362,3.468,5.108,2.404,4.326,6.128,1.868],[3.834,3.628,4.656,6.97,4.182,7.094,4.136,2.856,4.352,4.804,2.94333333333333,4.256,5.146,3.8,5.174,2.364,4.386,5.704,1.836],[3.882,3.284,4.798,7.07,4.25,6.998,4.076,2.768,3.958,4.636,1.83333333333333,4.504,4.962,3.812,5.304,2.332,4.772,5.812,1.526],[3.884,3.144,4.724,7.118,3.996,6.788,4.272,2.978,4.046,4.32,2.17666666666667,4.186,5.136,3.95,5.372,2.502,4.944,5.768,1.6],[3.884,3.134,4.742,7.258,3.908,6.742,4.222,2.866,3.714,3.972,1.9,3.918,4.628,3.874,5.182,2.558,4.834,5.872,1.226],[3.966,3.708,4.91,7.074,3.922,6.506,4.038,2.986,3.51,3.872,1.504,4.254,4.668,3.63,5.108,2.676,4.856,5.996,1.214],[3.776,4.008,5.022,7.066,3.758,6.314,4.02,3.124,3.6,4.076,1.494,4.25,4.636,3.984,5.33,2.694,4.61,5.716,1.128],[3.528,4.076,4.958,6.974,3.722,6.422,3.964,3.72,3.658,4.412,1.646,3.668,4.288,4.25,5.254,2.686,4.61,5.74,0.954],[3.552,4.268,4.56,6.816,3.644,6.516,4.084,3.464,4.048,4.582,1.748,4.02,4.284,3.932,5.242,2.724,4.486,5.818,0.84],[3.774,3.806,4.384,6.708,3.6,6.512,4.058,3.198,3.712,4.628,2.06,4.23,3.91,3.46,5.182,2.864,4.574,5.976,0.868],[4.082,3.048,4.546,6.658,3.646,6.454,3.746,3.012,3.564,4.9,2.06,4.064,3.868,3.46,5.272,2.93,4.746,5.902,0.9],[4.342,3.048,4.742,6.644,3.664,6.59,3.806,2.756,3.426,4.64,2.008,3.396,3.722,3.374,5.184,2.884,4.588,5.696,0.902],[4.352,2.662,4.588,6.634,3.668,6.388,3.898,2.83,3.392,4.596,1.984,3.702,3.748,3.424,5.082,2.92,4.518,5.692,0.898]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Countries<\/th>\n      <th>2000<\/th>\n      <th>2001<\/th>\n      <th>2002<\/th>\n      <th>2003<\/th>\n      <th>2004<\/th>\n      <th>2005<\/th>\n      <th>2006<\/th>\n      <th>2007<\/th>\n      <th>2008<\/th>\n      <th>2009<\/th>\n      <th>2010<\/th>\n      <th>2011<\/th>\n      <th>2012<\/th>\n      <th>2013<\/th>\n      <th>2014<\/th>\n      <th>2015<\/th>\n      <th>2016<\/th>\n      <th>2017<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="desarrollo-social" class="section level2">
-<h2>4 Desarrollo Social</h2>
+<h2><span class="header-section-number">2.4</span> Desarrollo Social</h2>
 <p>El componente de desarrollo social se calcula de la siguiente forma: <span class="math display">\[
 \sum(Indice de Educacion,IndicedeSalud)
-\]</span> <span class="math inline">\({IndicedeEducacion}= {Tasa de AlfabetizaciondeAdultos&quot;y&quot;Tasa de Matriculacion Escolar}\)</span>. Esto es <strong>Suma</strong> <span class="math inline">\(\mathrm{IndicedeSalud}={EsperanzadeVidaalNacer}\)</span></p>
-<p>Datos tomados de <a href="http://hdr.undp.org/en/data">PNUD</a></p>
+\]</span> Datos tomados de <a href="http://hdr.undp.org/en/data">PNUD</a></p>
 <div id="indice-de-educacion" class="section level3">
-<h3>4.1 Indice de Educacion</h3>
+<h3><span class="header-section-number">2.4.1</span> Indice de Educacion</h3>
 <div id="adult-iteracy-rate" class="section level4">
-<h4>4.1.1 Adult Iteracy Rate</h4>
-<p>Datos no disponibles para algunos paises, como por ejemplo, Estado Unido ,Cuba y demas. <strong>Muchos paises y años vacios, buscar alternativas</strong></p>
-<pre><code>## # A tibble: 32 x 12
-##    Countries `2000` `2005` `2010` `2011` `2012` `2013` `2014` `2015` `2016` `2017`
-##    &lt;chr&gt;      &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
-##  1 Antigua ~   NA     NA     NA     NA     NA     NA     NA     99     NA       NA
-##  2 Argentina   NA     NA     99     99.1   99.1   99.1   99     99.2   99.1     NA
-##  3 Barbados    NA     NA     NA     NA     NA     NA     99.6   NA     NA       NA
-##  4 Brazil      86.4   NA     90.4   91.4   91.3   91.5   91.7   92     NA       NA
-##  5 Chile       NA     NA     NA     96.7   NA     96.3   NA     96.9   NA       NA
-##  6 Colombia    NA     92.8   93.4   93.6   NA     NA     94.2   94.2   94.7     NA
-##  7 Costa Ri~   94.9   NA     NA     97.4   NA     NA     NA     NA     NA       NA
-##  8 Cuba        NA     NA     NA     NA     99.8   NA     NA     NA     NA       NA
-##  9 Dominica~   NA     NA     89.5   90.1   90.2   90.9   91.8   92     93.8     NA
-## 10 Ecuador     NA     NA     91.9   91.6   92.1   93.3   94.2   94.5   94.3     NA
-## # ... with 22 more rows, and 1 more variable: `2018` &lt;dbl&gt;</code></pre>
+<h4><span class="header-section-number">2.4.1.1</span> Adult Iteracy Rate</h4>
+<p>Datos no disponibles para algunos paises, como por ejemplo, Estado Unidos ,Cuba y demás. <em>Muchos paises y años vacios, buscar alternativas</em></p>
+<div id="htmlwidget-df1acbfe979b494c8dfc" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-df1acbfe979b494c8dfc">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21"],[null,"Argentina","Brazil","Chile","Colombia","Costa Rica","Cuba","Dominican Republic","Ecuador","El Salvador","Guatemala","Honduras","Mexico","Nicaragua","Panama","Paraguay","Peru","Uruguay","Haiti",null,null],[null,null,86.4,null,null,94.9,null,null,null,null,null,null,90.5,null,91.9,null,null,null,null,null,null],[null,null,null,null,92.8,null,null,null,null,null,null,null,91.6,78,null,null,87.9,null,null,null,null],[null,99,90.4,null,93.4,null,null,89.5,91.9,84.5,null,84.8,93.1,null,94.1,93.9,null,98.1,null,null,null],[null,99.1,91.4,96.7,93.6,97.4,null,90.1,91.6,85.5,null,85.1,93.5,null,null,null,null,98.3,null,null,null],[null,99.1,91.3,null,null,null,99.8,90.2,92.1,null,78.3,85.4,94.2,null,null,94.2,93.8,98.4,null,null,null],[null,99.1,91.5,96.3,null,null,null,90.9,93.3,86.8,77,85.5,94,null,null,95.1,null,98.4,null,null,null],[null,99,91.7,null,94.2,null,null,91.8,94.2,null,81.3,87.2,94.6,null,null,94.6,93.7,98.4,null,null,null],[null,99.2,92,96.9,94.2,null,null,92,94.5,88,null,87.9,94.5,null,null,95.6,94.2,98.5,null,null,null],[null,99.1,null,null,94.7,null,null,93.8,94.3,88.1,null,89,94.9,null,null,94.7,94.2,98.6,null,null,null],[null,null,null,null,null,null,null,null,null,88.5,null,null,null,null,null,null,94.2,98.6,null,null,null],[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Countries<\/th>\n      <th>2000<\/th>\n      <th>2005<\/th>\n      <th>2010<\/th>\n      <th>2011<\/th>\n      <th>2012<\/th>\n      <th>2013<\/th>\n      <th>2014<\/th>\n      <th>2015<\/th>\n      <th>2016<\/th>\n      <th>2017<\/th>\n      <th>2018<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3,4,5,6,7,8,9,10,11,12]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="school-enrolment-rates" class="section level4">
-<h4>4.1.2 School Enrolment rates</h4>
-<p>Se toma la variables de matriculacion en primaria. El paper de referencia no especifica el tipo de matriculacion escolar. <strong>Ojo, no hay años continuos en los primeros años.</strong></p>
-<pre><code>## # A tibble: 33 x 12
-##    Countries `2000` `2005` `2010` `2011` `2012` `2013` `2014` `2015` `2016` `2017`
-##    &lt;chr&gt;      &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
-##  1 Antigua ~    115     NA     94     91     89     NA     88     88     NA     88
-##  2 Argentina    117    117    117    115    113    111    110    110    109     NA
-##  3 Barbados     101     96    100     98     NA     NA     94     93     93     92
-##  4 Belize       116    113    113    111    114    112    112    113    115    113
-##  5 Brazil        NA    133     NA    132    135    114    114    113    114     NA
-##  6 Canada       100     97     99     98    100    101    102    103    101     NA
-##  7 Chile        106    107    101    100    100     98     98     99    100    101
-##  8 Colombia     121    128    124    121    117    117    114    114    114    113
-##  9 Costa Ri~    113    113    117    116    115    112    111    110    110     NA
-## 10 Cuba         101     98    103    103    102    101    102    101    101    102
-## # ... with 23 more rows, and 1 more variable: `2018` &lt;dbl&gt;</code></pre>
-<p><strong>Para evitar estos problemas faltantes de paises y años, se sugiere a manera personal, el indice de educacion como reemplazo de alfabetizacion de adultos y la tasa de matriculacion escolar, El indice de eduacion es subcomponente del IDH, que recoge los <code>Años promedios de escolarida y los años esperados de escolaridad</code></strong>. Metodologia en <a href="http://hdr.undp.org/sites/default/files/hdr2019_technical_notes.pdf">ONU</a> Estos son:</p>
-<pre><code>## # A tibble: 34 x 20
-##    Countries `2000` `2001` `2002` `2003` `2004` `2005` `2006` `2007` `2008` `2009`
-##    &lt;chr&gt;      &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
-##  1 Antigua ~ NA     NA     NA     NA     NA      0.773  0.779  0.784  0.783  0.776
-##  2 Argentina  0.77   0.775  0.77   0.775  0.775  0.777  0.801  0.806  0.81   0.81 
-##  3 Barbados   0.771  0.77   0.774  0.778  0.782  0.786  0.791  0.796  0.799  0.801
-##  4 Belize     0.643  0.647  0.655  0.663  0.668  0.666  0.676  0.678  0.683  0.688
-##  5 Bolivia    0.616  0.619  0.625  0.629  0.63   0.632  0.638  0.638  0.647  0.651
-##  6 Brazil     0.684  0.691  0.698  0.694  0.697  0.7    0.701  0.705  0.716  0.718
-##  7 Canada     0.868  0.872  0.877  0.882  0.887  0.892  0.895  0.891  0.893  0.893
-##  8 Chile      0.753  0.764  0.767  0.773  0.782  0.788  0.787  0.801  0.811  0.819
-##  9 Colombia   0.662  0.664  0.667  0.666  0.68   0.693  0.7    0.713  0.72   0.724
-## 10 Costa Ri~  0.711  0.714  0.717  0.72   0.724  0.728  0.734  0.742  0.75   0.751
-## # ... with 24 more rows, and 9 more variables: `2010` &lt;dbl&gt;, `2011` &lt;dbl&gt;,
-## #   `2012` &lt;dbl&gt;, `2013` &lt;dbl&gt;, `2014` &lt;dbl&gt;, `2015` &lt;dbl&gt;, `2016` &lt;dbl&gt;,
-## #   `2017` &lt;dbl&gt;, `2018` &lt;dbl&gt;</code></pre>
+<h4><span class="header-section-number">2.4.1.2</span> School Enrolment rates</h4>
+<p><em>Ojo, no hay años continuos en los primeros años.</em></p>
+<div id="htmlwidget-9a35efbcc8f745e2e726" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-9a35efbcc8f745e2e726">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21"],[null,"Argentina","Brazil","Chile","Colombia","Costa Rica","Cuba","Dominican Republic","Ecuador","El Salvador","Guatemala","Haiti","Honduras","Mexico","Nicaragua","Panama","Paraguay","Peru","Uruguay","Venezuela",null],[null,117,null,106,121,113,101,116,111,113,100,null,104,107,105,106,120,121,109,99,null],[null,117,133,107,128,113,98,108,112,119,110,null,105,105,121,107,112,117,114,103,null],[null,117,null,101,124,117,103,111,117,115,115,null,105,105,123,105,104,110,112,101,null],[null,115,132,100,121,116,103,110,118,115,114,null,103,106,null,104,103,107,null,101,null],[null,113,135,100,117,115,102,108,115,113,109,null,100,106,null,103,106,101,null,101,null],[null,111,114,98,117,112,101,109,113,110,106,null,97,106,null,102,null,103,110,102,null],[null,110,114,98,114,111,102,108,114,107,103,null,95,105,null,99,null,101,109,100,null],[null,110,113,99,114,110,101,111,108,103,102,null,96,104,null,96,null,102,107,100,null],[null,109,114,100,114,110,101,110,104,100,101,null,96,104,null,93,null,103,105,97,null],[null,null,null,101,113,null,102,108,null,97,101,null,95,104,null,null,null,102,null,93,null],[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,102,null,null,null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Countries<\/th>\n      <th>2000<\/th>\n      <th>2005<\/th>\n      <th>2010<\/th>\n      <th>2011<\/th>\n      <th>2012<\/th>\n      <th>2013<\/th>\n      <th>2014<\/th>\n      <th>2015<\/th>\n      <th>2016<\/th>\n      <th>2017<\/th>\n      <th>2018<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3,4,5,6,7,8,9,10,11,12]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<p><strong>Para evitar estos problemas faltantes de paises y años, se sugiere a manera personal, el indice de educación como reemplazo de alfabetización de adultos y la tasa de matriculación escolar, El índice de educación es subcomponente del IDH, que recoge los <code>Años promedios de escolaridad y los años esperados de escolaridad</code></strong></p>
+<p>Metodologia en <a href="http://hdr.undp.org/sites/default/files/hdr2019_technical_notes.pdf">ONU</a> Estos son: <div id="htmlwidget-67a082daf3e5bc605676" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-67a082daf3e5bc605676">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"],["Argentina","Bolivia","Brazil","Chile","Colombia","Costa Rica","Cuba","Dominican Republic","Ecuador","El Salvador","Guatemala","Haiti","Honduras","Mexico","Nicaragua","Panama","Paraguay","Peru","Uruguay","Venezuela"],[0.77,0.616,0.684,0.753,0.662,0.711,0.686,0.653,0.669,0.608,0.546,0.44,0.555,0.705,0.568,0.719,0.64,0.679,0.742,0.672],[0.775,0.619,0.691,0.764,0.664,0.714,0.692,0.657,0.674,0.612,0.553,0.442,0.559,0.708,0.575,0.722,0.648,0.688,0.745,0.68],[0.77,0.625,0.698,0.767,0.667,0.717,0.693,0.662,0.679,0.619,0.56,0.444,0.564,0.714,0.581,0.728,0.658,0.688,0.747,0.688],[0.775,0.629,0.694,0.773,0.666,0.72,0.704,0.663,0.682,0.625,0.564,0.447,0.569,0.72,0.584,0.73,0.657,0.687,0.75,0.687],[0.775,0.63,0.697,0.782,0.68,0.724,0.718,0.666,0.687,0.631,0.567,0.448,0.575,0.726,0.589,0.735,0.664,0.694,0.754,0.7],[0.777,0.632,0.7,0.788,0.693,0.728,0.73,0.675,0.692,0.637,0.571,0.451,0.581,0.729,0.593,0.739,0.667,0.7,0.756,0.714],[0.801,0.638,0.701,0.787,0.7,0.734,0.752,0.682,0.695,0.645,0.579,0.456,0.587,0.737,0.596,0.744,0.666,0.697,0.761,0.727],[0.806,0.638,0.705,0.801,0.713,0.742,0.768,0.689,0.706,0.644,0.588,0.46,0.595,0.738,0.602,0.751,0.671,0.705,0.763,0.743],[0.81,0.647,0.716,0.811,0.72,0.75,0.778,0.692,0.711,0.647,0.594,0.463,0.591,0.74,0.607,0.755,0.68,0.715,0.767,0.753],[0.81,0.651,0.718,0.819,0.724,0.751,0.78,0.694,0.712,0.647,0.597,0.468,0.593,0.739,0.608,0.756,0.678,0.718,0.779,0.752],[0.818,0.656,0.726,0.8,0.729,0.754,0.776,0.701,0.716,0.659,0.602,0.467,0.598,0.739,0.614,0.758,0.692,0.721,0.774,0.753],[0.823,0.66,0.73,0.812,0.735,0.768,0.775,0.704,0.742,0.656,0.607,0.474,0.601,0.746,0.619,0.764,0.697,0.734,0.783,0.764],[0.823,0.663,0.734,0.818,0.736,0.774,0.764,0.708,0.74,0.66,0.613,0.478,0.6,0.752,0.625,0.77,0.697,0.734,0.788,0.767],[0.824,0.673,0.752,0.83,0.746,0.777,0.762,0.712,0.751,0.662,0.616,0.483,0.603,0.75,0.63,0.775,0.709,0.742,0.797,0.772],[0.825,0.678,0.755,0.834,0.75,0.785,0.764,0.724,0.75,0.66,0.643,0.488,0.606,0.754,0.64,0.779,0.712,0.752,0.8,0.77],[0.828,0.685,0.755,0.839,0.753,0.786,0.768,0.733,0.758,0.66,0.647,0.492,0.613,0.759,0.644,0.782,0.718,0.75,0.802,0.763],[0.828,0.692,0.757,0.843,0.759,0.789,0.771,0.738,0.756,0.662,0.648,0.497,0.618,0.764,0.649,0.789,0.718,0.755,0.806,0.752],[0.832,0.7,0.76,0.845,0.76,0.792,0.777,0.741,0.757,0.665,0.649,0.501,0.621,0.765,0.653,0.793,0.722,0.756,0.807,0.735],[0.83,0.703,0.761,0.847,0.761,0.794,0.778,0.745,0.758,0.667,0.651,0.503,0.623,0.767,0.651,0.795,0.724,0.759,0.808,0.726]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Countries<\/th>\n      <th>2000<\/th>\n      <th>2001<\/th>\n      <th>2002<\/th>\n      <th>2003<\/th>\n      <th>2004<\/th>\n      <th>2005<\/th>\n      <th>2006<\/th>\n      <th>2007<\/th>\n      <th>2008<\/th>\n      <th>2009<\/th>\n      <th>2010<\/th>\n      <th>2011<\/th>\n      <th>2012<\/th>\n      <th>2013<\/th>\n      <th>2014<\/th>\n      <th>2015<\/th>\n      <th>2016<\/th>\n      <th>2017<\/th>\n      <th>2018<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script></p>
 </div>
 </div>
 <div id="indice-de-salud" class="section level3">
-<h3>4.2 Indice de salud</h3>
-<p>Tomada por la variable de esperanza de vida al nacer. Por lo tanto, para poder sumarlar con el indice de educacion, se estabdariza usando la primera formula: <span class="math inline">\(\mathrm{XE}=\frac{X-MinX}{Max{X}-MinX}\)</span> , donde <span class="math inline">\(MinX=20\)</span> y <span class="math inline">\(MaxX=85\)</span> de acuerdo a la teoria. Verse <a href="http://hdr.undp.org/sites/default/files/hdr2019_technical_notes.pdf">IDH</a> Los resultados estandarizados no se muestran, para evitar confusiones.</p>
-<pre><code>## # A tibble: 34 x 20
-##    Countries `2000` `2001` `2002` `2003` `2004` `2005` `2006` `2007` `2008` `2009`
-##    &lt;chr&gt;      &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; 
-##  1 Antigua ~   73.9   74.2   74.4   74.6   74.8   75     75.2   75.4   75.5 75.7  
-##  2 Argentina   73.6   73.8   73.9   74.1   74.3   74.5   74.6   74.8   75   75.1  
-##  3 Barbados    77.2   77.4   77.5   77.7   77.8   77.9   78     78.1   78.2 78.3  
-##  4 Belize      68.8   69     69.3   69.5   69.7   70     70.3   70.6   71.1 71.5  
-##  5 Bolivia     62.5   63.1   63.6   64.2   64.8   65.3   65.9   66.4   66.9 67.5  
-##  6 Brazil      70.1   70.5   70.8   71.2   71.5   71.9   72.3   72.6   73   73.3  
-##  7 Canada      79.1   79.3   79.6   79.8   80     80.2   80.5   80.7   80.9 81.1  
-##  8 Chile       76.4   76.6   76.9   77.1   77.4   77.6   77.9   78.1   78.3 78.6  
-##  9 Colombia    72.9   73.2   73.5   73.8   74     74.3   74.5   74.7   75   75.2  
-## 10 Costa Ri~   77.5   77.6   77.7   77.9   78     78.1   78.2   78.4   78.5 78.6  
-## # ... with 24 more rows, and 9 more variables: `2010` &lt;chr&gt;, `2011` &lt;chr&gt;,
-## #   `2012` &lt;chr&gt;, `2013` &lt;chr&gt;, `2014` &lt;chr&gt;, `2015` &lt;chr&gt;, `2016` &lt;chr&gt;,
-## #   `2017` &lt;chr&gt;, `2018` &lt;chr&gt;</code></pre>
+<h3><span class="header-section-number">2.4.2</span> Indice de salud</h3>
+<p>Tomada por la variable de esperanza de vida al nacer. <a href="http://hdr.undp.org/sites/default/files/hdr2019_technical_notes.pdf">IDH</a></p>
+<div id="htmlwidget-b55ecc50ff5c40576ef2" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b55ecc50ff5c40576ef2">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22"],[null,"Argentina","Bolivia","Brazil","Chile","Colombia","Costa Rica","Cuba","Dominican Republic","Ecuador","El Salvador","Guatemala","Haiti","Honduras","Mexico","Nicaragua","Panama","Paraguay","Peru","Uruguay","Venezuela",null],[null,73.6,62.5,70.1,76.4,72.9,77.5,76.7,69.4,72.8,68.9,67.8,57.1,70.7,74.3,69.5,75.1,70.5,71.1,74.7,72.1,null],[null,73.8,63.1,70.5,76.6,73.2,77.6,76.9,69.7,73.1,69.2,68.3,57.4,71,74.7,69.9,75.2,70.8,71.5,74.9,72.3,null],[null,73.9,63.6,70.8,76.9,73.5,77.7,77.1,70,73.4,69.4,68.7,57.7,71.2,74.9,70.3,75.4,71,71.9,75.2,72.5,null],[null,74.1,64.2,71.2,77.1,73.8,77.9,77.3,70.2,73.6,69.7,69.1,58,71.5,75.1,70.6,75.6,71.2,72.2,75.4,72.6,null],[null,74.3,64.8,71.5,77.4,74,78,77.5,70.5,73.9,69.9,69.4,58.3,71.8,75.2,70.9,75.7,71.5,72.6,75.6,72.7,null],[null,74.5,65.3,71.9,77.6,74.3,78.1,77.7,70.8,74.1,70.1,69.8,58.7,72,75.3,71.2,75.9,71.7,72.9,75.8,72.9,null],[null,74.6,65.9,72.3,77.9,74.5,78.2,77.9,71,74.3,70.3,70.1,59,72.3,75.3,71.4,76.1,71.9,73.2,76,72.9,null],[null,74.8,66.4,72.6,78.1,74.7,78.4,78,71.3,74.5,70.5,70.4,59.4,72.5,75.3,71.7,76.2,72.1,73.5,76.3,73,null],[null,75,66.9,73,78.3,75,78.5,78.2,71.6,74.7,70.8,70.8,59.8,72.8,75.2,71.9,76.4,72.3,73.8,76.4,73.1,null],[null,"75.1","67.5","73.3","78.6","75.2","78.6","78.3","71.8","74.9","71","71.1","60.1","73.1","75.1","72.2","76.6","72.5","74.1","76.6","73.1",null],[null,"75.3","68","73.6","78.8","75.4","78.8","78.3","72","75.1","71.2","71.5","60.5","73.3","75.1","72.4","76.8","72.7","74.4","76.8","73.1",null],[null,"75.4","68.5","73.9","79","75.7","78.9","78.4","72.3","75.3","71.4","71.9","60.9","73.6","75","72.7","77","72.9","74.7","76.9","73.1",null],[null,"75.6","69","74.2","79.2","75.9","79.1","78.4","72.5","75.5","71.7","72.2","61.3","73.8","75","73","77.2","73.1","75","77","73",null],[null,"75.8","69.5","74.5","79.3","76.1","79.2","78.5","72.8","75.7","71.9","72.6","61.7","74.1","74.9","73.2","77.4","73.3","75.3","77.1","72.9",null],[null,"75.9","69.9","74.7","79.5","76.3","79.4","78.5","73","75.9","72.2","72.9","62.1","74.3","74.9","73.4","77.6","73.5","75.5","77.2","72.8",null],[null,"76.1","70.3","75","79.6","76.5","79.6","78.6","73.2","76.1","72.4","73.3","62.5","74.5","74.9","73.6","77.8","73.7","75.8","77.4","72.6",null],[null,"76.2","70.6","75.2","79.8","76.7","79.7","78.6","73.5","76.4","72.6","73.5","62.9","74.7","74.9","73.9","78","73.8","76","77.5","72.4",null],[null,"76.4","70.9","75.5","79.9","76.9","79.9","78.7","73.7","76.6","72.9","73.8","63.3","74.9","74.9","74.1","78.1","74","76.3","77.6","72.2",null],[null,"76.5","71.2","75.7","80","77.1","80.1","78.7","73.9","76.8","73.1","74.1","63.7","75.1","75","74.3","78.3","74.1","76.5","77.8","72.1",null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Countries<\/th>\n      <th>2000<\/th>\n      <th>2001<\/th>\n      <th>2002<\/th>\n      <th>2003<\/th>\n      <th>2004<\/th>\n      <th>2005<\/th>\n      <th>2006<\/th>\n      <th>2007<\/th>\n      <th>2008<\/th>\n      <th>2009<\/th>\n      <th>2010<\/th>\n      <th>2011<\/th>\n      <th>2012<\/th>\n      <th>2013<\/th>\n      <th>2014<\/th>\n      <th>2015<\/th>\n      <th>2016<\/th>\n      <th>2017<\/th>\n      <th>2018<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3,4,5,6,7,8,9,10]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <hr />
 </div>
 </div>
 </div>
-<div id="indice-de-resilencia-calculado" class="section level1">
-<h1><strong>Indice de resilencia calculado</strong></h1>
+<div id="resultados" class="section level1">
+<h1><span class="header-section-number">3</span> Resultados</h1>
 <p>Indice calculado omitiendo aquellos paises que no tienen los valores completos en todos los años, corregir los datos faltantes y demas problemas conceptuales.</p>
-<p><img src="index_files/figure-html/costruccion%20del%20indide%20de%20resiliencia-1.png" width="672" /></p>
-<p>El indice de liberta econommica no considera a Suriname para el calculo antes del 2010. Una opcion seria recortar los años, por lo tanto quedarian <code>2010-2017</code>o eliminar a Suriname de la muestra. Solamente hasta 2017 hay datos del indice de libertad economica mundial, seria imposible considerar mas años puesto que este indicador es directo para el calculo.</p>
-<pre><code>##              Countries Year est_macro Regulation       idg       des resilience
-## 1            Argentina 2000 0.4523715  0.5710059 0.5424573 0.7520366  0.5794678
-## 2            Argentina 2001 0.4632356  0.4408284 0.3318311 0.7591059  0.4987503
-## 3            Argentina 2002 0.9294219  0.5000000 0.2839184 0.7560762  0.6173541
-## 4            Argentina 2003 0.7706151  0.5310651 0.2877135 0.7631455  0.5881348
-## 5            Argentina 2004 0.7332630  0.5517751 0.3569734 0.7658386  0.6019625
-## 6            Argentina 2005 0.5662426  0.5665680 0.3742884 0.7702821  0.5693453
-## 7            Argentina 2006 0.4974080  0.5073964 0.3550759 0.7926345  0.5381287
-## 8            Argentina 2007 0.4573916  0.5088757 0.3607685 0.7997038  0.5316849
-## 9            Argentina 2008 0.4577461  0.4940828 0.3610057 0.8058978  0.5296831
-## 10           Argentina 2009 0.4530145  0.4674556 0.3610057 0.8072443  0.5221800
-## 11           Argentina 2010 0.4295139  0.4038462 0.3707306 0.8169393  0.5052575
-## 12           Argentina 2011 0.4166550  0.4467456 0.3481973 0.8226621  0.5085650
-## 13           Argentina 2012 0.4079572  0.4792899 0.3187856 0.8253551  0.5078470
-## 14           Argentina 2013 0.4161525  0.4497041 0.3216319 0.8289234  0.5041030
-## 15           Argentina 2014 0.4768189  0.4304734 0.3479602 0.8311452  0.5215994
-## 16           Argentina 2015 0.4273954  0.4541420 0.3844877 0.8364640  0.5256223
-## 17           Argentina 2016 0.4887006  0.4275148 0.4153226 0.8378105  0.5423371
-## 18           Argentina 2017 0.4502370  0.4689349 0.4165085 0.8440046  0.5449213
-## 19              Brazil 2000 0.4011913  0.4482249 0.5353416 0.6296371  0.5035987
-## 20              Brazil 2001 0.4261221  0.3890533 0.4860057 0.6411499  0.4855827
-## 21              Brazil 2002 0.4421742  0.3713018 0.4774668 0.6513162  0.4855647
-## 22              Brazil 2003 0.4463617  0.3224852 0.4777040 0.6532014  0.4749381
-## 23              Brazil 2004 0.3956853  0.3550296 0.3932638 0.6598667  0.4509613
-## 24              Brazil 2005 0.3544657  0.3239645 0.4532732 0.6678785  0.4498955
-## 25              Brazil 2006 0.3364710  0.2958580 0.4525617 0.6741399  0.4397576
-## 26              Brazil 2007 0.3326583  0.3254438 0.4694023 0.6816805  0.4522962
-## 27              Brazil 2008 0.3343297  0.3269231 0.4606262 0.6966943  0.4546433
-## 28              Brazil 2009 0.3353651  0.3269231 0.4627609 0.7024843  0.4568834
-## 29              Brazil 2010 0.3261282  0.3949704 0.4826850 0.7135259  0.4793274
-## 30              Brazil 2011 0.3258644  0.3772189 0.4959677 0.7210665  0.4800294
-## 31              Brazil 2012 0.3339549  0.3846154 0.4883776 0.7286070  0.4838887
-## 32              Brazil 2013 0.3343034  0.3727811 0.4411765 0.7484010  0.4741655
-## 33              Brazil 2014 0.3363496  0.3402367 0.4203036 0.7537198  0.4626524
-## 34              Brazil 2015 0.3581417  0.2692308 0.4395161 0.7577594  0.4561620
-## 35              Brazil 2016 0.3782509  0.2381657 0.4627609 0.7622029  0.4603451
-## 36              Brazil 2017 0.3578142  0.2855030 0.4444972 0.7688682  0.4641706
-## 37            Colombia 2000 0.4437089  0.5784024 0.3187856 0.6480846  0.4972454
-## 38            Colombia 2001 0.4225636  0.4985207 0.3088235 0.6538746  0.4709456
-## 39            Colombia 2002 0.4153947  0.5872781 0.2957780 0.6605400  0.4897477
-## 40            Colombia 2003 0.4358798  0.6020710 0.2796490 0.6637043  0.4953260
-## 41            Colombia 2004 0.4169704  0.6198225 0.3064516 0.6786508  0.5054738
-## 42            Colombia 2005 0.3795042  0.6005917 0.3799810 0.6940685  0.5135364
-## 43            Colombia 2006 0.3693915  0.6065089 0.3963472 0.7028883  0.5187840
-## 44            Colombia 2007 0.3562250  0.6168639 0.4044118 0.7169595  0.5236150
-## 45            Colombia 2008 0.3613351  0.6316568 0.3742884 0.7271258  0.5236015
-## 46            Colombia 2009 0.3609779  0.6390533 0.3638520 0.7333199  0.5243007
-## 47            Colombia 2010 0.3531767  0.6878698 0.3655123 0.7403891  0.5367370
-## 48            Colombia 2011 0.3587708  0.7130178 0.3460626 0.7496802  0.5418828
-## 49            Colombia 2012 0.3489347  0.7322485 0.3417932 0.7532485  0.5440562
-## 50            Colombia 2013 0.3490639  0.7588757 0.3325427 0.7646940  0.5512941
-## 51            Colombia 2014 0.3547775  0.7440828 0.3273245 0.7708880  0.5492682
-## 52            Colombia 2015 0.3902265  0.7263314 0.3327799 0.7762068  0.5563861
-## 53            Colombia 2016 0.4211555  0.7085799 0.3349146 0.7841513  0.5622003
-## 54            Colombia 2017 0.4160086  0.7189349 0.3353890 0.7877197  0.5645131
-## 55          Costa Rica 2000 0.3798027  0.7056213 0.7156072 0.7529119  0.6384858
-## 56          Costa Rica 2001 0.3822735  0.5695266 0.6719639 0.7568841  0.5951621
-## 57          Costa Rica 2002 0.3794467  0.5621302 0.6278463 0.7608564  0.5825699
-## 58          Costa Rica 2003 0.3955416  0.5798817 0.6871442 0.7661752  0.6071857
-## 59          Costa Rica 2004 0.3967322  0.5532544 0.6895161 0.7710227  0.6026314
-## 60          Costa Rica 2005 0.4041290  0.5591716 0.7573529 0.7758702  0.6241309
-## 61          Costa Rica 2006 0.3984181  0.6109467 0.7416983 0.7824682  0.6333828
-## 62          Costa Rica 2007 0.3917364  0.6568047 0.7303131 0.7921632  0.6427543
-## 63          Costa Rica 2008 0.3841250  0.6405325 0.7054080 0.8005117  0.6326443
-## 64          Costa Rica 2009 0.3702363  0.6272189 0.6999526 0.8027335  0.6250353
-## 65          Costa Rica 2010 0.3393060  0.5976331 0.6719639 0.8080522  0.6042388
-## 66          Costa Rica 2011 0.3539729  0.6153846 0.6491935 0.8216522  0.6100508
-## 67          Costa Rica 2012 0.3721544  0.6198225 0.6620019 0.8295967  0.6208939
-## 68          Costa Rica 2013 0.3780654  0.6079882 0.6731499 0.8335690  0.6231931
-## 69          Costa Rica 2014 0.4000130  0.5976331 0.6726755 0.8432640  0.6283964
-## 70          Costa Rica 2015 0.4081194  0.5843195 0.6657970 0.8468323  0.6262671
-## 71          Costa Rica 2016 0.4072739  0.5872781 0.6819260 0.8508046  0.6318206
-## 72          Costa Rica 2017 0.4032747  0.5887574 0.6579696 0.8561233  0.6265313
-## 73  Dominican Republic 2000 0.3401025  0.6967456 0.4479957 0.5930788  0.5194807
-## 74  Dominican Republic 2001 0.3444529  0.6301775 0.3560247 0.6006194  0.4828186
-## 75  Dominican Republic 2002 0.3576536  0.6094675 0.3982448 0.6090352  0.4936003
-## 76  Dominican Republic 2003 0.4727848  0.6405325 0.3629032 0.6126035  0.5222060
-## 77  Dominican Republic 2004 0.5204991  0.5872781 0.2808349 0.6192688  0.5019702
-## 78  Dominican Republic 2005 0.3503955  0.6227811 0.4108159 0.6311856  0.5037945
-## 79  Dominican Republic 2006 0.3560674  0.6346154 0.3908918 0.6400054  0.5053950
-## 80  Dominican Republic 2007 0.3551931  0.6286982 0.3837761 0.6501717  0.5044598
-## 81  Dominican Republic 2008 0.3479065  0.6168639 0.4070209 0.6568370  0.5071571
-## 82  Dominican Republic 2009 0.3415945  0.6109467 0.4010911 0.6612805  0.5037282
-## 83  Dominican Republic 2010 0.3463141  0.6183432 0.3792694 0.6701003  0.5035068
-## 84  Dominican Republic 2011 0.3620870  0.6272189 0.3771347 0.6767656  0.5108016
-## 85  Dominican Republic 2012 0.3794599  0.5207101 0.3704934 0.6829597  0.4884058
-## 86  Dominican Republic 2013 0.3976137  0.5991124 0.3847249 0.6905002  0.5179878
-## 87  Dominican Republic 2014 0.3921148  0.6183432 0.3816414 0.7036962  0.5239489
-## 88  Dominican Republic 2015 0.3869565  0.6109467 0.3446395 0.7142665  0.5142023
-## 89  Dominican Republic 2016 0.3872971  0.6124260 0.3517552 0.7226823  0.5185402
-## 90  Dominican Republic 2017 0.3969425  0.6139053 0.3626660 0.7280011  0.5253787
-## 91             Ecuador 2000 0.7164280  0.2573964 0.2915085 0.6528647  0.4795494
-## 92             Ecuador 2001 0.5952889  0.2677515 0.1966319 0.6612805  0.4302382
-## 93             Ecuador 2002 0.5304753  0.4659763 0.2481025 0.6696964  0.4785626
-## 94             Ecuador 2003 0.5062673  0.5044379 0.2205882 0.6750151  0.4765771
-## 95             Ecuador 2004 0.4676355  0.5000000 0.1790797 0.6834310  0.4575365
-## 96             Ecuador 2005 0.4447774  0.5192308 0.2568786 0.6905002  0.4778467
-## 97             Ecuador 2006 0.4321430  0.5192308 0.2390892 0.6958190  0.4715705
-## 98             Ecuador 2007 0.4094592  0.5029586 0.2286528 0.7081398  0.4623026
-## 99             Ecuador 2008 0.3868342  0.5088757 0.2535579 0.7152090  0.4661192
-## 100            Ecuador 2009 0.3190346  0.5295858 0.2402751 0.7187774  0.4519182
-## 101            Ecuador 2010 0.3459095  0.5562130 0.2545066 0.7249714  0.4704001
-## 102            Ecuador 2011 0.3351151  0.5547337 0.2708729 0.7504208  0.4777856
-## 103            Ecuador 2012 0.3201586  0.5695266 0.3415560 0.7513634  0.4956511
-## 104            Ecuador 2013 0.3049284  0.5710059 0.3111954 0.7636841  0.4877035
-## 105            Ecuador 2014 0.3191933  0.5177515 0.2796490 0.7655019  0.4705239
-## 106            Ecuador 2015 0.3139316  0.5340237 0.2575901 0.7751969  0.4701856
-## 107            Ecuador 2016 0.3542214  0.5281065 0.2272296 0.7774860  0.4717609
-## 108            Ecuador 2017 0.3753612  0.5266272 0.2360057 0.7810543  0.4797621
-## 109        El Salvador 2000 0.3934663  0.6760355 0.4357211 0.5469602  0.5130458
-## 110        El Salvador 2001 0.4002582  0.5946746 0.4198292 0.5545008  0.4923157
-## 111        El Salvador 2002 0.4049839  0.5710059 0.4143738 0.5633205  0.4884210
-## 112        El Salvador 2003 0.4737032  0.5991124 0.4103416 0.5726116  0.5139422
-## 113        El Salvador 2004 0.4834961  0.6316568 0.3920778 0.5805561  0.5219467
-## 114        El Salvador 2005 0.4856457  0.6863905 0.4174573 0.5885006  0.5444985
-## 115        El Salvador 2006 0.4709374  0.7218935 0.4165085 0.5981957  0.5518838
-## 116        El Salvador 2007 0.4588664  0.7618343 0.3697818 0.6000135  0.5476240
-## 117        El Salvador 2008 0.4512773  0.7633136 0.3802182 0.6066788  0.5503720
-## 118        El Salvador 2009 0.4405862  0.6937870 0.3408444 0.6093718  0.5211474
-## 119        El Salvador 2010 0.4570094  0.6760355 0.3166509 0.6225678  0.5180659
-## 120        El Salvador 2011 0.4677517  0.6627219 0.3273245 0.6226352  0.5201083
-## 121        El Salvador 2012 0.4595855  0.6020710 0.3342030 0.6301757  0.5065088
-## 122        El Salvador 2013 0.4562151  0.5266272 0.3804554 0.6346193  0.4994792
-## 123        El Salvador 2014 0.4713126  0.5813609 0.3406072 0.6369084  0.5075473
-## 124        El Salvador 2015 0.4708354  0.5695266 0.3230550 0.6396014  0.5007546
-## 125        El Salvador 2016 0.4797839  0.5562130 0.3066888 0.6440450  0.4966827
-## 126        El Salvador 2017 0.4851405  0.5695266 0.3026565 0.6507103  0.5020085
-## 127          Guatemala 2000 0.3288720  0.5576923 0.2748458 0.4778833  0.4098234
-## 128          Guatemala 2001 0.3397914  0.5029586 0.2139469 0.4907426  0.3868599
-## 129          Guatemala 2002 0.3359835  0.5680473 0.2125237 0.5022554  0.4047025
-## 130          Guatemala 2003 0.3308162  0.5695266 0.2561670 0.5111425  0.4169131
-## 131          Guatemala 2004 0.3760605  0.5784024 0.2919829 0.5178079  0.4410634
-## 132          Guatemala 2005 0.3769055  0.5946746 0.4966793 0.5266949  0.4987386
-## 133          Guatemala 2006 0.3784061  0.6109467 0.4701139 0.5377365  0.4993008
-## 134          Guatemala 2007 0.3888809  0.6227811 0.4501898 0.5496533  0.5028762
-## 135          Guatemala 2008 0.3894741  0.6139053 0.4127135 0.5602909  0.4940959
-## 136          Guatemala 2009 0.3810883  0.5902367 0.3714421 0.5669562  0.4774308
-## 137          Guatemala 2010 0.3775811  0.6139053 0.3595825 0.5767185  0.4819469
-## 138          Guatemala 2011 0.3776951  0.6109467 0.3837761 0.5864808  0.4897247
-## 139          Guatemala 2012 0.3510005  0.6301775 0.4236243 0.5957719  0.5001436
-## 140          Guatemala 2013 0.3592110  0.6360947 0.4437856 0.6037837  0.5107188
-## 141          Guatemala 2014 0.3608806  0.6257396 0.4492410 0.6314549  0.5168290
-## 142          Guatemala 2015 0.3577858  0.6168639 0.4814991 0.6403420  0.5241227
-##  [ reached &#39;max&#39; / getOption(&quot;max.print&quot;) -- omitted 110 rows ]</code></pre>
-<p>Al parecer la inflacion medida por el deflactor del PIB genera ruido. Al no tratarse de datos para una interaccion entre paises y entre años, una regresion, es posible incorporar datos de diferentes fuentes para rellenar vacios? Por ejemplo, datos de las mismas instituciones de estadistica propias de cada pais, logicamente los años base jugarian un rol importante aqui.</p>
+<div id="htmlwidget-32002c6c5e19c0c61c21" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-32002c6c5e19c0c61c21">{"x":{"visdat":{"17a0242f3d":["function () ","plotlyVisDat"]},"cur_data":"17a0242f3d","attrs":{"17a0242f3d":{"x":{},"y":{},"mode":"lines","color":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"Indice de resilencia para América Latina","xaxis":{"domain":[0,1],"automargin":true,"title":"Años","type":"category","categoryorder":"array","categoryarray":["2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"]},"yaxis":{"domain":[0,1],"automargin":true,"title":"Índice de resilencia calculado"},"hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"x":["2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017"],"y":[0.592066747861099,0.494556911012344,0.647448998367208,0.607144419934186,0.624070902039829,0.580176508436688,0.543844352007077,0.535555556930469,0.534160758088602,0.526030645559088,0.508220638977091,0.510132594029032,0.507263697565524,0.504393663966841,0.528818011750361,0.532783050898526,0.556602480418876,0.557629014765926],"mode":"lines","type":"scatter","name":"Argentina","marker":{"color":"rgba(102,194,165,1)","line":{"color":"rgba(102,194,165,1)"}},"textfont":{"color":"rgba(102,194,165,1)"},"error_y":{"color":"rgba(102,194,165,1)"},"error_x":{"color":"rgba(102,194,165,1)"},"line":{"color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017"],"y":[0.443757376427445,0.391391801973979,0.376533178713353,0.42520104510541,0.455260012894741,0.479954253094412,0.472899403929449,0.411110351082212,0.407473445813108,0.405362753901323,0.437323933865008,0.450386646276735,0.443074194141387,0.459733278185233,0.429453444228281,0.377077703094429,0.391321719036544,0.395077415542003],"mode":"lines","type":"scatter","name":"Bolivia","marker":{"color":"rgba(178,177,139,1)","line":{"color":"rgba(178,177,139,1)"}},"textfont":{"color":"rgba(178,177,139,1)"},"error_y":{"color":"rgba(178,177,139,1)"},"error_x":{"color":"rgba(178,177,139,1)"},"line":{"color":"rgba(178,177,139,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017"],"y":[0.49393179312348,0.474593600325055,0.476218646249303,0.465421101905567,0.432107506451742,0.432970000202037,0.421687782938723,0.436670713833845,0.440407881271962,0.443639483172742,0.46938605045677,0.47179451037932,0.476790303091568,0.465738446551147,0.452921275386959,0.449091618419249,0.45679611582832,0.45914177950129],"mode":"lines","type":"scatter","name":"Brazil","marker":{"color":"rgba(228,156,113,1)","line":{"color":"rgba(228,156,113,1)"}},"textfont":{"color":"rgba(228,156,113,1)"},"error_y":{"color":"rgba(228,156,113,1)"},"error_x":{"color":"rgba(228,156,113,1)"},"line":{"color":"rgba(228,156,113,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017"],"y":[0.661667925021055,0.604513759578524,0.625479454064383,0.645388795128202,0.641195652021912,0.671806029464626,0.687702606495377,0.682309139365495,0.674652558769007,0.685500144596826,0.694634447785194,0.696588417044639,0.683263268972913,0.680426703924093,0.67824896835701,0.673903303788166,0.672977096613593,0.666235091904757],"mode":"lines","type":"scatter","name":"Chile","marker":{"color":"rgba(238,145,116,1)","line":{"color":"rgba(238,145,116,1)"}},"textfont":{"color":"rgba(238,145,116,1)"},"error_y":{"color":"rgba(238,145,116,1)"},"error_x":{"color":"rgba(238,145,116,1)"},"line":{"color":"rgba(238,145,116,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017"],"y":[0.478416834080964,0.449119221957853,0.468569419073047,0.47516786808279,0.48808844799841,0.500575513061588,0.507514972686568,0.513882524859305,0.513450179598141,0.514210644167617,0.52782156462385,0.533475675485053,0.535281684450553,0.543687222166352,0.54227151708564,0.553070636167236,0.562277819327072,0.564833018534013],"mode":"lines","type":"scatter","name":"Colombia","marker":{"color":"rgba(201,152,157,1)","line":{"color":"rgba(201,152,157,1)"}},"textfont":{"color":"rgba(201,152,157,1)"},"error_y":{"color":"rgba(201,152,157,1)"},"error_x":{"color":"rgba(201,152,157,1)"},"line":{"color":"rgba(201,152,157,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017"],"y":[0.661058970485071,0.612878542566658,0.596989775553481,0.628511959034105,0.624441025253817,0.652570764909196,0.661793322551869,0.671695523567645,0.659831554581038,0.650752178270746,0.625486941113692,0.632711556856624,0.647108335589338,0.651079823404522,0.659089122812345,0.657319469354672,0.664625097292432,0.657838335234331],"mode":"lines","type":"scatter","name":"Costa Rica","marker":{"color":"rgba(150,159,197,1)","line":{"color":"rgba(150,159,197,1)"}},"textfont":{"color":"rgba(150,159,197,1)"},"error_y":{"color":"rgba(150,159,197,1)"},"error_x":{"color":"rgba(150,159,197,1)"},"line":{"color":"rgba(150,159,197,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017"],"y":[0.497277154034957,0.453667922574396,0.469574859742566,0.505615205899376,0.48279505278525,0.483214658489352,0.485022828867968,0.484666659835043,0.489268020140379,0.48534164516574,0.4850326314653,0.494421169758978,0.472019773650992,0.506376211204866,0.513643688937982,0.501815323957563,0.50783878359773,0.517013038103004],"mode":"lines","type":"scatter","name":"Dominican Republic","marker":{"color":"rgba(175,154,200,1)","line":{"color":"rgba(175,154,200,1)"}},"textfont":{"color":"rgba(175,154,200,1)"},"error_y":{"color":"rgba(175,154,200,1)"},"error_x":{"color":"rgba(175,154,200,1)"},"line":{"color":"rgba(175,154,200,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017"],"y":[0.476085298417036,0.410824871211946,0.462166470380328,0.457360191464401,0.432962232575218,0.458743722785474,0.450735949340817,0.440144832198511,0.445092629612107,0.425177334811439,0.448148888272669,0.45918263614668,0.481743289761076,0.471788099026328,0.452676523863869,0.451680564227958,0.454315174865924,0.465138815025148],"mode":"lines","type":"scatter","name":"Ecuador","marker":{"color":"rgba(209,146,197,1)","line":{"color":"rgba(209,146,197,1)"}},"textfont":{"color":"rgba(209,146,197,1)"},"error_y":{"color":"rgba(209,146,197,1)"},"error_x":{"color":"rgba(209,146,197,1)"},"line":{"color":"rgba(209,146,197,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017"],"y":[0.487946364072513,0.466201417830464,0.463015234338516,0.49537907500955,0.504266696141988,0.53085954688058,0.53878567204023,0.53074956522925,0.534581791220055,0.500659527325669,0.498410437914858,0.501953704588548,0.488247990154477,0.48395809437569,0.491268030334304,0.483218462608425,0.478941630420522,0.48544414410794],"mode":"lines","type":"scatter","name":"El Salvador","marker":{"color":"rgba(226,148,184,1)","line":{"color":"rgba(226,148,184,1)"}},"textfont":{"color":"rgba(226,148,184,1)"},"error_y":{"color":"rgba(226,148,184,1)"},"error_x":{"color":"rgba(226,148,184,1)"},"line":{"color":"rgba(226,148,184,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017"],"y":[0.356208179713086,0.33013017542198,0.350051158660042,0.366430164046588,0.398022475450169,0.473217155746076,0.473484486086137,0.478050252416558,0.467599035151186,0.447502080324888,0.45242670794221,0.463314182142102,0.47620270161417,0.490138174114993,0.500188166630585,0.510760977593326,0.498327407247028,0.494969494393571],"mode":"lines","type":"scatter","name":"Guatemala","marker":{"color":"rgba(205,180,144,1)","line":{"color":"rgba(205,180,144,1)"}},"textfont":{"color":"rgba(205,180,144,1)"},"error_y":{"color":"rgba(205,180,144,1)"},"error_x":{"color":"rgba(205,180,144,1)"},"line":{"color":"rgba(205,180,144,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017"],"y":[0.44273277097428,0.327475862907342,0.319370204953703,0.371921027273067,0.32296712476006,0.355138877838777,0.364158409772023,0.31395367572175,0.369027304641855,0.345850595305034,0.268917681240161,0.282029396117966,0.272561083469043,0.312107507118402,0.329017715109721,0.340050599527104,0.354102909099891,0.352030207219072],"mode":"lines","type":"scatter","name":"Haiti","marker":{"color":"rgba(176,208,99,1)","line":{"color":"rgba(176,208,99,1)"}},"textfont":{"color":"rgba(176,208,99,1)"},"error_y":{"color":"rgba(176,208,99,1)"},"error_x":{"color":"rgba(176,208,99,1)"},"line":{"color":"rgba(176,208,99,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017"],"y":[0.538561987813536,0.468390733274123,0.48094577031519,0.492085047075801,0.510949613107716,0.506394058141811,0.515820743763743,0.512369159149149,0.496325578254993,0.48014762897216,0.495186106944543,0.502258186457967,0.469787302218714,0.496735793186591,0.524487082118674,0.52975784218469,0.494895837164732,0.51754982655962],"mode":"lines","type":"scatter","name":"Honduras","marker":{"color":"rgba(193,217,75,1)","line":{"color":"rgba(193,217,75,1)"}},"textfont":{"color":"rgba(193,217,75,1)"},"error_y":{"color":"rgba(193,217,75,1)"},"error_x":{"color":"rgba(193,217,75,1)"},"line":{"color":"rgba(193,217,75,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017"],"y":[0.50793090218552,0.466166106015792,0.509498601889063,0.502974940927598,0.534946839447021,0.561263712180172,0.554442430779752,0.542297373582249,0.547530432711716,0.531250469705006,0.54248894323073,0.540300094725098,0.540263123910376,0.542814689112594,0.52160989727674,0.529080407919693,0.526242934382796,0.5395806490573],"mode":"lines","type":"scatter","name":"Mexico","marker":{"color":"rgba(227,217,62,1)","line":{"color":"rgba(227,217,62,1)"}},"textfont":{"color":"rgba(227,217,62,1)"},"error_y":{"color":"rgba(227,217,62,1)"},"error_x":{"color":"rgba(227,217,62,1)"},"line":{"color":"rgba(227,217,62,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017"],"y":[0.65186434105187,0.581935863737223,0.597714727190161,0.607336555437517,0.549248969593694,0.569548949524169,0.565760956402659,0.559307811933342,0.571991534206421,0.574706856769467,0.583602254348345,0.604532204040626,0.620134601576265,0.61512999666337,0.596727876592316,0.592101198780286,0.580723511476637,0.583769605857603],"mode":"lines","type":"scatter","name":"Nicaragua","marker":{"color":"rgba(254,216,56,1)","line":{"color":"rgba(254,216,56,1)"}},"textfont":{"color":"rgba(254,216,56,1)"},"error_y":{"color":"rgba(254,216,56,1)"},"error_x":{"color":"rgba(254,216,56,1)"},"line":{"color":"rgba(254,216,56,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017"],"y":[0.545903390966053,0.502072153405299,0.498134286419432,0.50055727490352,0.506565774794543,0.532765673529928,0.545243194561278,0.561606067666889,0.560883526790852,0.55645736128839,0.55280179952819,0.570229566087931,0.570110831131083,0.570470853490734,0.557801295355112,0.569960375393846,0.568282063703319,0.565645165060809],"mode":"lines","type":"scatter","name":"Panama","marker":{"color":"rgba(245,207,100,1)","line":{"color":"rgba(245,207,100,1)"}},"textfont":{"color":"rgba(245,207,100,1)"},"error_y":{"color":"rgba(245,207,100,1)"},"error_x":{"color":"rgba(245,207,100,1)"},"line":{"color":"rgba(245,207,100,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017"],"y":[0.471965283590589,0.433535942564931,0.391120423507567,0.452507928457171,0.405199901358976,0.447303925610008,0.437377733345489,0.428396761959097,0.427884645400414,0.443047448456673,0.459286612889395,0.459663289555016,0.453958798755255,0.447235221578305,0.448784367318297,0.450420170982559,0.459140758295324,0.458339724695693],"mode":"lines","type":"scatter","name":"Paraguay","marker":{"color":"rgba(234,199,134,1)","line":{"color":"rgba(234,199,134,1)"}},"textfont":{"color":"rgba(234,199,134,1)"},"error_y":{"color":"rgba(234,199,134,1)"},"error_x":{"color":"rgba(234,199,134,1)"},"line":{"color":"rgba(234,199,134,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017"],"y":[0.532102756762995,0.517015534100536,0.517697634442979,0.521193036182613,0.533461523859743,0.528058477130575,0.524399965833142,0.537243333004787,0.558548736621619,0.556993757600225,0.582551022812638,0.568233459954469,0.569528845796058,0.570576883856083,0.581117598380664,0.590402917963633,0.578651225953585,0.571458576247808],"mode":"lines","type":"scatter","name":"Peru","marker":{"color":"rgba(219,192,155,1)","line":{"color":"rgba(219,192,155,1)"}},"textfont":{"color":"rgba(219,192,155,1)"},"error_y":{"color":"rgba(219,192,155,1)"},"error_x":{"color":"rgba(219,192,155,1)"},"line":{"color":"rgba(219,192,155,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017"],"y":[0.573664725735948,0.542179339119771,0.5776409838693,0.587385216055972,0.605176858261406,0.580348854129217,0.576970578980008,0.581687058056832,0.569808175639434,0.582554318312277,0.596592699091436,0.595177732148233,0.592352393861413,0.594449475355037,0.594618725524693,0.593549545230556,0.600503601181973,0.59619033257889],"mode":"lines","type":"scatter","name":"Uruguay","marker":{"color":"rgba(200,186,167,1)","line":{"color":"rgba(200,186,167,1)"}},"textfont":{"color":"rgba(200,186,167,1)"},"error_y":{"color":"rgba(200,186,167,1)"},"error_x":{"color":"rgba(200,186,167,1)"},"line":{"color":"rgba(200,186,167,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":["2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017"],"y":[0.526085613825444,0.398299363800208,0.453351650642095,0.436318959915291,0.454499354277952,0.440199188120483,0.400471860851625,0.388352150434379,0.399472895598471,0.390044714055669,0.399751560962452,0.400209866860627,0.3532669755216,0.356289958232584,0.342975985858377,0.213220989493934,0.205335235076246,0.198645254262852],"mode":"lines","type":"scatter","name":"Venezuela","marker":{"color":"rgba(179,179,179,1)","line":{"color":"rgba(179,179,179,1)"}},"textfont":{"color":"rgba(179,179,179,1)"},"error_y":{"color":"rgba(179,179,179,1)"},"error_x":{"color":"rgba(179,179,179,1)"},"line":{"color":"rgba(179,179,179,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-4a5d1dc7a7ce6773585c" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4a5d1dc7a7ce6773585c">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","150","151","152","153","154","155","156","157","158","159","160","161","162","163","164","165","166","167","168","169","170","171","172","173","174","175","176","177","178","179","180","181","182","183","184","185","186","187","188","189","190","191","192","193","194","195","196","197","198","199","200","201","202","203","204","205","206","207","208","209","210","211","212","213","214","215","216","217","218","219","220","221","222","223","224","225","226","227","228","229","230","231","232","233","234","235","236","237","238","239","240","241","242","243","244","245","246","247","248","249","250","251","252","253","254","255","256","257","258","259","260","261","262","263","264","265","266","267","268","269","270","271","272","273","274","275","276","277","278","279","280","281","282","283","284","285","286","287","288","289","290","291","292","293","294","295","296","297","298","299","300","301","302","303","304","305","306","307","308","309","310","311","312","313","314","315","316","317","318","319","320","321","322","323","324","325","326","327","328","329","330","331","332","333","334","335","336","337","338","339","340","341","342"],["Argentina","Argentina","Argentina","Argentina","Argentina","Argentina","Argentina","Argentina","Argentina","Argentina","Argentina","Argentina","Argentina","Argentina","Argentina","Argentina","Argentina","Argentina","Bolivia","Bolivia","Bolivia","Bolivia","Bolivia","Bolivia","Bolivia","Bolivia","Bolivia","Bolivia","Bolivia","Bolivia","Bolivia","Bolivia","Bolivia","Bolivia","Bolivia","Bolivia","Brazil","Brazil","Brazil","Brazil","Brazil","Brazil","Brazil","Brazil","Brazil","Brazil","Brazil","Brazil","Brazil","Brazil","Brazil","Brazil","Brazil","Brazil","Chile","Chile","Chile","Chile","Chile","Chile","Chile","Chile","Chile","Chile","Chile","Chile","Chile","Chile","Chile","Chile","Chile","Chile","Colombia","Colombia","Colombia","Colombia","Colombia","Colombia","Colombia","Colombia","Colombia","Colombia","Colombia","Colombia","Colombia","Colombia","Colombia","Colombia","Colombia","Colombia","Costa Rica","Costa Rica","Costa Rica","Costa Rica","Costa Rica","Costa Rica","Costa Rica","Costa Rica","Costa Rica","Costa Rica","Costa Rica","Costa Rica","Costa Rica","Costa Rica","Costa Rica","Costa Rica","Costa Rica","Costa Rica","Dominican Republic","Dominican Republic","Dominican Republic","Dominican Republic","Dominican Republic","Dominican Republic","Dominican Republic","Dominican Republic","Dominican Republic","Dominican Republic","Dominican Republic","Dominican Republic","Dominican Republic","Dominican Republic","Dominican Republic","Dominican Republic","Dominican Republic","Dominican Republic","Ecuador","Ecuador","Ecuador","Ecuador","Ecuador","Ecuador","Ecuador","Ecuador","Ecuador","Ecuador","Ecuador","Ecuador","Ecuador","Ecuador","Ecuador","Ecuador","Ecuador","Ecuador","El Salvador","El Salvador","El Salvador","El Salvador","El Salvador","El Salvador","El Salvador","El Salvador","El Salvador","El Salvador","El Salvador","El Salvador","El Salvador","El Salvador","El Salvador","El Salvador","El Salvador","El Salvador","Guatemala","Guatemala","Guatemala","Guatemala","Guatemala","Guatemala","Guatemala","Guatemala","Guatemala","Guatemala","Guatemala","Guatemala","Guatemala","Guatemala","Guatemala","Guatemala","Guatemala","Guatemala","Haiti","Haiti","Haiti","Haiti","Haiti","Haiti","Haiti","Haiti","Haiti","Haiti","Haiti","Haiti","Haiti","Haiti","Haiti","Haiti","Haiti","Haiti","Honduras","Honduras","Honduras","Honduras","Honduras","Honduras","Honduras","Honduras","Honduras","Honduras","Honduras","Honduras","Honduras","Honduras","Honduras","Honduras","Honduras","Honduras","Mexico","Mexico","Mexico","Mexico","Mexico","Mexico","Mexico","Mexico","Mexico","Mexico","Mexico","Mexico","Mexico","Mexico","Mexico","Mexico","Mexico","Mexico","Nicaragua","Nicaragua","Nicaragua","Nicaragua","Nicaragua","Nicaragua","Nicaragua","Nicaragua","Nicaragua","Nicaragua","Nicaragua","Nicaragua","Nicaragua","Nicaragua","Nicaragua","Nicaragua","Nicaragua","Nicaragua","Panama","Panama","Panama","Panama","Panama","Panama","Panama","Panama","Panama","Panama","Panama","Panama","Panama","Panama","Panama","Panama","Panama","Panama","Paraguay","Paraguay","Paraguay","Paraguay","Paraguay","Paraguay","Paraguay","Paraguay","Paraguay","Paraguay","Paraguay","Paraguay","Paraguay","Paraguay","Paraguay","Paraguay","Paraguay","Paraguay","Peru","Peru","Peru","Peru","Peru","Peru","Peru","Peru","Peru","Peru","Peru","Peru","Peru","Peru","Peru","Peru","Peru","Peru","Uruguay","Uruguay","Uruguay","Uruguay","Uruguay","Uruguay","Uruguay","Uruguay","Uruguay","Uruguay","Uruguay","Uruguay","Uruguay","Uruguay","Uruguay","Uruguay","Uruguay","Uruguay","Venezuela","Venezuela","Venezuela","Venezuela","Venezuela","Venezuela","Venezuela","Venezuela","Venezuela","Venezuela","Venezuela","Venezuela","Venezuela","Venezuela","Venezuela","Venezuela","Venezuela","Venezuela"],["2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017"],[0.276146589640462,0.290506719380935,0.906710098576828,0.696799917079594,0.647427940914092,0.426661019021272,0.335675634721348,0.282782139060343,0.283250722889907,0.276996536154635,0.24593351826173,0.228936692782066,0.217439986424034,0.228272508169289,0.308461157229484,0.24313334060343,0.324166259431278,0.27332525410859,0.512643120952844,0.415246390626815,0.459854224109636,0.541533656178774,0.548949659831391,0.54220790369987,0.46576031654866,0.317056686755708,0.305380854884304,0.219669088990732,0.264868860017402,0.276918016556018,0.219780770232179,0.229946921469179,0.202217880003026,0.183038305587236,0.219928431480618,0.286264087600311,0.208496790045236,0.241450220678003,0.262667820274974,0.268202939020581,0.201219013270675,0.146735136547369,0.122949703151853,0.117910122087077,0.120119335451127,0.121487950363998,0.109278684581417,0.108930038416275,0.119624036830708,0.120084651088556,0.122789322101375,0.151594013856709,0.17817420540899,0.151161072837262,0.183262770247755,0.0883217588464999,0.0815946688060282,0.0899271433332391,0.115296859819847,0.10896784174971,0.137982456473729,0.0876659524339731,0.0448364820082489,0.076450623996791,0.0919711894633818,0.052782564528915,0.0395423268836535,0.0411901499999272,0.0698172260556111,0.0688693547419468,0.0579820232703639,0.0561920751789361,0.264696442419059,0.236746663109517,0.22727078878168,0.25434800136207,0.229353514511182,0.179830835085785,0.16646400652314,0.149060460277672,0.155815044009875,0.155342835967779,0.14503133752793,0.152425551514364,0.139424157825751,0.139594941705207,0.147147242430434,0.194003588965882,0.234885455987811,0.228082314354295,0.180225366032814,0.183491388159304,0.179754848194028,0.20102905543477,0.20260272724385,0.21237979561452,0.204831179813861,0.195999287782139,0.185938617847847,0.167580619227993,0.12669707894353,0.146083682588437,0.170115966098156,0.177929137391738,0.206939382899071,0.217654393632473,0.216536760242544,0.211250651930768,0.127749841373822,0.133500176320403,0.150948863843094,0.303128888762599,0.36619746533754,0.141355061731681,0.148852172494859,0.147696554558486,0.138065167497549,0.129722007491709,0.135960351540666,0.156808818602034,0.179772373300171,0.203767885563726,0.196499541772735,0.189681348468887,0.190131506912865,0.202880801719652,0.625175514467699,0.465054293525148,0.379383907742066,0.34738590927947,0.296322531324062,0.266108690424937,0.249408651083694,0.219425262384878,0.189519647294588,0.0999024067294382,0.135425452572964,0.121157463117155,0.101388050242889,0.0812568215802518,0.100112136224827,0.0931572026102049,0.146412209060585,0.174354623032464,0.198285881086417,0.207263370881107,0.213509878135428,0.304342825954967,0.317286951422177,0.320128354845275,0.300687012112618,0.284731504148948,0.274700308605674,0.26056888802899,0.282276948490873,0.296476117268032,0.285682094039139,0.281227038962866,0.301182880240448,0.300552122216628,0.312380205162467,0.31946058113665,0.112905466802864,0.127338695411791,0.122305399626706,0.115475244816701,0.175279034919112,0.176395912921129,0.178379363416806,0.192224924144962,0.193009114692323,0.181924691434613,0.177288877416448,0.177439555592377,0.142154822513109,0.153007442559781,0.155214299010579,0.151123586633096,0.152229236288868,0.146084912942175,0.313883197743593,0.359968727706013,0.365834843297756,0.544630282148054,0.453215856436105,0.402021800961608,0.38195528332883,0.329646018417023,0.374270304144271,0.261634280703594,0.203753304111556,0.202617852207205,0.212531757020734,0.248871411848818,0.253140698930389,0.282264795052081,0.334962630238444,0.334271788400517,0.610026326356538,0.528692927876135,0.528083451063326,0.536036571774835,0.556951201041464,0.435128915343272,0.300696267322038,0.219441175633928,0.233874962369739,0.241475717548758,0.221294251184757,0.243274134566121,0.231199175436178,0.288222000487626,0.336453391463603,0.330759677669211,0.30514715488045,0.325893052108205,0.13517098980482,0.124944402323575,0.123495285387954,0.124003366208292,0.138641124382442,0.116215016542295,0.107283012422291,0.108061574436523,0.107561182497121,0.113946203708282,0.11964875871183,0.130665457141184,0.139065292748925,0.143570445209342,0.16047440085014,0.165127529369688,0.18877830345707,0.19430207048649,1,0.90414966168109,0.896081197763975,0.944917237249246,0.683115060195447,0.618250503747812,0.493013842633759,0.456002703009404,0.507567411572351,0.560576220668005,0.615876398856777,0.641150143682455,0.630772401501457,0.64332579661284,0.641680947649571,0.621672003937098,0.598851000054289,0.592308593881122,0.000919544910576316,0.00957453199904374,0.0105959273452641,0,0.00195436854649458,0.013209107192514,0.0311423016705219,0.0603235717190577,0.0563422640615363,0.0534134758323145,0.0263081457287495,0.0321232213461325,0.0346244527219015,0.0241026065241377,0.0142897162040579,0.0109880499109746,0.0140868686642888,0.0168208124473079,0.407936891547085,0.388523728919668,0.330089852412534,0.542863224914497,0.463323651534407,0.462119770992367,0.407031456977757,0.352827909119083,0.306739469581434,0.317932109674323,0.301027054447506,0.249733950079929,0.246103812912864,0.210635144658499,0.20741761761073,0.212107328284604,0.234825798492761,0.199352974868142,0.269950774929387,0.246255211979752,0.242044006246552,0.244683594208485,0.252470644795535,0.203739656083639,0.199632078167873,0.171025433970098,0.151932899364907,0.1574929242643,0.164456783800632,0.163088845197043,0.163735845378416,0.154833275860922,0.167554225436479,0.168146009744085,0.175950983088327,0.158518818595988,0.074152916589252,0.105085176766321,0.175342330343133,0.21027281588398,0.144150616338999,0.0776149188614191,0.113189681640822,0.1174810344227,0.0930778844309792,0.0890409961247567,0.0545190167923503,0.0769700998430275,0.0721457890280605,0.0622984110755475,0.0669432565236577,0.072196030900696,0.0634604822649004,0.0466165304321498,0.551504895616005,0.379029645473099,0.633549830764331,0.700634248120999,0.580725662592476,0.477769970016197,0.339664487993444,0.32099817219117,0.377992081702226,0.26937297157779,0.532017385592658,0.50596615508366,0.392114135463616,0.551036255226174,0.523256802453612,0.0880558715025252,0.0874058008237069,0.0862616831397707],[0.606918238993711,0.468553459119497,0.531446540880503,0.564465408805032,0.586477987421384,0.602201257861635,0.539308176100629,0.540880503144654,0.525157232704403,0.49685534591195,0.429245283018868,0.474842767295598,0.509433962264151,0.477987421383648,0.457547169811321,0.482704402515723,0.454402515723271,0.498427672955975,0.515723270440252,0.462264150943396,0.358490566037736,0.407232704402516,0.49685534591195,0.512578616352201,0.550314465408805,0.495283018867925,0.492138364779874,0.553459119496855,0.529874213836478,0.507861635220126,0.511006289308176,0.514150943396226,0.477987421383648,0.388364779874214,0.393081761006289,0.385220125786163,0.476415094339623,0.413522012578616,0.394654088050315,0.342767295597484,0.377358490566038,0.344339622641509,0.314465408805032,0.345911949685535,0.34748427672956,0.34748427672956,0.419811320754717,0.400943396226415,0.408805031446541,0.39622641509434,0.361635220125786,0.286163522012579,0.25314465408805,0.303459119496855,0.770440251572327,0.676100628930818,0.723270440251572,0.767295597484277,0.765723270440252,0.789308176100629,0.775157232704403,0.765723270440252,0.75314465408805,0.726415094339623,0.797169811320755,0.825471698113208,0.787735849056604,0.781446540880503,0.751572327044025,0.734276729559748,0.734276729559748,0.705974842767296,0.614779874213837,0.529874213836478,0.624213836477988,0.639937106918239,0.658805031446541,0.638364779874214,0.644654088050314,0.655660377358491,0.671383647798742,0.679245283018868,0.731132075471698,0.757861635220126,0.778301886792453,0.806603773584906,0.790880503144654,0.772012578616352,0.75314465408805,0.764150943396226,0.75,0.605345911949686,0.59748427672956,0.616352201257862,0.588050314465409,0.594339622641509,0.64937106918239,0.69811320754717,0.680817610062893,0.666666666666667,0.635220125786163,0.654088050314465,0.658805031446541,0.64622641509434,0.635220125786163,0.621069182389937,0.624213836477988,0.625786163522013,0.740566037735849,0.669811320754717,0.647798742138365,0.680817610062893,0.624213836477988,0.661949685534591,0.674528301886792,0.668238993710692,0.655660377358491,0.64937106918239,0.657232704402516,0.666666666666667,0.553459119496855,0.636792452830189,0.657232704402516,0.64937106918239,0.650943396226415,0.65251572327044,0.273584905660377,0.284591194968554,0.495283018867925,0.536163522012579,0.531446540880503,0.55188679245283,0.55188679245283,0.534591194968553,0.540880503144654,0.562893081761006,0.591194968553459,0.589622641509434,0.605345911949686,0.606918238993711,0.550314465408805,0.567610062893082,0.561320754716981,0.559748427672956,0.718553459119497,0.632075471698113,0.606918238993711,0.636792452830189,0.671383647798742,0.729559748427673,0.767295597484277,0.809748427672956,0.811320754716981,0.737421383647799,0.718553459119497,0.704402515723271,0.639937106918239,0.559748427672956,0.617924528301887,0.605345911949686,0.591194968553459,0.605345911949686,0.592767295597484,0.534591194968553,0.60377358490566,0.605345911949686,0.614779874213837,0.632075471698113,0.64937106918239,0.661949685534591,0.65251572327044,0.627358490566038,0.65251572327044,0.64937106918239,0.669811320754717,0.676100628930818,0.665094339622642,0.655660377358491,0.639937106918239,0.632075471698113,1,0.767295597484277,0.734276729559748,0.715408805031447,0.685534591194969,0.767295597484277,0.687106918238994,0.69811320754717,0.808176100628931,0.858490566037736,0.663522012578617,0.70125786163522,0.616352201257862,0.707547169811321,0.707547169811321,0.709119496855346,0.705974842767296,0.688679245283019,0.688679245283019,0.635220125786163,0.628930817610063,0.616352201257862,0.64937106918239,0.680817610062893,0.726415094339623,0.740566037735849,0.710691823899371,0.671383647798742,0.688679245283019,0.685534591194969,0.655660377358491,0.641509433962264,0.663522012578617,0.702830188679245,0.682389937106918,0.696540880503145,0.665094339622642,0.591194968553459,0.671383647798742,0.674528301886792,0.688679245283019,0.671383647798742,0.676100628930818,0.654088050314465,0.647798742138365,0.658805031446541,0.691823899371069,0.669811320754717,0.707547169811321,0.718553459119497,0.669811320754717,0.69496855345912,0.676100628930818,0.718553459119497,0.683962264150943,0.619496855345912,0.682389937106918,0.69811320754717,0.721698113207547,0.761006289308176,0.811320754716981,0.806603773584906,0.773584905660377,0.735849056603774,0.742138364779874,0.732704402515723,0.75,0.756289308176101,0.740566037735849,0.732704402515723,0.710691823899371,0.712264150943396,0.691823899371069,0.660377358490566,0.647798742138365,0.666666666666667,0.669811320754717,0.674528301886792,0.685534591194969,0.690251572327044,0.671383647798742,0.680817610062893,0.69811320754717,0.715408805031447,0.712264150943396,0.715408805031447,0.674528301886792,0.704402515723271,0.69496855345912,0.690251572327044,0.501572327044025,0.482704402515723,0.466981132075472,0.444968553459119,0.39937106918239,0.485849056603774,0.504716981132076,0.517295597484277,0.518867924528302,0.558176100628931,0.599056603773585,0.638364779874214,0.616352201257862,0.599056603773585,0.578616352201258,0.558176100628931,0.575471698113208,0.592767295597484,0.775157232704403,0.672955974842767,0.712264150943396,0.713836477987421,0.735849056603774,0.699685534591195,0.677672955974843,0.680817610062893,0.738993710691824,0.734276729559748,0.816037735849057,0.775157232704403,0.773584905660377,0.789308176100629,0.787735849056604,0.794025157232705,0.75314465408805,0.745283018867925,0.599056603773585,0.531446540880503,0.588050314465409,0.594339622641509,0.715408805031447,0.621069182389937,0.627358490566038,0.616352201257862,0.592767295597484,0.611635220125786,0.685534591194969,0.687106918238994,0.668238993710692,0.660377358490566,0.625786163522013,0.621069182389937,0.682389937106918,0.679245283018868,0.487421383647799,0.424528301886792,0.419811320754717,0.309748427672956,0.427672955974843,0.438679245283019,0.405660377358491,0.400943396226415,0.361635220125786,0.492138364779874,0.268867924528302,0.29559748427673,0.24685534591195,0.113207547169811,0.0880503144654088,0.0125786163522013,0,0.00157232704402519],[0.71268307884076,0.435961358678716,0.373013399813026,0.377999376752883,0.468993455905266,0.491741975693362,0.466500467435338,0.473979432845123,0.474291056403864,0.474291056403864,0.487067622312247,0.457463384231848,0.418822062947959,0.422561545652851,0.457151760673107,0.505141788719227,0.545652851355562,0.547210969149268,0.403864132128389,0.329074478030539,0.310688688064818,0.357432221875974,0.367092552196946,0.444063571205983,0.434403240885011,0.380803988781552,0.358990339669679,0.357432221875974,0.446868183234653,0.493611717045809,0.504206918043004,0.534122779682144,0.462137737612964,0.344032408850109,0.344032408850109,0.283889062013088,0.703334372078529,0.638516671860393,0.627298223745715,0.627609847304456,0.516671860392646,0.595512620754129,0.594577750077906,0.61670302274852,0.605172951075101,0.607977563103771,0.634153942038018,0.651604861327516,0.641632907447803,0.579619819258336,0.552196946089124,0.577438454347149,0.607977563103771,0.583982549080711,0.885945777500779,0.827983795574946,0.861327516360237,0.876597070738548,0.818011841695232,0.911187285758803,0.95512620754129,0.970707385478342,0.978186350888127,1,0.971330632595824,0.97008413836086,0.955749454658772,0.93113119351823,0.914303521346214,0.906512932377688,0.9043315674665,0.902773449672795,0.418822062947959,0.405733873480835,0.388594577750078,0.367404175755687,0.402617637893425,0.499220941103147,0.520722966656279,0.531318167653475,0.491741975693362,0.478030539108757,0.480211904019944,0.454658772203179,0.44904954814584,0.436896229354939,0.430040511062636,0.43720785291368,0.44001246494235,0.440635712059832,0.94016827672172,0.882829541913369,0.824867559987535,0.902773449672795,0.905889685260206,0.995014023060143,0.974446868183235,0.959488937363665,0.926768463695855,0.919601121844811,0.882829541913369,0.852913680274229,0.869741352446245,0.884387659707074,0.883764412589592,0.874727329386102,0.895917731380492,0.864443751947647,0.588578996572141,0.467746961670302,0.523215955126208,0.476784044873792,0.368962293549392,0.539732003739483,0.513555624805235,0.504206918043004,0.534746026799626,0.5269554378311,0.498286070426924,0.495481458398255,0.486755998753506,0.505453412277968,0.501402306014335,0.452789030850732,0.462137737612964,0.476472421315051,0.382985353692739,0.258335930196323,0.325958242443129,0.289809909629168,0.235275786849486,0.337488314116547,0.314116547210969,0.300405110626363,0.333125584294173,0.315674665004674,0.334372078529137,0.355874104082269,0.448737924587099,0.408850109068246,0.367404175755687,0.33842318479277,0.298535369273917,0.310065440947336,0.572452477407292,0.551573698971642,0.544406357120598,0.539108756622001,0.51511374259894,0.548457463384232,0.547210969149268,0.485821128077283,0.499532564661889,0.447803053910876,0.416017450919289,0.430040511062636,0.439077594266127,0.499844188220629,0.447491430352135,0.424431287005298,0.402929261452166,0.397631660953568,0.361093798691181,0.281084449984419,0.279214708631973,0.336553443440324,0.383608600810221,0.652539732003739,0.617637893424743,0.591461514490496,0.542224992209411,0.48800249298847,0.472421315051418,0.504206918043004,0.556559675911499,0.583047678404487,0.590215020255531,0.632595824244313,0.592084761607978,0.585229043315675,0.457047886153527,0.173885945777501,0.159862885634154,0.200062324711748,0.118105328762854,0.204113430975382,0.327724109275995,0.154773034174717,0.208268411758596,0.165160486132752,0.103459021502026,0.10190090370832,0.125584294172639,0.141477095668433,0.190090370832035,0.190090370832035,0.181988158304768,0.178248675599875,0.4265347460268,0.269242754752259,0.315674665004674,0.352134621377376,0.359613586787161,0.419756933624182,0.532253038329698,0.570894359613587,0.521346213773761,0.479588656902462,0.531941414770957,0.531318167653475,0.440635712059832,0.495481458398255,0.528201932066064,0.502337176690558,0.39825490807105,0.445933312558429,0.530694920535992,0.435649735119975,0.518229978186351,0.476472421315051,0.565596759114989,0.704580866313493,0.670925521969461,0.642256154565285,0.669367404175756,0.590215020255531,0.596447491430352,0.591461514490496,0.537239015269554,0.536615768152072,0.478342162667498,0.471798067933936,0.44904954814584,0.453100654409473,0.501713929573076,0.364911187285759,0.357120598317233,0.320972265503272,0.314116547210969,0.409473356185728,0.46120286693674,0.463072608289187,0.484574633842319,0.472732938610159,0.434714864443752,0.489872234340916,0.531318167653475,0.481770021813649,0.408226861950763,0.408226861950763,0.394827048924899,0.402617637893425,0.755297600498598,0.596759114989093,0.580554689934559,0.575257089435961,0.585540666874416,0.665004674353381,0.675288251791835,0.695543783110003,0.706138984107198,0.6765347460268,0.665004674353381,0.699594889373637,0.687753194141477,0.685883452789031,0.6765347460268,0.690557806170147,0.676846369585541,0.660953568089748,0.440947335618573,0.308818946712371,0.196011218448115,0.248052352757868,0.168588345278903,0.243689622935494,0.237457151760673,0.232471174820816,0.258959177313805,0.267684636958554,0.286070426924276,0.288875038952945,0.287628544717981,0.293549392334061,0.315363041445933,0.325646618884388,0.318479277033344,0.324088501090682,0.48208164537239,0.527578684948582,0.487067622312247,0.492053599252104,0.49392334060455,0.543159862885634,0.552508569647865,0.612651916484886,0.639451542536616,0.622312246805859,0.62574010595201,0.587410408226862,0.587410408226862,0.568089747584917,0.581801184169523,0.608600810221253,0.583982549080711,0.573075724524774,0.863586787161109,0.766282330944219,0.77251480211904,0.762231224680586,0.769086942972889,0.823932689311312,0.757868494858211,0.774696167030227,0.767840448737925,0.784044873792459,0.803365534434403,0.759738236210658,0.76347771891555,0.775631037706451,0.800249298846993,0.788719227173574,0.756622000623247,0.755998753505765,0.453100654409473,0.162667497662823,0.118416952321596,0.0925521969460891,0.148021190401994,0.160174509192895,0.155188532253038,0.106886880648177,0.118416952321596,0.0601433468370209,0.0582736054845746,0.0448737924587099,0.0177625428482393,0,0.00436272982237458,0.00934870676223123,0.00966033032097226,0.00903708320349017],[0.772519083969465,0.783206106870229,0.778625954198473,0.789312977099236,0.793384223918575,0.800101781170483,0.833893129770992,0.844580152671756,0.853944020356234,0.855979643765903,0.870636132315521,0.879287531806616,0.883358778625954,0.888753180661577,0.892111959287532,0.900152671755725,0.902188295165394,0.911552162849873,0.342798982188295,0.358982188295165,0.377099236641221,0.394605597964377,0.408142493638677,0.420966921119593,0.441119592875318,0.451297709923664,0.473384223918575,0.49089058524173,0.507684478371501,0.523155216284987,0.537302798982188,0.560712468193384,0.575470737913486,0.592875318066158,0.60824427480916,0.624936386768448,0.587480916030534,0.604885496183206,0.620254452926208,0.623104325699745,0.633180661577608,0.64529262086514,0.654758269720102,0.666157760814249,0.688854961832061,0.697608142493638,0.714300254452926,0.725699745547074,0.737099236641221,0.767022900763359,0.775063613231552,0.78117048346056,0.787888040712468,0.79796437659033,0.807022900763359,0.825648854961832,0.835725190839695,0.847735368956743,0.865750636132316,0.877760814249364,0.882544529262087,0.905139949109414,0.922442748091603,0.93913486005089,0.918066157760814,0.938015267175573,0.950025445292621,0.96793893129771,0.977302798982188,0.985954198473282,0.995318066157761,1,0.615368956743002,0.62412213740458,0.634198473282443,0.638982188295165,0.661577608142494,0.684885496183206,0.698218829516539,0.719491094147583,0.734860050890585,0.744223918575063,0.754910941475827,0.768956743002545,0.774351145038168,0.791653944020356,0.801017811704835,0.809058524173028,0.821068702290076,0.8264631043257,0.77384223918575,0.779847328244274,0.785852417302799,0.793893129770992,0.801221374045802,0.80854961832061,0.81852417302799,0.833180661577608,0.845801526717557,0.849160305343511,0.857201017811705,0.877760814249364,0.889770992366412,0.895776081424936,0.910432569974555,0.915826972010178,0.921832061068702,0.929872773536896,0.532213740458016,0.543613231552163,0.556335877862595,0.561730279898219,0.571806615776081,0.589821882951654,0.603155216284987,0.61852417302799,0.628600508905852,0.635318066157761,0.648651399491094,0.658727735368957,0.668091603053435,0.679491094147583,0.699440203562341,0.715419847328244,0.728142493638677,0.73618320610687,0.622595419847328,0.635318066157761,0.648040712468194,0.656081424936386,0.66880407124682,0.679491094147582,0.687531806615776,0.706157760814249,0.716844783715012,0.722239185750636,0.731603053435114,0.770076335877862,0.771501272264631,0.790127226463104,0.792875318066158,0.807531806615776,0.810992366412214,0.816386768447837,0.462493638676845,0.473893129770992,0.487226463104326,0.501272264631043,0.513282442748091,0.52529262086514,0.539949109414758,0.542697201017812,0.552773536895674,0.556844783715013,0.576793893129771,0.576895674300255,0.588295165394402,0.59501272264631,0.598473282442748,0.602544529262087,0.609262086513995,0.619338422391858,0.358066157760814,0.377506361323155,0.394910941475827,0.408346055979643,0.418422391857506,0.431857506361323,0.44854961832061,0.466564885496183,0.48264631043257,0.492722646310432,0.507480916030534,0.522239185750636,0.536284987277354,0.548396946564885,0.590229007633588,0.603664122137405,0.609058524173028,0.61648854961832,0,0.00875318066157741,0.0175063613231551,0.0275826972010177,0.0350127226463102,0.0471246819338422,0.0598473282442748,0.0732824427480916,0.0853944020356233,0.0981170483460558,0.104936386768448,0.122340966921119,0.135776081424936,0.150534351145038,0.16529262086514,0.178727735368956,0.193486005089058,0.206921119592875,0.429007633587786,0.440407124681934,0.451094147582697,0.463816793893129,0.477862595419847,0.489872773536896,0.503918575063613,0.518575063613231,0.519389312977099,0.528142493638677,0.53882951653944,0.548905852417302,0.551653944020356,0.561730279898219,0.569770992366412,0.583104325699746,0.593791348600509,0.601832061068702,0.700763358778626,0.712875318066158,0.724885496183206,0.736895674300254,0.746870229007633,0.752875318066157,0.763460559796437,0.764783715012722,0.765394402035623,0.762035623409669,0.762035623409669,0.769262086513995,0.777201017811705,0.772519083969465,0.777811704834605,0.784427480916031,0.791043256997456,0.79236641221374,0.42178117048346,0.439185750636132,0.455267175572519,0.465343511450381,0.478066157760814,0.489465648854962,0.497506361323155,0.511552162849873,0.522239185750636,0.529669211195929,0.541679389312977,0.554402035623409,0.568447837150127,0.57913486005089,0.596437659033079,0.605801526717557,0.61852417302799,0.627888040712468,0.735572519083969,0.741577608142494,0.753587786259542,0.76030534351145,0.768956743002545,0.778320610687023,0.789007633587786,0.80030534351145,0.809669211195929,0.815063613231552,0.821781170483461,0.833791348600509,0.845801526717557,0.856488549618321,0.865852417302799,0.873893129770992,0.887226463104326,0.894554707379135,0.537404580152672,0.554096692111959,0.571399491094147,0.574147582697201,0.589516539440203,0.597557251908397,0.60030534351145,0.610992366412213,0.626972010178117,0.628396946564886,0.650992366412213,0.661679389312977,0.665750636132315,0.685699745547074,0.693740458015267,0.705750636132315,0.707786259541984,0.717150127226463,0.601221374045801,0.621272264631043,0.62941475826972,0.634198473282443,0.651603053435114,0.665648854961832,0.667786259541985,0.684478371501272,0.70381679389313,0.713893129770992,0.723969465648855,0.747277353689567,0.753384223918575,0.770076335877862,0.787379134860051,0.790839694656488,0.801526717557252,0.808956743002544,0.757862595419847,0.765903307888041,0.774656488549618,0.782697201017812,0.79206106870229,0.798778625954198,0.809465648854962,0.818218829516539,0.825547073791349,0.845496183206107,0.84295165394402,0.856895674300255,0.865547073791349,0.879491094147582,0.885496183206107,0.892213740458015,0.899541984732824,0.902900763358779,0.612315521628499,0.626972010178117,0.641628498727735,0.64234096692112,0.661577608142493,0.684173027989822,0.701374045801527,0.724580152671756,0.739847328244275,0.73852417302799,0.739847328244275,0.754402035623409,0.756335877862595,0.760916030534351,0.756234096692112,0.742900763358778,0.724274809160305,0.697709923664122],[0.592066747861099,0.494556911012344,0.647448998367208,0.607144419934186,0.624070902039829,0.580176508436688,0.543844352007077,0.535555556930469,0.534160758088602,0.526030645559088,0.508220638977091,0.510132594029032,0.507263697565524,0.504393663966841,0.528818011750361,0.532783050898526,0.556602480418876,0.557629014765926,0.443757376427445,0.391391801973979,0.376533178713353,0.42520104510541,0.455260012894741,0.479954253094412,0.472899403929449,0.411110351082212,0.407473445813108,0.405362753901323,0.437323933865008,0.450386646276735,0.443074194141387,0.459733278185233,0.429453444228281,0.377077703094429,0.391321719036544,0.395077415542003,0.49393179312348,0.474593600325055,0.476218646249303,0.465421101905567,0.432107506451742,0.432970000202037,0.421687782938723,0.436670713833845,0.440407881271962,0.443639483172742,0.46938605045677,0.47179451037932,0.476790303091568,0.465738446551147,0.452921275386959,0.449091618419249,0.45679611582832,0.45914177950129,0.661667925021055,0.604513759578524,0.625479454064383,0.645388795128202,0.641195652021912,0.671806029464626,0.687702606495377,0.682309139365495,0.674652558769007,0.685500144596826,0.694634447785194,0.696588417044639,0.683263268972913,0.680426703924093,0.67824896835701,0.673903303788166,0.672977096613593,0.666235091904757,0.478416834080964,0.449119221957853,0.468569419073047,0.47516786808279,0.48808844799841,0.500575513061588,0.507514972686568,0.513882524859305,0.513450179598141,0.514210644167617,0.52782156462385,0.533475675485053,0.535281684450553,0.543687222166352,0.54227151708564,0.553070636167236,0.562277819327072,0.564833018534013,0.661058970485071,0.612878542566658,0.596989775553481,0.628511959034105,0.624441025253817,0.652570764909196,0.661793322551869,0.671695523567645,0.659831554581038,0.650752178270746,0.625486941113692,0.632711556856624,0.647108335589338,0.651079823404522,0.659089122812345,0.657319469354672,0.664625097292432,0.657838335234331,0.497277154034957,0.453667922574396,0.469574859742566,0.505615205899376,0.48279505278525,0.483214658489352,0.485022828867968,0.484666659835043,0.489268020140379,0.48534164516574,0.4850326314653,0.494421169758978,0.472019773650992,0.506376211204866,0.513643688937982,0.501815323957563,0.50783878359773,0.517013038103004,0.476085298417036,0.410824871211946,0.462166470380328,0.457360191464401,0.432962232575218,0.458743722785474,0.450735949340817,0.440144832198511,0.445092629612107,0.425177334811439,0.448148888272669,0.45918263614668,0.481743289761076,0.471788099026328,0.452676523863869,0.451680564227958,0.454315174865924,0.465138815025148,0.487946364072513,0.466201417830464,0.463015234338516,0.49537907500955,0.504266696141988,0.53085954688058,0.53878567204023,0.53074956522925,0.534581791220055,0.500659527325669,0.498410437914858,0.501953704588548,0.488247990154477,0.48395809437569,0.491268030334304,0.483218462608425,0.478941630420522,0.48544414410794,0.356208179713086,0.33013017542198,0.350051158660042,0.366430164046588,0.398022475450169,0.473217155746076,0.473484486086137,0.478050252416558,0.467599035151186,0.447502080324888,0.45242670794221,0.463314182142102,0.47620270161417,0.490138174114993,0.500188166630585,0.510760977593326,0.498327407247028,0.494969494393571,0.44273277097428,0.327475862907342,0.319370204953703,0.371921027273067,0.32296712476006,0.355138877838777,0.364158409772023,0.31395367572175,0.369027304641855,0.345850595305034,0.268917681240161,0.282029396117966,0.272561083469043,0.312107507118402,0.329017715109721,0.340050599527104,0.354102909099891,0.352030207219072,0.538561987813536,0.468390733274123,0.48094577031519,0.492085047075801,0.510949613107716,0.506394058141811,0.515820743763743,0.512369159149149,0.496325578254993,0.48014762897216,0.495186106944543,0.502258186457967,0.469787302218714,0.496735793186591,0.524487082118674,0.52975784218469,0.494895837164732,0.51754982655962,0.50793090218552,0.466166106015792,0.509498601889063,0.502974940927598,0.534946839447021,0.561263712180172,0.554442430779752,0.542297373582249,0.547530432711716,0.531250469705006,0.54248894323073,0.540300094725098,0.540263123910376,0.542814689112594,0.52160989727674,0.529080407919693,0.526242934382796,0.5395806490573,0.65186434105187,0.581935863737223,0.597714727190161,0.607336555437517,0.549248969593694,0.569548949524169,0.565760956402659,0.559307811933342,0.571991534206421,0.574706856769467,0.583602254348345,0.604532204040626,0.620134601576265,0.61512999666337,0.596727876592316,0.592101198780286,0.580723511476637,0.583769605857603,0.545903390966053,0.502072153405299,0.498134286419432,0.50055727490352,0.506565774794543,0.532765673529928,0.545243194561278,0.561606067666889,0.560883526790852,0.55645736128839,0.55280179952819,0.570229566087931,0.570110831131083,0.570470853490734,0.557801295355112,0.569960375393846,0.568282063703319,0.565645165060809,0.471965283590589,0.433535942564931,0.391120423507567,0.452507928457171,0.405199901358976,0.447303925610008,0.437377733345489,0.428396761959097,0.427884645400414,0.443047448456673,0.459286612889395,0.459663289555016,0.453958798755255,0.447235221578305,0.448784367318297,0.450420170982559,0.459140758295324,0.458339724695693,0.532102756762995,0.517015534100536,0.517697634442979,0.521193036182613,0.533461523859743,0.528058477130575,0.524399965833142,0.537243333004787,0.558548736621619,0.556993757600225,0.582551022812638,0.568233459954469,0.569528845796058,0.570576883856083,0.581117598380664,0.590402917963633,0.578651225953585,0.571458576247808,0.573664725735948,0.542179339119771,0.5776409838693,0.587385216055972,0.605176858261406,0.580348854129217,0.576970578980008,0.581687058056832,0.569808175639434,0.582554318312277,0.596592699091436,0.595177732148233,0.592352393861413,0.594449475355037,0.594618725524693,0.593549545230556,0.600503601181973,0.59619033257889,0.526085613825444,0.398299363800208,0.453351650642095,0.436318959915291,0.454499354277952,0.440199188120483,0.400471860851625,0.388352150434379,0.399472895598471,0.390044714055669,0.399751560962452,0.400209866860627,0.3532669755216,0.356289958232584,0.342975985858377,0.213220989493934,0.205335235076246,0.198645254262852]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Countries<\/th>\n      <th>Year<\/th>\n      <th>est_macro<\/th>\n      <th>Regulation<\/th>\n      <th>idg<\/th>\n      <th>des<\/th>\n      <th>resilience<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":[3,4,5,6,7],"render":"function(data, type, row, meta) { return DTWidget.formatRound(data, 2, 3, \",\", \".\"); }"},{"className":"dt-right","targets":[3,4,5,6,7]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render"],"jsHooks":[]}</script>
 </div>
 
 
 
+</div>
+</div>
 
 </div>
 
@@ -843,6 +539,32 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3,h4,h5",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = false;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

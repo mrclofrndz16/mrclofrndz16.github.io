@@ -1,20 +1,27 @@
 ---
-title: "Datos para la construccion del indice de resliencia"
+title: "Construccion de un índice de resliencia para América Latina"
 abstract: |
-  El siguiente archivo interactua como una pagina WEB convencional. Actua como borrador para describir las principales variables para la construccion del indice de vulnerabilidad y resilencia de America. el paper de referencia es [Briguglio. L, Cordina. G, Farrugia. N, Vella. S.(2008)](https://www.researchgate.net/profile/Lino_Briguglio/publication/46527233_Economic_Vulnerability_and_Resilience_Concepts_and_Measurements/links/0deec526adc947c677000000/Economic-Vulnerability-and-Resilience-Concepts-and-Measurements.pdf)
-output: html_document
+  Esta pagina resume el procedimiento y las variables utilizadas para la construción del índice de reslicencia para América Latina siguiendo las referencias de [Briguglio. L, Cordina. G, Farrugia. N, Vella. S.(2008)](https://www.researchgate.net/profile/Lino_Briguglio/publication/46527233_Economic_Vulnerability_and_Resilience_Concepts_and_Measurements/links/0deec526adc947c677000000/Economic-Vulnerability-and-Resilience-Concepts-and-Measurements.pdf).
+output: 
+  html_document:
+    toc: yes
+    toc_depth: 5
+    toc_float:
+      smooth_scroll: no
+      collapse: no
+    number_sections: yes
 ---
 
 ```{r Librerias, message=FALSE, warning=FALSE ,echo=FALSE}
 rm(list = ls())
-
+options(digits = 2,scipen = 4)
 library(readxl)
 library(readr)
 library(tidyverse)
 library(readr)
 library(data.table)
 library(dygraphs)
-
+library(DT)
 long <-  function(x){x %>%  
     melt(id.vars = c("Countries")) %>% 
     rename("Year" = `variable`,x=`value`) %>% 
@@ -26,35 +33,42 @@ std <- function(x){
   (x-rg[1])/(rg[2]-rg[1])
 }
 
+
+
 ```
-# Formula para la estandarizacion de las variables `(0-1)`
-Para todos los componentes es necesario aplicar la siguiente formula de estandarizacion.
+# Conceptos iniciales
+El índice de resilencia propuesto por  Briguglio. L, Cordina. G, Farrugia. N, Vella. S.(2008) esta formado por el promedio simple de cuatro componentes:
+
+  1. Estabilidad Macroeconomica
+  2. Eficiiencia Microeconomica
+  3. Buen Gobierno
+  4. Desarrollo Social
+
+Para todos los componentes es necesario aplicar la siguiente fórmula de estandarización.
 $$
   \mathrm{XE_{i,j}}=\frac{X_{ij}-MinX_{ij}}{MaxX_{ij}-MinX_{ij}}\
 $$
-Los valores estandarizados toman un rango entre 0-1, que representaria `Min(X) y Max(X)`, respectivamente.
+Los valores estandarizados toman un rango entre 0-1.
 
 ```{r lista de paises ,echo=FALSE}
 
-pais <- read_excel("Paises.xlsx", range = "A1:A37")
-
+pais <- read_excel("Paises.xlsx", range = "L1:L22")
+pais <- rename(pais,Countries='America Latina')
 ver_pais <- function(x){
   write_csv( as.data.frame(table(x$`Countries`)),"x.csv")
   }
 
 ```
-# **Indice de resilencia**
-Esta formado por el promedio simple de cuatro componentes: `Estabilidad Macroeconomica`,`Eficiiencia Microeconomica`,`Bue Gobierno` y `Desarrollo Social`
 
-# **Revision de variables**
 
-## 1 Estabilidad Macroeconomica 
+# Descripcion de los componentes
+
+##  Estabilidad Macroeconomica 
 Compuesto por tres subcomponentes,$\frac{DeficitFiscal}{PIB}$, $\sum(Desempleo,Inflacion)$,$\frac{Deuda Externa}{PIB}$
 
-### 1.1 Fiscal Deficit 
-El deficit fiscal fue obtenida de la pagina de [WEO](https://www.imf.org/external/pubs/ft/weo/2019/02/weodata/weoselser.aspx?c=512%2c668%2c914%2c672%2c612%2c946%2c614%2c137%2c311%2c546%2c213%2c674%2c911%2c676%2c314%2c548%2c193%2c556%2c122%2c678%2c912%2c181%2c313%2c867%2c419%2c682%2c513%2c684%2c316%2c273%2c913%2c868%2c124%2c921%2c339%2c948%2c638%2c943%2c514%2c686%2c218%2c688%2c963%2c518%2c616%2c728%2c223%2c836%2c516%2c558%2c918%2c138%2c748%2c196%2c618%2c278%2c624%2c692%2c522%2c694%2c622%2c962%2c156%2c142%2c626%2c449%2c628%2c564%2c228%2c565%2c924%2c283%2c233%2c853%2c632%2c288%2c636%2c293%2c634%2c566%2c238%2c964%2c662%2c182%2c960%2c359%2c423%2c453%2c935%2c968%2c128%2c922%2c611%2c714%2c321%2c862%2c243%2c135%2c248%2c716%2c469%2c456%2c253%2c722%2c642%2c942%2c643%2c718%2c939%2c724%2c734%2c576%2c644%2c936%2c819%2c961%2c172%2c813%2c132%2c726%2c646%2c199%2c648%2c733%2c915%2c184%2c134%2c524%2c652%2c361%2c174%2c362%2c328%2c364%2c258%2c732%2c656%2c366%2c654%2c144%2c336%2c146%2c263%2c463%2c268%2c528%2c532%2c923%2c944%2c738%2c176%2c578%2c534%2c537%2c536%2c742%2c429%2c866%2c433%2c369%2c178%2c744%2c436%2c186%2c136%2c925%2c343%2c869%2c158%2c746%2c439%2c926%2c916%2c466%2c664%2c112%2c826%2c111%2c542%2c298%2c967%2c927%2c443%2c846%2c917%2c299%2c544%2c582%2c941%2c474%2c446%2c754%2c666%2c698&t=194) del FMI.
-
-Se toma Como deficit fiscal al saldo ajustado en función del ciclo, saldo fiscal ajustado por los efectos del ciclo económico. Por lo tanto se mide en porcentajes del PIB potencial. **No hay los datos para algunos paises como Belize,Bolivia, Honduras y otros**
+### Fiscal Deficit 
+Se toma Como deficit fiscal al saldo ajustado en función del ciclo, saldo fiscal ajustado por los efectos del ciclo económico. Por lo tanto se mide en porcentajes del PIB potencial.
+Los datos fueron obtenidos de la página del FMI.
 
 ```{r Obtencion de datos y visualizacion,message=FALSE, warning=FALSE,echo=FALSE}
 df <- read_csv("weo.csv")
@@ -64,7 +78,7 @@ df <- df %>%
   mutate_at(.vars = 2:26,.funs = as.double) %>% 
   rename("Countries"=Country) 
 
-df
+DT::datatable(df)
 ```
 
 ```{r Formato long y estandarizacion df,echo=FALSE,warning=FALSE}
@@ -72,8 +86,8 @@ df <- long(df)
 df <- rename(df,df=x)
 ```
 
-### 1.2 Unemployment rate, Inflation, 
-Los datos fueron obtenidos de [WDI](https://databank.worldbank.org/source/world-development-indicators) del *Banco Mundial*
+### Unemployment rate, Inflation, 
+Los datos fueron obtenidos de WDI del Banco Mundial.
 
 ```{r Obtencion de datos y visualizacion Unem & Inf, message=FALSE,warning=FALSE,echo=FALSE}
 bm <- read_csv("wdi.csv")
@@ -90,50 +104,49 @@ unemp <- bm %>% filter( Series=="SL.UEM.TOTL.ZS")%>% select(Countries,num_range(
 ed <-bm %>%  filter(Series=="DT.DOD.DECT.GN.ZS")%>% select(Countries,num_range("",2000:2020))
 rm(list = "bm")
 ```
-#### 1.2.1 Tasa de inflacion enlazada.
-**La inflacion medida por el cambio en el IPC no hay para algunos paises en la WDI & ISF, como por ejemplo, Argentina.** Por eso se opta por el momento por la inflacion medidad por el deflactor del PIB del BM que garantiza la comparabilidad de las series entre paises. **Ojo con los datos de Ecuador**
 
->Se considera la inflación medida por la tasa de crecimiento anual del deflactor implícito del PIB que muestra la tasa de cambio de precios en la economía en su conjunto. **Esta serie se ha vinculado para producir una serie de tiempo consistente para contrarrestar las interrupciones en la serie a lo largo del tiempo debido a cambios en los años base, datos fuente y metodologías**.-[WDI](https://databank.worldbank.org/source/world-development-indicators) 
+#### Tasa de inflacion enlazada.
+
+La inflación medida por el deflactor del PIB calculado por el BM garantiza la comparabilidad de las series entre paises. Es una serie de tiempo consistente para contrarrestar las interrupciones en la serie a lo largo del tiempo debido a cambios en los años base, datos fuente y metodologías.
 
 ```{r Visualizacion inf,echo=FALSE}
-inf
+DT::datatable(inf)
 ```
+
+** Ojo con la inflación de Ecuador al 2000**
+
 ```{r Formato long y estandarizacion inf,echo=FALSE,warning=FALSE}
 inf <- long(inf)
 inf <- rename(inf,inf=x)
 ```
  
-#### 1.2.2 Tasa de desempleo.
- >La serie es parte de las estimaciones de la `OIT` y está armonizada para garantizar la comparabilidad entre países y a lo largo del tiempo, teniendo en cuenta las diferencias en la fuente de datos, el alcance de la cobertura, la metodología y otros factores específicos de cada país.
- 
+#### Tasa de desempleo.
 
+La serie es parte de las estimaciones de la `OIT` y está armonizada para garantizar la comparabilidad entre países y a lo largo del tiempo.
+ 
 ```{r echo=FALSE}
-unemp
+DT::datatable(unemp)
 ```
 ```{r Formato long y estandarizacion unem,echo=FALSE,warning=FALSE}
 unemp <- long(unemp)
 unemp <- rename(unemp,unemp=x)
 ```
 
-### 1.3 External Debt.
-Los datos fueron obtenidos de [WDI](https://databank.worldbank.org/source/world-development-indicators)
+### External Debt.
 
-Los datos para $\frac{DeudaExterna}{PIB}$ no hay en FMI o BM, por lo tanto **Se considera** $\frac{DeudaExterna}{PNB}$ de los datos del Banco Mundial.
-
-Para algunos paises no hay datos de la deuda externa total para obtener la relacion directa con el PIB, por ejemplo para Chile,Cuba, Estados Unidos,etc. **Sugerir tratamiento**
-Una opcion sería saldo de la cuenta corriente?
+Se toma  $\frac{DeudaExterna}{PNB}$ de los datos del Banco Mundial.
+*No hay datos completos para ciertos paises*
 ```{r Visualizacion de ed, echo=FALSE}
-ed
+DT::datatable(ed)
 ```
 ```{r Formato long y estandarizacion ext_debt,echo=FALSE,warning=FALSE}
 ed <- long(ed)
 ed <- rename(ed,ed=x)
 ```
 
-## 2 Eficiencia Microeconomica
-Se toma el promedio de las subindicadores de `Regulacion del mercado de credito`,`trabajo` y `empresarial`. Va en una escala del 0-10.
-**Datos Disponibles solo al 2017**
-Los datos son tomados de [ Fraser Institute](https://www.fraserinstitute.org/economic-freedom/dataset?geozone=world&year=2017&page=dataset&min-year=2&max-year=0&filter=0)
+## Eficiencia Microeconomica
+Se toma el promedio de las subindicadores de `Regulacion del mercado de credito`,`trabajo` y `empresarial`.
+
 ```{r Obtencion de datos reg, message=FALSE,warning=FALSE,echo=FALSE}
 reg <- read_csv("ile.csv")
 reg$Year <- as.double(reg$Year)
@@ -149,13 +162,20 @@ reg <- data.table(reg,key = c("Countries","Year"))
 ```
 ```{r visualizacion reg,echo=FALSE,warning=FALSE,message=FALSE}
 reg1 <- dcast(data = reg,Countries~ Year) #Poner en formato Wide
-reg1
+DT::datatable(reg1)
 rm(list = "reg1")
 ```
-## 3 Buen Gobierno
-Promedio de los siguientes subindicadores del indice de liberta economica mundial citada en el paper de referencia `Judicial independence` , `Impartial courts`,`Protection of property rights`,`Military interference in rule of law and politics` y `Integrity of the legal system` .
-Datos tomados de la fuente anterior.
 
+## Buen Gobierno
+
+Promedio de los siguientes subindicadores del indice de libertad económica mundial de **Fraser Institute** 
+
+  1. `Independencia judicial`
+  2. `Tribunales imparciales`
+  3. `Protección de los derechos de propiedad`
+  4. `Interferencia militar en el estado de derecho y la política`
+  5. `Integridad del sistema jurídico`.
+  
 ```{r Obtencion de datos bg, message=FALSE,warning=FALSE,echo=FALSE}
 ile_data <- read_csv("ile.csv")
 ile_data$Year <- as.double(ile_data$Year)
@@ -173,24 +193,24 @@ rm(lm="ile_data")
 
 ```{r Visualizacion de bg,echo=FALSE,warning=FALSE,message=FALSE}
 bg1 <- dcast(data = bg,Countries~ Year)
-bg1
+DT::datatable(bg1)
 rm(list = "bg1")
 ```
 
-## 4 Desarrollo Social
+## Desarrollo Social
+
 El componente de desarrollo social se calcula de la siguiente forma:
 $$
 \sum(Indice de Educacion,IndicedeSalud)
-$$ 
-${IndicedeEducacion}= {Tasa de AlfabetizaciondeAdultos"y"Tasa de Matriculacion Escolar}$. Esto es **Suma**
-$\mathrm{IndicedeSalud}={EsperanzadeVidaalNacer}$
-
+$$
 Datos tomados de [PNUD](http://hdr.undp.org/en/data)
 
-### 4.1 Indice de Educacion
+### Indice de Educacion
 
-#### 4.1.1 Adult Iteracy Rate
-Datos no disponibles para algunos paises, como por ejemplo, Estado Unido ,Cuba y demas. **Muchos paises y años vacios, buscar alternativas**
+#### Adult Iteracy Rate
+Datos no disponibles para algunos paises, como por ejemplo, Estado Unidos ,Cuba y demás.
+*Muchos paises y años vacios, buscar alternativas*
+
 ```{r Obtencion de datos y visualizacion aa, message=FALSE,warning=FALSE,echo=FALSE}
 aa <- read_csv("aa.csv")
 
@@ -199,11 +219,13 @@ aa <- aa %>%
   rename(Countries=Country) %>% 
   filter(Countries %in% pais$Countries) %>% 
   mutate_at(.vars = 2:12,as.numeric)
-aa
+DT::datatable(aa)
 ```
 
-#### 4.1.2 School Enrolment rates
-Se toma la variables de matriculacion en primaria. El paper de referencia no especifica el tipo de matriculacion escolar. **Ojo, no hay años continuos en los primeros años.** 
+#### School Enrolment rates
+
+*Ojo, no hay años continuos en los primeros años.*
+
 ```{r Obtencion de datos y visualizacion me, message=FALSE,warning=FALSE,echo=FALSE}
 me <- read_csv("me.csv")
 me <- me %>% 
@@ -212,7 +234,7 @@ me <- me %>%
   filter(Countries %in% pais$Countries) %>% 
   mutate_at(.vars = 2:12,as.numeric)
 me$`2013-2018` <- NULL
-me
+DT::datatable(me)
 ```
 ```{r Formato long y estandarizacion me,echo=FALSE,warning=FALSE}
 me <- long(me)
@@ -223,18 +245,23 @@ me <- rename(me,me=x)
 aa <- long(aa)
 aa <- rename(aa,aa=x)
 ```
-**Para evitar estos problemas faltantes de paises y años, se sugiere a manera personal,  el indice de educacion como reemplazo de alfabetizacion de adultos y la tasa de matriculacion escolar, El indice de eduacion es subcomponente del IDH, que recoge los `Años promedios de escolarida y los años esperados de escolaridad`**. Metodologia en [ONU](http://hdr.undp.org/sites/default/files/hdr2019_technical_notes.pdf) Estos son:
+
+**Para evitar estos problemas faltantes de paises y años, se sugiere a manera personal,  el indice de educación como reemplazo de alfabetización de adultos y la tasa de matriculación escolar, El índice de educación es subcomponente del IDH, que recoge los `Años promedios de escolaridad y los años esperados de escolaridad`**
+
+Metodologia en [ONU](http://hdr.undp.org/sites/default/files/hdr2019_technical_notes.pdf)
+Estos son:
 ```{r obtencion y visualizacion de ie,echo=FALSE,message=FALSE,warning=FALSE}
 ie <- read_csv("ie.csv")
 ie <- ie %>% select(Country,num_range("",2000:2019)) %>% filter(Country %in% pais$Countries) %>% mutate_at(.vars = 2:20,as.numeric)
 ie <- rename(ie,"Countries"=Country)
-ie
+DT::datatable(ie)
 ie <- long(ie)
 ie <- rename(ie,ie=x)
 ```
-### 4.2 Indice de salud
-Tomada por la variable de esperanza de vida al nacer. Por lo tanto, para poder sumarlar con el indice de educacion, se estabdariza usando la primera formula: $\mathrm{XE}=\frac{X-MinX}{Max{X}-MinX}$ , donde $MinX=20$ y $MaxX=85$ de acuerdo a la teoria. Verse [IDH](http://hdr.undp.org/sites/default/files/hdr2019_technical_notes.pdf)
-Los resultados estandarizados no se muestran, para evitar confusiones.
+
+### Indice de salud
+Tomada por la variable de esperanza de vida al nacer. [IDH](http://hdr.undp.org/sites/default/files/hdr2019_technical_notes.pdf)
+
 ```{r Obtencion de datos y visualizacion ev, message=FALSE,warning=FALSE,echo=FALSE}
 ev <- read_csv("ev.csv")
 ev <- ev %>% 
@@ -243,7 +270,7 @@ ev <- ev %>%
   filter(Countries %in% pais$Countries) %>% 
   mutate_at(.vars = 2:10,as.numeric)
 
-ev
+DT::datatable(ev)
 ```
 ```{r Formato long y estandarizacion ev,echo=FALSE,warning=FALSE}
 ev <- long(ev)
@@ -252,7 +279,7 @@ ev$ev <- as.numeric(ev$ev)
 ev$ev <- (ev$ev-20)/(85-20)
 ```
 ****
-# **Indice de resilencia calculado**
+# Resultados
 
 ```{r Estabilidad marcreconomica, echo=FALSE}
 # Suma de Desempleo e inflacion
@@ -278,7 +305,6 @@ des <- merge(x = ie,y=ev)
 des$des <- rowSums(des[,3:4],na.rm = TRUE)
 #des$des <- std(des$des)
 des <- select(des,Countries,Year,des)
-#ggplot(des)+aes(x = Year,y = des,group=Countries)+geom_line(aes(color=Countries))+geom_line(data = filter(des,Countries=="Ecuador"))
 ```
 Indice calculado omitiendo aquellos paises que no tienen los valores completos en todos los años, corregir los datos faltantes y demas problemas conceptuales.
 
@@ -289,18 +315,13 @@ resilience <- merge(x = resilience,y = des)
 resilience <- mutate_at(.tbl = resilience,.vars = 3:6,.funs = std)
 resilience$resilience <- rowMeans(resilience[,3:6],na.rm = TRUE)
 
-faltantes <- read_csv("faltantes.txt")
-resilience <- filter(resilience,!(Countries %in% faltantes$`Antigua and Barbuda`))
-
-ggplot(filter(resilience,Year %in% (2010:2017)))+aes(x=Year,y = resilience,group=Countries)+
-  geom_line(aes(color=Countries),show.legend = FALSE,color="grey80")+
-  geom_line(data = filter(resilience,Countries %in% c("Venezuela","Ecuador","Colombia","United States","Costa Rica"),Year %in% (2010:2017)),aes(color=Countries),size=1)+  theme_minimal()
+library(plotly)
+resilience %>% plot_ly(x = ~Year, y = ~resilience, type = 'scatter', mode = 'lines', color = ~Countries) %>% layout(title = "Indice de resilencia para América Latina",
+         xaxis = list(title = "Años"),
+         yaxis = list (title = "Índice de resilencia calculado"))
 ```
 
-El indice de liberta econommica no considera a Suriname para el calculo antes del 2010. Una opcion seria recortar los años, por lo tanto quedarian  `2010-2017`o eliminar a Suriname de la muestra. Solamente hasta 2017 hay datos del indice de libertad economica mundial, seria imposible considerar mas años puesto que este indicador es directo para el calculo.
+
 ```{r,echo=FALSE}
-resilience
+DT::datatable(resilience) %>% formatRound(columns = c('est_macro','Regulation','idg','des','resilience'),digits=2)
 ```
-
-Al parecer la inflacion medida por el deflactor del PIB genera ruido. Al no tratarse de datos para una interaccion entre paises y entre años, una regresion, es posible incorporar datos de diferentes fuentes para rellenar vacios? Por ejemplo, datos de las mismas instituciones de estadistica propias de cada pais, logicamente los años base jugarian un rol importante aqui. 
-
